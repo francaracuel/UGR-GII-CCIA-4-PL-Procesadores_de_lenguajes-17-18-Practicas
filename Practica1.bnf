@@ -1,87 +1,141 @@
+//
+// BABAD (Lenguaje C - Castellano - Array 1D y 2D - Funciones - Do-Until)
+//
+
 <Programa> ::= <Cabecera_programa> <bloque>
-<bloque> ::= <Inicio_de_bloque><Declar_de_variables_locales> <Declar_de_subprogs> <Sentencias> <Fin_de_bloque>
+
+<bloque> ::= <Inicio_de_bloque> <Declar_de_variables_locales> <Declar_de_subprogs> <Sentencias> <Fin_de_bloque>
+
 <Declar_de_subprogs> ::= <Declar_de_subprogs> <Declar_subprog>
-        |
+        		|
 <Declar_subprog> ::= <Cabecera_subprograma> <bloque>
+
 <Declar_de_variables_locales> ::= <Marca_ini_declar_variables> <Variables_locales> <Marca_fin_declar_variables>
-	|
+				|
 
+<Cabecera_programa> ::= int main ()
 
-<Cabecera_programa> ::= main
 <Inicio_de_bloque> ::= {
+
 <Fin_de_bloque> ::= }
+
 <Marca_ini_declar_variables> ::= ini_var_local
+
 <Marca_fin_declar_variables> ::= fin_var_local
+
 <Variables_locales> ::= <Variables_locales> <Cuerpo_declar_variables>
-                        | <Cuerpo_declar_variables>
+                | <Cuerpo_declar_variables>
+
 <Cuerpo_declar_variables> ::= <tipo_basico> <lista_variables> ;
-<Cabecera_subprog> ::= <tipo_basico> <variable> ( <lista_parametros> )
-        | <tipo_basico> <variable> ( )
+
+<Cabecera_subprograma> ::= <tipo_basico> <variable> ( <lista_parametros> )
+        		| <tipo_basico> <variable> ( )
+
 <Sentencias> ::= <Sentencias> <Sentencia>
                 | <Sentencia>
+
 <Sentencia> ::= <bloque>
                 | <sentencia_asignacion>
                 | <sentencia_if>
                 | <sentencia_while>
                 | <sentencia_entrada>
                 | <sentencia_salida>
-                | <sentencia_return> (si el lenguaje soporta funciones)
-                | <llamada_proced> (si el lenguaje soporta proced.)
-                | (Resto de sentencias del lenguaje asignado)
+                | <sentencia_return>
+                //| <llamada_procedimiento>
+                //| (Resto de sentencias del lenguaje asignado)
+
 <sentencia_asignacion> ::= <variable> = <expresion> ;
+
 <sentencia_if> ::= if ( <expresion> ) <bloque>
-        | if ( <expresion> ) <bloque> else <bloque>
+        		| if ( <expresion> ) <bloque> else <bloque>
+
 <sentencia_while> ::= while ( <expresion> ) <bloque>
-        | do <bloque> while <expresion>                                         //do-until
+        		| do <bloque> while <expresion>                //do-until
+
 <sentencia_entrada> ::= <nomb_entrada> <lista_variables>
+
 <sentencia_salida> ::= <nomb_salida> <lista_expresiones_o_cadena>
+
+<sentencia_return> ::= return <expresion> ;
+
 <expresion> ::= ( <expresion> )
                 | <op_unario> <expresion>
                 | <expresion> <op_binario> <expresion>
                 | <identificador>
                 | <constante>
-                | <funcion> (si el lenguaje soporta funciones)
-                | (Resto de expresiones del lenguaje de referencia)
+                | <funcion>
+                | <variable> // ?? Sería igual a identificador??
+                //| (Resto de expresiones del lenguaje de referencia)
+
 <tipo_basico> ::= int
-        | bool
-        | char
-        | float
+		        | bool
+		        | char
+		        | float
+
 <lista_variables> ::= <lista_variables> , <variable>
-        | <variable>
-<variable> ::= ([a-zA-Z_][0-9a-zA-z_]*)
+		        | <variable>
+
+<identificador> ::= ([a-zA-Z_][0-9a-zA-z_]*)
+
+<variable> ::= <identificador>
+				| <identificador> <array>
+
 <lista_parametros> ::= <lista_parametros> , <tipo_basico> <variable>
-        | <tipo_basico> <variable>
+        		| <tipo_basico> <variable>
+
 <nomb_entrada> ::= leer
+
 <nomb_salida> ::= escribir
+
 <lista_expresiones_o_cadena> ::= <lista_expresiones_o_cadena> , <expresion>
-        | <lista_expresiones_o_cadena> , <cadena>
-        | <expresion>
-        | <cadena>
+		        | <lista_expresiones_o_cadena> , <cadena>
+		        | <expresion>
+		        | <cadena>
+
 <cadena> ::= .+
+
 <op_unario> ::= &
-        | +
-        | -
-        | ~
-        |!
+		        | +
+		        | -
+		        | ~
+		        | !
+
 <op_binario> ::= +
-        | -
-        | *
-        | /
-        | ==
-        | !=
-        | <=
-        | >=
-        | <
-        | >
-        | &&
-        | ||
+		        | -
+		        | *
+		        | /
+		        | ==
+		        | !=
+		        | <=
+		        | >=
+		        | <
+		        | >
+		        | &&
+		        | ||
 
 <constante> ::= <const_int>
-        | <const_matrix>
-        | <const_bool>
-        | <const_float>
-        | <const_char>
+		        | <const_matrix>
+		        | <const_bool>
+		        | <const_float>
+		        | <const_char>
 
-<funcion> ::= <identificador> '(' <lista_variables> ')' ';'
-| <identificador '(' ')' ';'
+<funcion> ::= <identificador> ( <lista_variables> ) ;
+				| <identificador ( ) ;
 
+<array> ::= <tipo_basico> <variable> [ <const_uint> ] ;
+				| <tipo_basico> <variable> [ <const_uint> , <const_uint> ] ;
+
+<const_uint> ::= [0-9]+
+
+<const_int> ::= <const_uint>
+				| -<const_uint>
+
+<const_matrix> ::=  [<const_uint>,<const_uint>]
+
+<const_bool> ::= true
+				| false
+
+<const_float> ::= <const_int>.<const_uint>
+
+<const_char> ::= [a-z]
+				| [A-Z]
