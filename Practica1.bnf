@@ -41,16 +41,16 @@
                 | <sentencia_entrada>
                 | <sentencia_salida>
                 | <sentencia_return>
-                //| <llamada_procedimiento>
-                //| (Resto de sentencias del lenguaje asignado)
+                | <sentencia_hacer_hasta>
 
 <sentencia_asignacion> ::= <variable> = <expresion> ;
 
 <sentencia_if> ::= if ( <expresion> ) <bloque>
         		| if ( <expresion> ) <bloque> else <bloque>
 
+<sentencia_hacer_hasta> ::= hacer  <bloque> hasta <expresion>
+        		
 <sentencia_while> ::= while ( <expresion> ) <bloque>
-        		| do <bloque> while <expresion>                //do-until
 
 <sentencia_entrada> ::= <nomb_entrada> <lista_variables>
 
@@ -64,8 +64,7 @@
                 | <identificador>
                 | <constante>
                 | <funcion>
-                | <variable> // ?? Sería igual a identificador??
-                //| (Resto de expresiones del lenguaje de referencia)
+                | <variable>
 
 <tipo_basico> ::= int
 		        | bool
