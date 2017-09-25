@@ -77,8 +77,7 @@
 
 <identificador> ::= ([a-zA-Z_][0-9a-zA-z_]*)
 
-<variable> ::= <identificador>
-				| <identificador> <array>
+<variable> ::= <tipo> <identificador>
 
 <lista_parametros> ::= <lista_parametros> , <tipo_basico> <variable>
         		| <tipo_basico> <variable>
@@ -122,8 +121,8 @@
 <funcion> ::= <identificador> ( <lista_variables> ) ;
 				| <identificador ( ) ;
 
-<array> ::= <tipo_basico> <variable> [ <const_uint> ] ;
-				| <tipo_basico> <variable> [ <const_uint> , <const_uint> ] ;
+<array> ::= <tipo_basico> <identificador> [ <const_uint> ] ;
+				| <tipo_basico> <identificador> [ <const_uint> , <const_uint> ] ;
 
 <const_uint> ::= [0-9]+
 
