@@ -15,9 +15,9 @@
 
 <Cabecera_programa> ::= entero principal ()
 
-<Inicio_de_bloque> ::= {
+<Inicio_de_bloque> ::= ini_bloque
 
-<Fin_de_bloque> ::= }
+<Fin_de_bloque> ::= fin_bloque
 
 <Marca_ini_declar_variables> ::= ini_var_local
 
@@ -46,7 +46,7 @@
 
 <sentencia_asignacion> ::= <var_array> = <identificador> ;
                 | <identificador> [ <expresion> ] ;
-                | <identificador> [ <expresion> ] { expresion } ;
+                | <identificador> [ <expresion> ] [ expresion ] ;
 
 <sentencia_si> ::= si ( <expresion> ) <sentencia>
         		|  ( <expresion> ) <sentencia> else <bloque> ;
