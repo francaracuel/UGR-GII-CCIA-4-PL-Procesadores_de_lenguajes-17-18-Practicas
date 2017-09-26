@@ -51,7 +51,7 @@
 <sentencia_si> ::= si ( <expresion> ) <sentencia>
         		|  ( <expresion> ) <sentencia> else <bloque> ;
 
-<sentencia_hacer_hasta> ::= hacer  <sentencia> hasta <expresion> ;
+<sentencia_hacer_hasta> ::= hacer <sentencia> hasta <expresion> ;
 
 <sentencia_mientras> ::= mientras ( <expresion> ) <sentencia> ;
 
@@ -77,7 +77,7 @@
 <lista_variables> ::= <lista_variables> , <variable>
 		        | <variable>
 
-<identificador> ::= ([a-zA-Z_][0-9a-zA-z_]*)
+<identificador> ::= "cadena que empieza por _ o una letra"
 
 <variable> ::= <identificador>
                 | <identificador> [ <const_entero_sin_signo> ]
@@ -161,10 +161,10 @@
 
 <matriz_caracter ::=  { <lista_caracter> }
 
-<const_booleano> ::= true
-				| false
+<const_booleano> ::= verdadero
+				| falso
 
-<const_flotante> ::= <const_entero>.<const_entero_sin_signo>
+<const_flotante> ::= <const_entero> . <const_entero_sin_signo>
 
 <const_caracter> ::= [a-z]
 				| [A-Z]
