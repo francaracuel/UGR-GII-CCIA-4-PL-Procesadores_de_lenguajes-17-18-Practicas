@@ -49,15 +49,15 @@
                 | <identificador> [ <expresion> ] [ expresion ] ;
 
 <sentencia_si> ::= si ( <expresion> ) <sentencia>
-        		|  ( <expresion> ) <sentencia> else <bloque> ;
+        		|  ( <expresion> ) <sentencia> si_no <bloque> ;
 
-<sentencia_hacer_hasta> ::= hacer <sentencia> hasta <expresion> ;
+<sentencia_hacer_hasta> ::= hacer <sentencia> hasta ( <expresion> );
 
 <sentencia_mientras> ::= mientras ( <expresion> ) <sentencia> ;
 
-<sentencia_entrada> ::= <nomb_entrada> <lista_variables> ;
+<sentencia_entrada> ::= leer <lista_variables> ;
 
-<sentencia_salida> ::= <nomb_salida> <lista_expresiones_o_cadena> ;
+<sentencia_salida> ::= escribir <lista_expresiones_o_cadena> ;
 
 <sentencia_devolver> ::= devolver <expresion> ;
 
@@ -97,10 +97,6 @@
 
 <lista_caracter> ::= <lista_caracter> , <const_caracter>
                 | <const_caracter>
-
-<nomb_entrada> ::= leer
-
-<nomb_salida> ::= escribir
 
 <lista_expresiones_o_cadena> ::= <lista_expresiones_o_cadena> , <expresion>
 		        | <lista_expresiones_o_cadena> , <cadena>
