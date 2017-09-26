@@ -44,7 +44,9 @@
                 | <sentencia_devolver>
                 | <sentencia_hacer_hasta>
 
-<sentencia_asignacion> ::= <variable> = <expresion> ;
+<sentencia_asignacion> ::= <var_array> = <identificador> ;
+                | <identificador> [ <expresion> ] ;
+                | <identificador> [ <expresion> ] { expresion } ;
 
 <sentencia_si> ::= si ( <expresion> ) <sentencia>
         		|  ( <expresion> ) <sentencia> else <bloque> ;
@@ -62,7 +64,7 @@
 <expresion> ::= ( <expresion> )
                 | <op_unario> <expresion>
                 | <expresion> <op_binario> <expresion>
-                | <identificador>
+                | <var_array>
                 | <constante>
                 | <funcion>
                 | <variable>
@@ -78,8 +80,8 @@
 <identificador> ::= ([a-zA-Z_][0-9a-zA-z_]*)
 
 <variable> ::= <identificador>
-                | <identificador> [ <const_entero> ]
-                | <identificador> [ <const_entero> ] [ <const_entero> ]
+                | <identificador> [ <const_entero_sin_signo> ]
+                | <identificador> [ <const_entero_sin_signo> ] [ <const_entero_sin_signo> ]
 
 <lista_parametros> ::= <lista_parametros> , <tipo_basico> <variable>
         		| <tipo_basico> <variable>
