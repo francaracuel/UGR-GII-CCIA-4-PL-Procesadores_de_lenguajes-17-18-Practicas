@@ -34,6 +34,7 @@
 <Sentencias> ::= <Sentencias> <Sentencia>
             | <Sentencia>
 
+<<<<<<< HEAD
 <Sentencia> ::= <sentencia> <sentencia>
             | <bloque>
             | <sentencia_asignacion>
@@ -50,24 +51,50 @@
 
 <sentencia_si> ::= si ( <expresion> ) <sentencia>
     		|  ( <expresion> ) <sentencia> else <bloque> ;
+=======
+<Sentencia> ::= <bloque>
+                | <sentencia_asignacion>
+                | <sentencia_si>
+                | <sentencia_mientras>
+                | <sentencia_entrada>
+                | <sentencia_salida>
+                | <sentencia_devolver>
+                | <sentencia_hacer_hasta>
 
-<sentencia_hacer_hasta> ::= hacer <sentencia> hasta <expresion> ;
+
+<sentencia_asignacion> ::= <variable> = <identificador> ;
+                | <variable> = <identificador> [ <expresion> ] ;
+                | <variable> = <identificador> [ <expresion> ] [ expresion ] ;
+
+<sentencia_si> ::= si ( <expresion> ) <sentencia>
+        		|  ( <expresion> ) <sentencia> si_no <bloque> ;
+>>>>>>> master
+
+<sentencia_hacer_hasta> ::= hacer <sentencia> hasta ( <expresion> );
 
 <sentencia_mientras> ::= mientras ( <expresion> ) <sentencia> ;
 
-<sentencia_entrada> ::= <nomb_entrada> <lista_variables> ;
+<sentencia_entrada> ::= leer <lista_variables> ;
 
-<sentencia_salida> ::= <nomb_salida> <lista_expresiones_o_cadena> ;
+<sentencia_salida> ::= escribir <lista_expresiones_o_cadena> ;
 
 <sentencia_devolver> ::= devolver <expresion> ;
 
 <expresion> ::= ( <expresion> )
+<<<<<<< HEAD
             | <op_unario> <expresion>
             | <expresion> <op_binario> <expresion>
             | <var_array>
             | <constante>
             | <funcion>
             | <variable>
+=======
+                | <op_unario> <expresion>
+                | <expresion> <op_binario> <expresion>
+                | <constante>
+                | <funcion>
+                | <variable>
+>>>>>>> master
 
 <tipo_basico> ::= entero
 	        | booleano
@@ -97,10 +124,6 @@
 
 <lista_caracter> ::= <lista_caracter> , <const_caracter>
             | <const_caracter>
-
-<nomb_entrada> ::= leer
-
-<nomb_salida> ::= escribir
 
 <lista_expresiones_o_cadena> ::= <lista_expresiones_o_cadena> , <expresion>
 	        | <lista_expresiones_o_cadena> , <cadena>
