@@ -7,11 +7,11 @@
 <bloque> ::= <Inicio_de_bloque> <Declar_de_variables_locales> <Declar_de_subprogs> <Sentencias> <Fin_de_bloque>
 
 <Declar_de_subprogs> ::= <Declar_de_subprogs> <Declar_subprog>
-        		|
+    		|
 <Declar_subprog> ::= <Cabecera_subprograma> <bloque>
 
 <Declar_de_variables_locales> ::= <Marca_ini_declar_variables> <Variables_locales> <Marca_fin_declar_variables>
-				|
+			|
 
 <Cabecera_programa> ::= entero principal ()
 
@@ -24,32 +24,32 @@
 <Marca_fin_declar_variables> ::= fin_var_local
 
 <Variables_locales> ::= <Variables_locales> <Cuerpo_declar_variables>
-                | <Cuerpo_declar_variables>
+            | <Cuerpo_declar_variables>
 
 <Cuerpo_declar_variables> ::= <tipo_basico> <lista_variables> ;
 
 <Cabecera_subprograma> ::= <tipo_basico> <variable> ( <lista_parametros> )
-        		| <tipo_basico> <variable> ( )
+    		| <tipo_basico> <variable> ( )
 
 <Sentencias> ::= <Sentencias> <Sentencia>
-                | <Sentencia>
+            | <Sentencia>
 
 <Sentencia> ::= <sentencia> <sentencia>
-                | <bloque>
-                | <sentencia_asignacion>
-                | <sentencia_si>
-                | <sentencia_mientras>
-                | <sentencia_entrada>
-                | <sentencia_salida>
-                | <sentencia_devolver>
-                | <sentencia_hacer_hasta>
+            | <bloque>
+            | <sentencia_asignacion>
+            | <sentencia_si>
+            | <sentencia_mientras>
+            | <sentencia_entrada>
+            | <sentencia_salida>
+            | <sentencia_devolver>
+            | <sentencia_hacer_hasta>
 
 <sentencia_asignacion> ::= <var_array> = <identificador> ;
-                | <identificador> [ <expresion> ] ;
-                | <identificador> [ <expresion> ] [ expresion ] ;
+            | <identificador> [ <expresion> ] ;
+            | <identificador> [ <expresion> ] [ expresion ] ;
 
 <sentencia_si> ::= si ( <expresion> ) <sentencia>
-        		|  ( <expresion> ) <sentencia> else <bloque> ;
+    		|  ( <expresion> ) <sentencia> else <bloque> ;
 
 <sentencia_hacer_hasta> ::= hacer <sentencia> hasta <expresion> ;
 
@@ -62,96 +62,96 @@
 <sentencia_devolver> ::= devolver <expresion> ;
 
 <expresion> ::= ( <expresion> )
-                | <op_unario> <expresion>
-                | <expresion> <op_binario> <expresion>
-                | <var_array>
-                | <constante>
-                | <funcion>
-                | <variable>
+            | <op_unario> <expresion>
+            | <expresion> <op_binario> <expresion>
+            | <var_array>
+            | <constante>
+            | <funcion>
+            | <variable>
 
 <tipo_basico> ::= entero
-		        | booleano
-		        | caracter
-		        | flotante
+	        | booleano
+	        | caracter
+	        | flotante
 
 <lista_variables> ::= <lista_variables> , <variable>
-		        | <variable>
+	        | <variable>
 
 <identificador> ::= "cadena que empieza por _ o una letra"
 
 <variable> ::= <identificador>
-                | <identificador> [ <const_entero_sin_signo> ]
-                | <identificador> [ <const_entero_sin_signo> ] [ <const_entero_sin_signo> ]
+            | <identificador> [ <const_entero_sin_signo> ]
+            | <identificador> [ <const_entero_sin_signo> ] [ <const_entero_sin_signo> ]
 
 <lista_parametros> ::= <lista_parametros> , <tipo_basico> <variable>
-        		| <tipo_basico> <variable>
+    		| <tipo_basico> <variable>
 
 <lista_entero> ::= <lista_entero> , <const_entero>
-                | <const_entero>
+            | <const_entero>
 
 <lista_booleano> ::= <lista_booleano> , <const_booleano>
-                | <const_booleano>
+            | <const_booleano>
 
 <lista_flotante> ::= <lista_flotante> , <const_flotante>
-                | <const_flotante>
+            | <const_flotante>
 
 <lista_caracter> ::= <lista_caracter> , <const_caracter>
-                | <const_caracter>
+            | <const_caracter>
 
 <nomb_entrada> ::= leer
 
 <nomb_salida> ::= escribir
 
 <lista_expresiones_o_cadena> ::= <lista_expresiones_o_cadena> , <expresion>
-		        | <lista_expresiones_o_cadena> , <cadena>
-		        | <expresion>
-		        | <cadena>
+	        | <lista_expresiones_o_cadena> , <cadena>
+	        | <expresion>
+	        | <cadena>
 
 <cadena> ::= "cualquier conjunto de caracteres"
 
 <op_unario> ::= &
-		        | +
-		        | -
-		        | ~
-		        | !
+	        | +
+	        | -
+	        | ~
+	        | !
 
 <op_binario> ::= +
-		        | -
-		        | *
-		        | /
-		        | ==
-		        | !=
-		        | <=
-		        | >=
-		        | <
-		        | >
-		        | &&
-		        | ||
+	        | -
+	        | *
+	        | /
+	        | ==
+	        | !=
+	        | <=
+	        | >=
+	        | <
+	        | >
+	        | &&
+	        | ||
 
 <signo> ::= -
-                | +
+            | +
 
 <constante> ::= <const_entero>
-		        | <const_matriz>
-		        | <const_booleano>
-		        | <const_flotante>
-		        | <const_caracter>
+	        | <const_matriz>
+	        | <const_booleano>
+	        | <const_flotante>
+	        | <const_caracter>
 
 <funcion> ::= <identificador> ( <lista_variables> ) ;
-				| <identificador ( ) ;
+			| <identificador ( ) ;
 
 <vector> ::= <tipo_basico> <identificador> [ <const_entero_sin_signo> ] ;
-				| <tipo_basico> <identificador> [ <const_entero_sin_signo> , <const_entero_sin_signo> ] ;
+			| <tipo_basico> <identificador> [ <const_entero_sin_signo> , <const_entero_sin_signo> ] ;
 
 <const_entero_sin_signo> ::= <const_entero_sin_signo> [0-9]
-                | [0-9]
+            | [0-9]
 
 <const_entero> ::= <signo> <const_entero_sin_signo>
 
 <const_matriz> ::=  <matriz_entero>
-                | <matriz_booleano>
-                | <matriz_flotante>
-                | <matriz_caracter>
+            | <matriz_booleano>
+            | <matriz_flotante>
+            | <matriz_caracter>
 
 <matriz_entero> ::=  { <lista_entero> }
 
@@ -162,9 +162,9 @@
 <matriz_caracter ::=  { <lista_caracter> }
 
 <const_booleano> ::= verdadero
-				| falso
+			| falso
 
 <const_flotante> ::= <const_entero> . <const_entero_sin_signo>
 
 <const_caracter> ::= [a-z]
-				| [A-Z]
+			| [A-Z]
