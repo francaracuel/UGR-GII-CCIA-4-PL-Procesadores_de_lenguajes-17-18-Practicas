@@ -34,8 +34,7 @@
 <Sentencias> ::= <Sentencias> <Sentencia>
                 | <Sentencia>
 
-<Sentencia> ::= <sentencia> <sentencia>
-                | <bloque>
+<Sentencia> ::= <bloque>
                 | <sentencia_asignacion>
                 | <sentencia_si>
                 | <sentencia_mientras>
@@ -45,8 +44,8 @@
                 | <sentencia_hacer_hasta>
 
 <sentencia_asignacion> ::= <var_array> = <identificador> ;
-                | <identificador> [ <expresion> ] ;
-                | <identificador> [ <expresion> ] [ expresion ] ;
+                | <var_array> = <identificador> [ <expresion> ] ;
+                | <var_array> = <identificador> [ <expresion> ] [ expresion ] ;
 
 <sentencia_si> ::= si ( <expresion> ) <sentencia>
         		|  ( <expresion> ) <sentencia> si_no <bloque> ;
@@ -82,6 +81,10 @@
 <variable> ::= <identificador>
                 | <identificador> [ <const_entero_sin_signo> ]
                 | <identificador> [ <const_entero_sin_signo> ] [ <const_entero_sin_signo> ]
+
+<var_array> ::= <identificador>
+                | <identificador> [ <expresion> ]
+                | <identificador> [ <expresion>, <expresion> ]
 
 <lista_parametros> ::= <lista_parametros> , <tipo_basico> <variable>
         		| <tipo_basico> <variable>
