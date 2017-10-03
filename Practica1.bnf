@@ -13,11 +13,11 @@
 <Declar_de_variables_locales> ::= <Marca_ini_declar_variables> <Variables_locales> <Marca_fin_declar_variables>
 				|
 
-<Cabecera_programa> ::= entero principal ()
+<Cabecera_programa> ::= principal
 
-<Inicio_de_bloque> ::= ini_bloque
+<Inicio_de_bloque> ::= {
 
-<Fin_de_bloque> ::= fin_bloque
+<Fin_de_bloque> ::= }
 
 <Marca_ini_declar_variables> ::= ini_var_local
 
@@ -43,16 +43,14 @@
                 | <sentencia_devolver>
                 | <sentencia_hacer_hasta>
 
-<sentencia_asignacion> ::= <var_array> = <identificador> ;
-                | <var_array> = <identificador> [ <expresion> ] ;
-                | <var_array> = <identificador> [ <expresion> ] [ expresion ] ;
+<sentencia_asignacion> ::= <var_array> = <expresion> ;
 
 <sentencia_si> ::= si ( <expresion> ) <sentencia>
-        		|  ( <expresion> ) <sentencia> si_no <bloque> ;
+        		|  ( <expresion> ) <sentencia> si_no <sentencia>
 
-<sentencia_hacer_hasta> ::= hacer <sentencia> hasta ( <expresion> );
+<sentencia_hacer_hasta> ::= hacer <sentencia> hasta ( <expresion> )
 
-<sentencia_mientras> ::= mientras ( <expresion> ) <sentencia> ;
+<sentencia_mientras> ::= mientras ( <expresion> ) <sentencia>
 
 <sentencia_entrada> ::= leer <lista_variables> ;
 
@@ -66,7 +64,6 @@
                 | <var_array>
                 | <constante>
                 | <funcion>
-                | <variable>
 
 <tipo_basico> ::= entero
 		        | booleano
@@ -106,7 +103,7 @@
 		        | <expresion>
 		        | <cadena>
 
-<cadena> ::= "cualquier conjunto de caracteres"
+<cadena> ::= "cualquier secuencia de caracteres"
 
 <op_unario> ::= &
 		        | +
@@ -129,14 +126,17 @@
 
 <signo> ::= -
                 | +
+                |
 
 <constante> ::= <const_entero>
+                |<const_entero_sin_signo>
 		        | <const_matriz>
 		        | <const_booleano>
 		        | <const_flotante>
+		        | <const_flotante_sin_signo>
 		        | <const_caracter>
 
-<funcion> ::= <identificador> ( <lista_variables> ) ;
+<funcion> ::= <identificador> ( <lista_expresiones_o_cadena> ) ;
 				| <identificador ( ) ;
 
 <vector> ::= <tipo_basico> <identificador> [ <const_entero_sin_signo> ] ;
@@ -164,6 +164,8 @@
 				| falso
 
 <const_flotante> ::= <const_entero> . <const_entero_sin_signo>
+
+<const_flotante_sin_signo> ::= <const_entero_sin_signo> . <const_entero_sin_signo> //Se cree que no es necesario al tener const_entero -, +, o vacío
 
 <const_caracter> ::= [a-z]
 				| [A-Z]
