@@ -69,8 +69,8 @@
 		        | caracter
 		        | flotante
 
-<lista_variables> ::= <lista_variables> , <variable>
-		        | <variable>
+<lista_variables> ::= <lista_variables> , <var_array>   //hemos puesto var_array por variable es solo para la declaración
+		        | <var_array>
 
 <identificador> ::= "cadena que empieza por _ o una letra"
 
