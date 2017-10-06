@@ -13,11 +13,11 @@
 <Declar_de_variables_locales> ::= <Marca_ini_declar_variables> <Variables_locales> <Marca_fin_declar_variables>
 			|
 
-<Cabecera_programa> ::= entero principal ()
+<Cabecera_programa> ::= principal
 
-<Inicio_de_bloque> ::= ini_bloque
+<Inicio_de_bloque> ::= {
 
-<Fin_de_bloque> ::= fin_bloque
+<Fin_de_bloque> ::= }
 
 <Marca_ini_declar_variables> ::= ini_var_local
 
@@ -61,18 +61,19 @@
                 | <sentencia_devolver>
                 | <sentencia_hacer_hasta>
 
-
-<sentencia_asignacion> ::= <variable> = <identificador> ;
-                | <variable> = <identificador> [ <expresion> ] ;
-                | <variable> = <identificador> [ <expresion> ] [ expresion ] ;
+<sentencia_asignacion> ::= <var_array> = <expresion> ;
 
 <sentencia_si> ::= si ( <expresion> ) <sentencia>
+<<<<<<< HEAD:Practica1.bnf
         		|  ( <expresion> ) <sentencia> si_no <bloque> ;
 >>>>>>> master
+=======
+        		|  ( <expresion> ) <sentencia> si_no <sentencia>
+>>>>>>> master:Práctica 1/Practica1.bnf
 
-<sentencia_hacer_hasta> ::= hacer <sentencia> hasta ( <expresion> );
+<sentencia_hacer_hasta> ::= hacer <sentencia> hasta ( <expresion> )
 
-<sentencia_mientras> ::= mientras ( <expresion> ) <sentencia> ;
+<sentencia_mientras> ::= mientras ( <expresion> ) <sentencia>
 
 <sentencia_entrada> ::= leer <lista_variables> ;
 
@@ -93,8 +94,11 @@
                 | <expresion> <op_binario> <expresion>
                 | <constante>
                 | <funcion>
+<<<<<<< HEAD:Practica1.bnf
                 | <variable>
 >>>>>>> master
+=======
+>>>>>>> master:Práctica 1/Practica1.bnf
 
 <tipo_basico> ::= entero
 	        | booleano
@@ -109,6 +113,10 @@
 <variable> ::= <identificador>
             | <identificador> [ <const_entero_sin_signo> ]
             | <identificador> [ <const_entero_sin_signo> ] [ <const_entero_sin_signo> ]
+
+<var_array> ::= <identificador>
+                | <identificador> [ <expresion> ]
+                | <identificador> [ <expresion>, <expresion> ]
 
 <lista_parametros> ::= <lista_parametros> , <tipo_basico> <variable>
     		| <tipo_basico> <variable>
@@ -130,7 +138,7 @@
 	        | <expresion>
 	        | <cadena>
 
-<cadena> ::= "cualquier conjunto de caracteres"
+<cadena> ::= "cualquier secuencia de caracteres"
 
 <op_unario> ::= &
 	        | +
@@ -152,6 +160,7 @@
 	        | ||
 
 <signo> ::= -
+<<<<<<< HEAD:Practica1.bnf
             | +
 
 <constante> ::= <const_entero>
@@ -162,6 +171,21 @@
 
 <funcion> ::= <identificador> ( <lista_variables> ) ;
 			| <identificador ( ) ;
+=======
+                | +
+                |
+
+<constante> ::= <const_entero>
+                |<const_entero_sin_signo>
+		        | <const_matriz>
+		        | <const_booleano>
+		        | <const_flotante>
+		        | <const_flotante_sin_signo>
+		        | <const_caracter>
+
+<funcion> ::= <identificador> ( <lista_expresiones_o_cadena> ) ;
+				| <identificador ( ) ;
+>>>>>>> master:Práctica 1/Practica1.bnf
 
 <vector> ::= <tipo_basico> <identificador> [ <const_entero_sin_signo> ] ;
 			| <tipo_basico> <identificador> [ <const_entero_sin_signo> , <const_entero_sin_signo> ] ;
@@ -188,6 +212,8 @@
 			| falso
 
 <const_flotante> ::= <const_entero> . <const_entero_sin_signo>
+
+<const_flotante_sin_signo> ::= <const_entero_sin_signo> . <const_entero_sin_signo> //Se cree que no es necesario al tener const_entero -, +, o vacío
 
 <const_caracter> ::= [a-z]
 			| [A-Z]
