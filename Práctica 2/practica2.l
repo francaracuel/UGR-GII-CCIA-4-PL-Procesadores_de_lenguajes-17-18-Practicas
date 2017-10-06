@@ -6,18 +6,19 @@
 #include <string.h>
 #include "constants.h"
 
+
 %}
 
 %option yylineno
 %option noyywrap
 
+letra [a-zA-Z]
 digito [0-9]
 entero {digito}+
 real {entero}.{entero}
 
 %%
 
-// Reglas
 
 "principal" {
     ECHO;
@@ -224,12 +225,12 @@ real {entero}.{entero}
     return(CADENA);
 }
 
-entero {
+{entero} {
     ECHO;
     return(CONST_ENTERO);
 }
 
-real {
+{real} {
     ECHO;
     return(CONST_FLOTANTE);
 }
@@ -239,6 +240,7 @@ real {
     return(CONST_CARACTER);
 }
 
+
 [ \t] {
     ECHO;
 }
@@ -247,13 +249,18 @@ real {
     ECHO;
 }
 
+({letra}|_)({letra}|{digito}|_)* {
+    ECHO;
+    return(IDENTIFICADOR);
+}
+
 . {
-    printf("Linea: %d.\n No se reconoce la palabra '%s'.", yylineno, yytext);
+    printf(" Linea: %d. No se reconoce la palabra '%s'. ", yylineno, yytext);
 }
 
 %%
 
-// Procedimientos de usuario
+/* Procedimientos de usuario */
 
 int main (int argc, char** argv) {
 
@@ -273,7 +280,7 @@ int main (int argc, char** argv) {
     // Si "yyin" es nulo no se ha podido abrir el fichero
     if (yyin == NULL) {
 
-        printf (“\nError al abrir el fichero %s\n”, argv[1]);
+        printf ("\nError al abrir el fichero %s\n", argv[1]);
 
         exit (-2);
 
@@ -284,13 +291,13 @@ int main (int argc, char** argv) {
 
     // Hasta que no termine de analizar todo el fichero no finalizará la
     // ejecución
-	/*while (an != 0) {
+	while (an != 0) {
 
-		//printf("%d ", an);
+		printf("__%d__ ", an);
         //printf("%s ", yytext());
 		an = yylex();
 
-	}*/
+	}
 
 	exit(1);
 
