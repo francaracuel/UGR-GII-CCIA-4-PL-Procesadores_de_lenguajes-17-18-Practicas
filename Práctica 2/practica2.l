@@ -227,7 +227,7 @@ real {entero}.{entero}
 
 {entero} {
     ECHO;
-    return(CONST_ENTERO);
+    return(CONST_ENTERO_SIN_SIGNO);
 }
 
 {real} {
