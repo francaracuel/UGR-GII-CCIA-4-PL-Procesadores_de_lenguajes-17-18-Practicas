@@ -250,12 +250,12 @@ real {entero}.{entero}
 }
 
 ({letra}|_)({letra}|{digito}|_)* {
-    ECHO;
-    return(IDENTIFICADOR);
-}
+     ECHO;
+     return(IDENTIFICADOR);
+ }
 
 . {
-    printf(" Linea: %d. No se reconoce la palabra '%s'. ", yylineno, yytext);
+    printf(" \nError Léxico en Linea: %d. No se reconoce la palabra '%s'. ", yylineno, yytext);
 }
 
 %%

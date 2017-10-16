@@ -1,18 +1,18 @@
-principal()
+main ()
 {
-	ini_var_local
+	in··i_var_local
 
 	entero a=0, b=1, c=2;
 	entero mat[3][2];
 	flotante vec[+5];
 
-	fin_var_local
+	fi··n_var_local
 
 	hacer {
 		escribir "hola";
 		a = a+1;
 	}
-	hasta ( a=4 )
+	ha··sta ( a=4 )
 
 	si(verdadero){
 		leer b;
