@@ -1,0 +1,26 @@
+main ()
+{
+	in··i_var_local
+
+	entero a=0, b=1, c=2;
+	entero mat[3][2];
+	flotante vec[+5];
+
+	fi··n_var_local
+
+	hacer {
+		escribir "hola";
+		a = a+1;
+	}
+	ha··sta ( a=4 )
+
+	si(verdadero){
+		leer b;
+	}
+	si_no a=b
+
+	si(!b){
+		si(a==c)
+			c=2.3;
+	}
+}
