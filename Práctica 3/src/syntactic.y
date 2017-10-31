@@ -1,4 +1,4 @@
-%{
+CONST_ENTERO_SIN_SIGNO%{
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -49,7 +49,6 @@ int yydebug=1;
 // A continuación declaramos los nombres simbólicos de los tokens.
 // byacc se encarga de asociar a cada uno un código.
 
-//############
 %left OPOR
 %left OPAND
 %left OPIGUALDAD
@@ -86,10 +85,6 @@ int yydebug=1;
 %token CONST_CARACTER
 %token IDENTIFICADOR
 
-
-
-//############
-
 %%
 
 // Producciones
@@ -104,180 +99,123 @@ bloque : INI_BLOQUE
 	sentencias
 	FIN_BLOQUE ;
 
+declar_de_subprogs : declar_de_subprogs declar_subprog
+        		| ;
 
-Programa> : Cabecera_programa bloque
+declar_subprog : cabecera_subprograma bloque ;
 
-bloque : Inicio_de_bloque Declar_de_variables_locales Declar_de_subprogs Sentencias Fin_de_bloque
+declar_de_variables_locales : INI_VAR_LOCAL variables_locales FIN_VAR_LOCAL
+				| ;
 
-Declar_de_subprogs : Declar_de_subprogs Declar_subprog
-        		|
-Declar_subprog : Cabecera_subprograma bloque
+variables_locales : variables_locales cuerpo_declar_variables
+                | cuerpo_declar_variables ;
 
-Declar_de_variables_locales : Marca_ini_declar_variables Variables_locales Marca_fin_declar_variables
-				|
+cuerpo_declar_variables : TIPO_BASICO lista_variables PUNTO_Y_COMA ;
 
-Cabecera_programa : principal
+cabecera_subprograma : TIPO_BASICO variable PARENT_IZQUIERDO lista_parametros PARENT_DERECHO
+        		| TIPO_BASICO variable PARENT_IZQUIERDO PARENT_DERECHO ;
 
-Inicio_de_bloque : {
+sentencias : sentencias Sentencia
+                | sentencia ;
 
-Fin_de_bloque : }
-
-Marca_ini_declar_variables : ini_var_local
-
-Marca_fin_declar_variables : fin_var_local
-
-Variables_locales : Variables_locales Cuerpo_declar_variables
-                | Cuerpo_declar_variables
-
-Cuerpo_declar_variables : tipo_basico lista_variables ;
-
-Cabecera_subprograma : tipo_basico variable ( lista_parametros )
-        		| tipo_basico variable ( )
-
-Sentencias : Sentencias Sentencia
-                | Sentencia
-
-Sentencia : bloque
+sentencia : bloque
                 | sentencia_asignacion
                 | sentencia_si
                 | sentencia_mientras
                 | sentencia_entrada
                 | sentencia_salida
                 | sentencia_devolver
-                | sentencia_hacer_hasta
+                | sentencia_hacer_hasta ;
 
-sentencia_asignacion : var_array = expresion ;
+sentencia_asignacion : var_array ASIGNACION expresion PUNTO_Y_COMA ;
 
-sentencia_si : si ( expresion ) sentencia
-        		|  ( expresion ) sentencia si_no sentencia
+sentencia_si : SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia
+        		|  PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia SI_NO sentencia ;
 
-sentencia_hacer_hasta : hacer sentencia hasta ( expresion )
+sentencia_hacer_hasta : HACER sentencia hasta PARENT_IZQUIERDO expresion PARENT_DERECHO ;
 
-sentencia_mientras : mientras ( expresion ) sentencia
+sentencia_mientras : MIENTRAS PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia ;
 
-sentencia_entrada : leer lista_variables ;
+sentencia_entrada : ENTRADA lista_variables PUNTO_Y_COMA ;
 
-sentencia_salida : escribir lista_expresiones_o_cadena ;
+sentencia_salida : SALIDA lista_expresiones_o_cadena PUNTO_Y_COMA ;
 
-sentencia_devolver : devolver expresion ;
+sentencia_devolver : DEVOLVER expresion PUNTO_Y_COMA ;
 
-expresion : ( expresion )
-                | op_unario expresion
+expresion : PARENT_IZQUIERDO expresion PARENT_DERECHO
+                | OP_UNARIO expresion
                 | expresion op_binario expresion
                 | constante
-                | funcion
+                | funcion ;
 
-tipo_basico : entero
-		        | booleano
-		        | caracter
-		        | flotante
+lista_variables : lista_variables COMA var_array   //hemos puesto var_array por variable es solo para la declaración
+		        | var_array ;
 
-lista_variables : lista_variables , var_array   //hemos puesto var_array por variable es solo para la declaración
-		        | var_array
+variable : IDENTIFICADOR
+                | IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ
+                | IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ ;
 
-identificador : "cadena que empieza por _ o una letra"
+var_array : IDENTIFICADOR
+                | IDENTIFICADOR INI_DIM_MATRIZ expresion FIN_DIM_MATRIZ
+                | IDENTIFICADOR INI_DIM_MATRIZ expresionCOMA expresion FIN_DIM_MATRIZ ;
 
-variable : identificador
-                | identificador [ const_entero_sin_signo ]
-                | identificador [ const_entero_sin_signo ] [ const_entero_sin_signo ]
+lista_parametros : lista_parametros COMA TIPO_BASICO variable
+        		| TIPO_BASICO variable ;
 
-var_array : identificador
-                | identificador [ expresion ]
-                | identificador [ expresion, expresion ]
+lista_entero : lista_entero COMA const_entero
+                | const_entero ;
 
-lista_parametros : lista_parametros , tipo_basico variable
-        		| tipo_basico variable
+lista_booleano : lista_booleano COMA CONST_LOGICA
+                | CONST_LOGICA ;
 
-lista_entero : lista_entero , const_entero
-                | const_entero
+lista_flotante : lista_flotante COMA CONST_FLOTANTE
+                | CONST_FLOTANTE ;
 
-lista_booleano : lista_booleano , const_booleano
-                | const_booleano
+lista_caracter : lista_caracter COMA CONST_CARACTER
+                | CONST_CARACTER ;
 
-lista_flotante : lista_flotante , const_flotante
-                | const_flotante
+lista_expresiones_o_cadena : lista_expresiones_o_cadena COMA expresion
+		        | lista_expresiones_o_cadena COMA CADENA
+		        | expresion
+		        | CADENA ;
 
-<lista_caracter : <lista_caracter , <const_caracter
-                | <const_caracter
+op_binario : 	  OPSIGNO
+		        | OPMULTIPLICATIVO
+		        | OPIGUALDAD
+		        | OPRELACION
+		        | OPAND
+		        | OPOR ;
 
-<lista_expresiones_o_cadena : <lista_expresiones_o_cadena , <expresion
-		        | <lista_expresiones_o_cadena , <cadena>
-		        | <expresion>
-		        | <cadena>
+constante : const_entero
+                | CONST_ENTERO_SIN_SIGNO
+		        | const_matriz
+		        | CONST_LOGICA
+		        | CONST_FLOTANTE
+		        | const_flotante_sin_signo
+		        | CONST_CARACTER ;
 
-<cadena> : "cualquier secuencia de caracteres"
+funcion : IDENTIFICADOR PARENT_IZQUIERDO lista_expresiones_o_cadena PARENT_DERECHO PUNTO_Y_COMA
+				| IDENTIFICADOR PARENT_IZQUIERDO PARENT_DERECHO PUNTO_Y_COMA ;
 
-<op_unario> : &
-		        | +
-		        | -
-		        | ~
-		        | !
+vector : TIPO_BASICO IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ PUNTO_Y_COMA
+				| TIPO_BASICO IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO COMA CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ PUNTO_Y_COMA ;
 
-<op_binario> : +
-		        | -
-		        | *
-		        | /
-		        | ==
-		        | !=
-		        | <=
-		        | >=
-		        | <
-		        | >
-		        | &&
-		        | ||
+const_entero : OPSIGNO CONST_ENTERO_SIN_SIGNO ;
 
-<signo> : -
-                | +
-                |
+const_matriz :  matriz_entero
+                | matriz_booleano
+                | matriz_flotante
+                | matriz_caracter ;
 
-<constante> : <const_entero>
-                |<const_entero_sin_signo>
-		        | <const_matriz>
-		        | <const_booleano>
-		        | <const_flotante>
-		        | <const_flotante_sin_signo>
-		        | <const_caracter>
+matriz_entero :  INI_BLOQUE lista_entero FIN_BLOQUE ;
 
-<funcion> : <identificador> ( <lista_expresiones_o_cadena> ) ;
-				| <identificador ( ) ;
+matriz_booleano :  INI_BLOQUE lista_booleano FIN_BLOQUE ;
 
-<vector> : <tipo_basico> <identificador> [ <const_entero_sin_signo> ] ;
-				| <tipo_basico> <identificador> [ <const_entero_sin_signo> , <const_entero_sin_signo> ] ;
+matriz_flotante :  INI_BLOQUE lista_flotante FIN_BLOQUE ;
 
-<const_entero_sin_signo> : <const_entero_sin_signo> [0-9]
-                | [0-9]
+matriz_caracter :  INI_BLOQUE lista_caracter FIN_BLOQUE ;
 
-<const_entero> : <signo> <const_entero_sin_signo>
-
-<const_matriz> :  <matriz_entero>
-                | <matriz_booleano>
-                | <matriz_flotante>
-                | <matriz_caracter>
-
-<matriz_entero> :  { <lista_entero> }
-
-<matriz_booleano> :  { <lista_booleano> }
-
-<matriz_flotante> :  { <lista_flotante> }
-
-<matriz_caracter :  { <lista_caracter> }
-
-<const_booleano> : verdadero
-				| falso
-
-<const_flotante> : <const_entero> . <const_entero_sin_signo>
-
-<const_flotante_sin_signo> : <const_entero_sin_signo> . <const_entero_sin_signo> //Se cree que no es necesario al tener const_entero -, +, o vacío
-
-<const_caracter> : [a-z]
-				| [A-Z]
-
-
-
-
-
-
-//############
+const_flotante_sin_signo : CONST_ENTERO_SIN_SIGNO . CONST_ENTERO_SIN_SIGNO ; //Se cree que no es necesario al tener const_entero -, +, o vacío
 
 %%
 

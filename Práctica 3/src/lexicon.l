@@ -160,12 +160,12 @@ real {entero}.{entero}
 
 "+" {
     ECHO;
-    return(SIGNO);
+    return(OPSIGNO);
 }
 
 "-" {
     ECHO;
-    return(SIGNO);
+    return(OPSIGNO);
 }
 
 "&" {
@@ -185,47 +185,47 @@ real {entero}.{entero}
 
 "*" {
     ECHO;
-    return(OP_BINARIO);
+    return(OPMULTIPLICATIVO);
 }
 
 "/" {
     ECHO;
-    return(OP_BINARIO);
+    return(OPMULTIPLICATIVO);
 }
 
 "==" {
     ECHO;
-    return(OP_BINARIO);
+    return(OPIGUALDAD);
 }
 
 "!=" {
     ECHO;
-    return(OP_BINARIO);
+    return(OPIGUALDAD);
 }
 
 "<=" {
     ECHO;
-    return(OP_BINARIO);
+    return(OPRELACION);
 }
 
 ">=" {
     ECHO;
-    return(OP_BINARIO);
+    return(OPRELACION);
 }
 
 "<>" {
     ECHO;
-    return(OP_BINARIO);
+    return(OPRELACION);
 }
 
 "&&" {
     ECHO;
-    return(OP_BINARIO);
+    return(OPAND);
 }
 
 "||" {
     ECHO;
-    return(OP_BINARIO);
+    return(OPOR);
 }
 
 "verdadero" {
