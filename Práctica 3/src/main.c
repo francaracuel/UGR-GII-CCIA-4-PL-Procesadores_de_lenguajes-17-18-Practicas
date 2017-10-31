@@ -30,6 +30,7 @@ FILE *abrir_entrada(int argc, char *argv[]){
 	if (argc > 1){
 
 		f = fopen(argv[1], "r");
+		
 		if (f==NULL){
 
 			fprintf(stderr, "fichero ´%s´ no encontrado\n", argv[1]);
@@ -52,5 +53,5 @@ int main( int argc, char *argv[1]){
 	yyin = abrir_entrada(argc, argv);
 
 	return yyparse();
-	
+
 }

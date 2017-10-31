@@ -1,5 +1,5 @@
 %{
-	
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // Ismael Sánchez García
@@ -31,19 +31,25 @@ void yyerror(char * msg);
 // ’yylineno’ que también nos muestra la línea actual. Para ello es necesario
 // invocar a flex con la opción ’-l’ (compatibilidad con lex).
 
+//############
 //#define YYDEBUG 1
+//############
+
 //#define YYERROR_VERBOSE
 
+//############
 int linea_actual = 1 ;
 int yydebug=1;
+//############
 
 %}
 
 %error-verbose
 
-// En caso de usar mensajes de error mediante ’mes’ y ’mes2’ (ver apéndice D)
-// nada de lo anterior debe tenerse en cuenta.
+// A continuación declaramos los nombres simbólicos de los tokens.
+// byacc se encarga de asociar a cada uno un código.
 
+//############
 %left OPOR
 %left OPAND
 %left OPRELACIONAL
@@ -78,10 +84,13 @@ int yydebug=1;
 %token HASTA
 %token PRINCIPAL
 %token IDENT
+//############
 
 %%
 
-/***********************  PRODUCCIONES  **************************/
+// Producciones
+
+//############
 
 programa : PRINCIPAL bloque ;
 
@@ -219,18 +228,21 @@ fila_agregado_caracter : fila_agregado_caracter PUNTOYCOMA lista_caracter
 lista_caracter : lista_caracter COMA CONSTCARACTER
 			| CONSTCARACTER ;
 
+//############
+
 %%
 
-// Aqui incluimos el fichero generado por el ’lex’
-// que implementa la función ’yylex’
+// Aqui incluimos el fichero generado por el ’lex’ que implementa la función
+// ’yylex’
+
 #ifdef DOSWINDOWS /* Variable de entorno que indica la plataforma */
 #include "lexyy.c"
 #else
 #include "lex.yy.c"
 #endif
 
-// Se debe implementar la función yyerror. En este caso
-// simplemente escribimos el mensaje de error en pantalla
+// Se debe implementar la función yyerror. En este caso simplemente escribimos
+// el mensaje de error en pantalla
 void yyerror( char *msg ){
 	fprintf(stderr,"[Linea %d]:%s\n", linea_actual, msg) ;
 }
