@@ -22,7 +22,6 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include "../include/constants.h"
 
 
 %}
@@ -270,7 +269,12 @@ real {entero}.{entero}
 ({letra}|_)({letra}|{digito}|_)* {
      ECHO;
      return(IDENTIFICADOR);
- }
+}
+
+"." {
+    ECHO;
+    return(PUNTO);
+}
 
 . {
     printf(" \nError Léxico en Linea: %d. No se reconoce la palabra '%s'. ", yylineno, yytext);

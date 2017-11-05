@@ -30,18 +30,18 @@ FILE *abrir_entrada(int argc, char *argv[]){
 	if (argc > 1){
 
 		f = fopen(argv[1], "r");
-		
+
 		if (f==NULL){
 
 			fprintf(stderr, "fichero ´%s´ no encontrado\n", argv[1]);
 			exit(1);
 
 		}else{
-			printf("leyendo fichero ´%s´.\n", argv[1]);
+			printf("\nLeyendo fichero ´%s´.\n\n", argv[1]);
 		}
 
 	}else{
-		printf("leyendo entrada estándar.\n");
+		printf("\nLeyendo entrada estándar.\n\n");
 	}
 
 	return f;

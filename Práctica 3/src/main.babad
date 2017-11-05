@@ -1,8 +1,8 @@
-main ()
+principal
 {
-	in··i_var_local
+	ini_var_local
 
-	entero a=0, b=1, c=2;
+	entero a = 0, b = 1, c = 2;
 	entero mat[3][2];
 	flotante vec[+5];
 

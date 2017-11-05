@@ -1,4 +1,4 @@
-CONST_ENTERO_SIN_SIGNO%{
+%{
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -35,12 +35,7 @@ void yyerror(char * msg);
 //#define YYDEBUG 1
 //############
 
-//#define YYERROR_VERBOSE
-
-//############
-int linea_actual = 1 ;
-int yydebug=1;
-//############
+#define YYERROR_VERBOSE
 
 %}
 
@@ -84,6 +79,7 @@ int yydebug=1;
 %token CONST_FLOTANTE
 %token CONST_CARACTER
 %token IDENTIFICADOR
+%token PUNTO
 
 %%
 
@@ -115,7 +111,7 @@ cuerpo_declar_variables : TIPO_BASICO lista_variables PUNTO_Y_COMA ;
 cabecera_subprograma : TIPO_BASICO variable PARENT_IZQUIERDO lista_parametros PARENT_DERECHO
         		| TIPO_BASICO variable PARENT_IZQUIERDO PARENT_DERECHO ;
 
-sentencias : sentencias Sentencia
+sentencias : sentencias sentencia
                 | sentencia ;
 
 sentencia : bloque
@@ -132,7 +128,7 @@ sentencia_asignacion : var_array ASIGNACION expresion PUNTO_Y_COMA ;
 sentencia_si : SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia
         		|  PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia SI_NO sentencia ;
 
-sentencia_hacer_hasta : HACER sentencia hasta PARENT_IZQUIERDO expresion PARENT_DERECHO ;
+sentencia_hacer_hasta : HACER sentencia HASTA PARENT_IZQUIERDO expresion PARENT_DERECHO ;
 
 sentencia_mientras : MIENTRAS PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia ;
 
@@ -157,7 +153,7 @@ variable : IDENTIFICADOR
 
 var_array : IDENTIFICADOR
                 | IDENTIFICADOR INI_DIM_MATRIZ expresion FIN_DIM_MATRIZ
-                | IDENTIFICADOR INI_DIM_MATRIZ expresionCOMA expresion FIN_DIM_MATRIZ ;
+                | IDENTIFICADOR INI_DIM_MATRIZ expresion COMA expresion FIN_DIM_MATRIZ ;
 
 lista_parametros : lista_parametros COMA TIPO_BASICO variable
         		| TIPO_BASICO variable ;
@@ -215,7 +211,7 @@ matriz_flotante :  INI_BLOQUE lista_flotante FIN_BLOQUE ;
 
 matriz_caracter :  INI_BLOQUE lista_caracter FIN_BLOQUE ;
 
-const_flotante_sin_signo : CONST_ENTERO_SIN_SIGNO . CONST_ENTERO_SIN_SIGNO ; //Se cree que no es necesario al tener const_entero -, +, o vacío
+const_flotante_sin_signo : CONST_ENTERO_SIN_SIGNO PUNTO CONST_ENTERO_SIN_SIGNO ; //Se cree que no es necesario al tener const_entero -, +, o vacío
 
 %%
 
@@ -231,5 +227,5 @@ const_flotante_sin_signo : CONST_ENTERO_SIN_SIGNO . CONST_ENTERO_SIN_SIGNO ; //S
 // Se debe implementar la función yyerror. En este caso simplemente escribimos
 // el mensaje de error en pantalla
 void yyerror( char *msg ){
-	fprintf(stderr,"[Linea %d]:%s\n", linea_actual, msg) ;
+	fprintf(stderr, "Error Sintáctico en línea %d: %s\n\n", yylineno, msg) ;
 }
