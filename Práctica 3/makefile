@@ -34,7 +34,7 @@ $(OBJ)/y.tab.o: $(SRC)/y.tab.c
 	gcc -o $@ -c $(SRC)/y.tab.c
 
 $(SRC)/y.tab.c: $(SRC)/syntactic.y $(SRC)/lex.yy.c
-	bison -o $@ $(SRC)/syntactic.y
+	bison -v -d -o $@ $(SRC)/syntactic.y
 
 $(SRC)/lex.yy.c: $(SRC)/lexicon.l
 	lex -o $@ $(SRC)/lexicon.l

@@ -197,6 +197,16 @@ real {entero}.{entero}
     return(OPIGUALDAD);
 }
 
+">" {
+    ECHO;
+    return(OPRELACION);
+}
+
+"<" {
+    ECHO;
+    return(OPRELACION);
+}
+
 "!=" {
     ECHO;
     return(OPIGUALDAD);

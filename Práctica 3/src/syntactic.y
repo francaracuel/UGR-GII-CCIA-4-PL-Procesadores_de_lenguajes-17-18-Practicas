@@ -21,6 +21,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include "y.tab.h"
 
 // La siguiente declaracion permite que ’yyerror’ se pueda invocar desde el
 // fuente de lex (prueba.l)
@@ -121,12 +122,12 @@ sentencia : bloque
                 | sentencia_entrada
                 | sentencia_salida
                 | sentencia_devolver
-                | sentencia_hacer_hasta ;
+                | sentencia_hacer_hasta;
 
 sentencia_asignacion : var_array ASIGNACION expresion PUNTO_Y_COMA ;
 
 sentencia_si : SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia
-        		|  PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia SI_NO sentencia ;
+        		|  SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia SI_NO sentencia ;
 
 sentencia_hacer_hasta : HACER sentencia HASTA PARENT_IZQUIERDO expresion PARENT_DERECHO ;
 
@@ -140,9 +141,15 @@ sentencia_devolver : DEVOLVER expresion PUNTO_Y_COMA ;
 
 expresion : PARENT_IZQUIERDO expresion PARENT_DERECHO
                 | OP_UNARIO expresion
-                | expresion op_binario expresion
                 | constante
-                | funcion ;
+                | funcion
+				| IDENTIFICADOR
+                | expresion OPSIGNO expresion
+                | expresion OPMULTIPLICATIVO expresion
+                | expresion OPIGUALDAD expresion
+                | expresion OPRELACION expresion
+                | expresion OPAND expresion
+                | expresion OPOR expresion ;
 
 lista_variables : lista_variables COMA var_array   //hemos puesto var_array por variable es solo para la declaración
 		        | var_array ;
@@ -175,13 +182,6 @@ lista_expresiones_o_cadena : lista_expresiones_o_cadena COMA expresion
 		        | expresion
 		        | CADENA ;
 
-op_binario : 	  OPSIGNO
-		        | OPMULTIPLICATIVO
-		        | OPIGUALDAD
-		        | OPRELACION
-		        | OPAND
-		        | OPOR ;
-
 constante : const_entero
                 | CONST_ENTERO_SIN_SIGNO
 		        | const_matriz
@@ -192,9 +192,6 @@ constante : const_entero
 
 funcion : IDENTIFICADOR PARENT_IZQUIERDO lista_expresiones_o_cadena PARENT_DERECHO PUNTO_Y_COMA
 				| IDENTIFICADOR PARENT_IZQUIERDO PARENT_DERECHO PUNTO_Y_COMA ;
-
-vector : TIPO_BASICO IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ PUNTO_Y_COMA
-				| TIPO_BASICO IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO COMA CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ PUNTO_Y_COMA ;
 
 const_entero : OPSIGNO CONST_ENTERO_SIN_SIGNO ;
 
