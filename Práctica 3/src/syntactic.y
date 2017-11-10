@@ -122,7 +122,8 @@ sentencia : bloque
                 | sentencia_entrada
                 | sentencia_salida
                 | sentencia_devolver
-                | sentencia_hacer_hasta;
+                | sentencia_hacer_hasta
+				| ;
 
 sentencia_asignacion : var_array ASIGNACION expresion PUNTO_Y_COMA ;
 
@@ -133,7 +134,8 @@ sentencia_hacer_hasta : HACER sentencia HASTA PARENT_IZQUIERDO expresion PARENT_
 
 sentencia_mientras : MIENTRAS PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia ;
 
-sentencia_entrada : ENTRADA lista_variables PUNTO_Y_COMA ;
+sentencia_entrada : ENTRADA CADENA PUNTO_Y_COMA
+				|  ENTRADA CADENA COMA lista_variables PUNTO_Y_COMA ;
 
 sentencia_salida : SALIDA lista_expresiones_o_cadena PUNTO_Y_COMA ;
 
@@ -190,8 +192,8 @@ constante : const_entero
 		        | const_flotante_sin_signo
 		        | CONST_CARACTER ;
 
-funcion : IDENTIFICADOR PARENT_IZQUIERDO lista_expresiones_o_cadena PARENT_DERECHO PUNTO_Y_COMA
-				| IDENTIFICADOR PARENT_IZQUIERDO PARENT_DERECHO PUNTO_Y_COMA ;
+funcion : IDENTIFICADOR PARENT_IZQUIERDO lista_expresiones_o_cadena PARENT_DERECHO
+				| IDENTIFICADOR PARENT_IZQUIERDO PARENT_DERECHO ;
 
 const_entero : OPSIGNO CONST_ENTERO_SIN_SIGNO ;
 
