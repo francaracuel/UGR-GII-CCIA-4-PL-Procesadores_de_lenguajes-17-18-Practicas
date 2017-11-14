@@ -93,6 +93,11 @@ programa : PRINCIPAL bloque ;
 bloque : INI_BLOQUE
 	declar_de_variables_locales
 	declar_de_subprogs
+	FIN_BLOQUE
+	|
+	INI_BLOQUE
+	declar_de_variables_locales
+	declar_de_subprogs
 	sentencias
 	FIN_BLOQUE ;
 
@@ -122,8 +127,7 @@ sentencia : bloque
                 | sentencia_entrada
                 | sentencia_salida
                 | sentencia_devolver
-                | sentencia_hacer_hasta
-				| ;
+                | sentencia_hacer_hasta;
 
 sentencia_asignacion : var_array ASIGNACION expresion PUNTO_Y_COMA ;
 
@@ -146,6 +150,7 @@ expresion : PARENT_IZQUIERDO expresion PARENT_DERECHO
                 | constante
                 | funcion
 				| IDENTIFICADOR
+				| OPSIGNO expresion %prec OP_UNARIO
                 | expresion OPSIGNO expresion
                 | expresion OPMULTIPLICATIVO expresion
                 | expresion OPIGUALDAD expresion
@@ -192,8 +197,11 @@ constante : const_entero
 		        | const_flotante_sin_signo
 		        | CONST_CARACTER ;
 
-funcion : IDENTIFICADOR PARENT_IZQUIERDO lista_expresiones_o_cadena PARENT_DERECHO
+funcion : IDENTIFICADOR PARENT_IZQUIERDO lista_expresiones PARENT_DERECHO
 				| IDENTIFICADOR PARENT_IZQUIERDO PARENT_DERECHO ;
+
+lista_expresiones	: lista_expresiones COMA expresion
+				| expresion;
 
 const_entero : OPSIGNO CONST_ENTERO_SIN_SIGNO ;
 
