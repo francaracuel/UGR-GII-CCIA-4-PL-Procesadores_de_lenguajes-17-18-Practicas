@@ -77,7 +77,6 @@ void yyerror(char * msg);
 %token CONST_LOGICA
 %token CADENA
 %token CONST_ENTERO_SIN_SIGNO
-%token CONST_FLOTANTE
 %token CONST_CARACTER
 %token IDENTIFICADOR
 %token PUNTO
@@ -94,7 +93,7 @@ bloque : INI_BLOQUE
 	declar_de_variables_locales
 	declar_de_subprogs
 	FIN_BLOQUE
-	|
+				|
 	INI_BLOQUE
 	declar_de_variables_locales
 	declar_de_subprogs
@@ -112,10 +111,12 @@ declar_de_variables_locales : INI_VAR_LOCAL variables_locales FIN_VAR_LOCAL
 variables_locales : variables_locales cuerpo_declar_variables
                 | cuerpo_declar_variables ;
 
-cuerpo_declar_variables : TIPO_BASICO lista_variables PUNTO_Y_COMA ;
+cuerpo_declar_variables : TIPO_BASICO lista_variables PUNTO_Y_COMA
+				| error ;
 
 cabecera_subprograma : TIPO_BASICO variable PARENT_IZQUIERDO lista_parametros PARENT_DERECHO
-        		| TIPO_BASICO variable PARENT_IZQUIERDO PARENT_DERECHO ;
+        		| TIPO_BASICO variable PARENT_IZQUIERDO PARENT_DERECHO
+				| error ;
 
 sentencias : sentencias sentencia
                 | sentencia ;
@@ -166,13 +167,13 @@ variable : IDENTIFICADOR
                 | IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ ;
 
 var_array : IDENTIFICADOR
-                | IDENTIFICADOR INI_DIM_MATRIZ expresion FIN_DIM_MATRIZ
-                | IDENTIFICADOR INI_DIM_MATRIZ expresion COMA expresion FIN_DIM_MATRIZ ;
+                | IDENTIFICADOR INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ
+				| error ;
 
 lista_parametros : lista_parametros COMA TIPO_BASICO variable
         		| TIPO_BASICO variable ;
 
-lista_entero : lista_entero COMA const_entero
+/*lista_entero : lista_entero COMA const_entero
                 | const_entero ;
 
 lista_booleano : lista_booleano COMA CONST_LOGICA
@@ -182,42 +183,35 @@ lista_flotante : lista_flotante COMA CONST_FLOTANTE
                 | CONST_FLOTANTE ;
 
 lista_caracter : lista_caracter COMA CONST_CARACTER
-                | CONST_CARACTER ;
+                | CONST_CARACTER ;*/
 
-lista_expresiones_o_cadena : lista_expresiones_o_cadena COMA expresion
-		        | lista_expresiones_o_cadena COMA CADENA
-		        | expresion
+lista_expresiones_o_cadena : lista_expresiones_o_cadena COMA expresion_o_cadena
+		        | expresion_o_cadena;
+expresion_o_cadena : expresion
 		        | CADENA ;
 
-constante : const_entero
-                | CONST_ENTERO_SIN_SIGNO
-		        | const_matriz
+lista_expresiones : lista_expresiones COMA expresion
+				| expresion;
+
+constante : CONST_ENTERO_SIN_SIGNO
+				| const_matriz
 		        | CONST_LOGICA
-		        | CONST_FLOTANTE
 		        | const_flotante_sin_signo
 		        | CONST_CARACTER ;
 
 funcion : IDENTIFICADOR PARENT_IZQUIERDO lista_expresiones PARENT_DERECHO
 				| IDENTIFICADOR PARENT_IZQUIERDO PARENT_DERECHO ;
 
-lista_expresiones	: lista_expresiones COMA expresion
-				| expresion;
+const_matriz :  INI_BLOQUE lista_expresiones FIN_BLOQUE ;
 
-const_entero : OPSIGNO CONST_ENTERO_SIN_SIGNO ;
-
-const_matriz :  matriz_entero
-                | matriz_booleano
-                | matriz_flotante
-                | matriz_caracter ;
-
-matriz_entero :  INI_BLOQUE lista_entero FIN_BLOQUE ;
+/*matriz_entero :  INI_BLOQUE lista_entero FIN_BLOQUE ;
 
 matriz_booleano :  INI_BLOQUE lista_booleano FIN_BLOQUE ;
 
 matriz_flotante :  INI_BLOQUE lista_flotante FIN_BLOQUE ;
 
 matriz_caracter :  INI_BLOQUE lista_caracter FIN_BLOQUE ;
-
+*/
 const_flotante_sin_signo : CONST_ENTERO_SIN_SIGNO PUNTO CONST_ENTERO_SIN_SIGNO ; //Se cree que no es necesario al tener const_entero -, +, o vacío
 
 %%
@@ -234,5 +228,5 @@ const_flotante_sin_signo : CONST_ENTERO_SIN_SIGNO PUNTO CONST_ENTERO_SIN_SIGNO ;
 // Se debe implementar la función yyerror. En este caso simplemente escribimos
 // el mensaje de error en pantalla
 void yyerror( char *msg ){
-	fprintf(stderr, "Error Sintáctico en línea %d: %s\n\n", yylineno, msg) ;
+	fprintf(stderr, "Línea %d: %s\n", yylineno, msg) ;
 }

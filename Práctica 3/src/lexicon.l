@@ -257,10 +257,6 @@ real {entero}.{entero}
     return(CONST_ENTERO_SIN_SIGNO);
 }
 
-{real} {
-    ECHO;
-    return(CONST_FLOTANTE);
-}
 
 \'[^\']\' {
     ECHO;
