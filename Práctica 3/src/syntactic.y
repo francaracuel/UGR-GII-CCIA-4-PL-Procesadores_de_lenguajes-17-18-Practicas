@@ -14,7 +14,7 @@
 //
 // syntactic.y
 //
-// Fichero Yacc para crear el analizador sintáctico
+// Fichero Yacc para crear el analizador sintactico
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -128,7 +128,8 @@ sentencia : bloque
                 | sentencia_entrada
                 | sentencia_salida
                 | sentencia_devolver
-                | sentencia_hacer_hasta;
+                | sentencia_hacer_hasta
+				| ;
 
 sentencia_asignacion : var_array ASIGNACION expresion PUNTO_Y_COMA ;
 
@@ -150,17 +151,18 @@ expresion : PARENT_IZQUIERDO expresion PARENT_DERECHO
                 | OP_UNARIO expresion
                 | constante
                 | funcion
-				| IDENTIFICADOR
-				| OPSIGNO expresion %prec OP_UNARIO
+								| IDENTIFICADOR
                 | expresion OPSIGNO expresion
                 | expresion OPMULTIPLICATIVO expresion
                 | expresion OPIGUALDAD expresion
                 | expresion OPRELACION expresion
                 | expresion OPAND expresion
-                | expresion OPOR expresion ;
+                | expresion OPOR expresion
+								| error;
 
 lista_variables : lista_variables COMA var_array   //hemos puesto var_array por variable es solo para la declaración
-		        | var_array ;
+		        | var_array
+						| lista_variables error var_array;
 
 variable : IDENTIFICADOR
                 | IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ
@@ -171,7 +173,8 @@ var_array : IDENTIFICADOR
 				| error ;
 
 lista_parametros : lista_parametros COMA TIPO_BASICO variable
-        		| TIPO_BASICO variable ;
+        		| TIPO_BASICO variable
+						| lista_parametros COMA TIPO_BASICO variable error;
 
 /*lista_entero : lista_entero COMA const_entero
                 | const_entero ;
@@ -199,7 +202,7 @@ constante : CONST_ENTERO_SIN_SIGNO
 		        | const_flotante_sin_signo
 		        | CONST_CARACTER ;
 
-funcion : IDENTIFICADOR PARENT_IZQUIERDO lista_expresiones PARENT_DERECHO
+funcion : IDENTIFICADOR PARENT_IZQUIERDO lista_expresiones_o_cadena PARENT_DERECHO
 				| IDENTIFICADOR PARENT_IZQUIERDO PARENT_DERECHO ;
 
 const_matriz :  INI_BLOQUE lista_expresiones FIN_BLOQUE ;
