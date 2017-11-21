@@ -76,9 +76,9 @@ extern int yydebug;
     CONST_LOGICA = 286,
     CADENA = 287,
     CONST_ENTERO_SIN_SIGNO = 288,
-    CONST_CARACTER = 289,
-    IDENTIFICADOR = 290,
-    PUNTO = 291
+    CONST_FLOTANTE = 289,
+    CONST_CARACTER = 290,
+    IDENTIFICADOR = 291
   };
 #endif
 

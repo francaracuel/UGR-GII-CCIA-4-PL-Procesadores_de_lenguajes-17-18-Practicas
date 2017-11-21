@@ -257,6 +257,10 @@ real {entero}.{entero}
     return(CONST_ENTERO_SIN_SIGNO);
 }
 
+{real} {
+    ECHO;
+    return(CONST_FLOTANTE);
+}
 
 \'[^\']\' {
     ECHO;
@@ -275,11 +279,6 @@ real {entero}.{entero}
 ({letra}|_)({letra}|{digito}|_)* {
      ECHO;
      return(IDENTIFICADOR);
-}
-
-"." {
-    ECHO;
-    return(PUNTO);
 }
 
 . {
