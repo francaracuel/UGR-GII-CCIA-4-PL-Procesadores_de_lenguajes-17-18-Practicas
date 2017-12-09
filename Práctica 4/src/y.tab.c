@@ -62,7 +62,7 @@
 
 
 /* Copy the first part of user declarations.  */
-#line 1 "src/syntactic.y" /* yacc.c:339  */
+#line 1 "src/semantic.y" /* yacc.c:339  */
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -86,7 +86,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "y.tab.h"
+#include "semantic.h"
 
 // La siguiente declaracion permite que ’yyerror’ se pueda invocar desde el
 // fuente de lex (prueba.l)
@@ -1615,7 +1615,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 199 "src/syntactic.y" /* yacc.c:1906  */
+#line 199 "src/semantic.y" /* yacc.c:1906  */
 
 
 // Aqui incluimos el fichero generado por el ’lex’ que implementa la función

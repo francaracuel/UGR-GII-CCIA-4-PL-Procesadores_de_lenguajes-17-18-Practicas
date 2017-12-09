@@ -12,16 +12,16 @@
 //
 // Curso 2017-2018
 //
-// syntactic.y
+// semantic.y
 //
-// Fichero Yacc para crear el analizador sintáctico
+// Fichero Yacc para crear el analizador semántico
 //
 ////////////////////////////////////////////////////////////////////////////////
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "y.tab.h"
+#include "semantic.h"
 
 // La siguiente declaracion permite que ’yyerror’ se pueda invocar desde el
 // fuente de lex (prueba.l)

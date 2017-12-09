@@ -17,36 +17,40 @@
 OBJ = obj
 SRC = src
 BIN = bin
+INCLUDE = include
 
-syntactic: $(OBJ)/main.o $(OBJ)/y.tab.o
+semantic: $(OBJ)/semantic.o $(OBJ)/main.o $(OBJ)/y.tab.o
 	@echo ""
 	@echo Generando ejecutable...
 	@echo ""
-	gcc -o $(BIN)/syntactic $(OBJ)/main.o $(OBJ)/y.tab.o
+	gcc -o $(BIN)/semantic $(OBJ)/semantic.o $(OBJ)/main.o $(OBJ)/y.tab.o
 	@echo ""
 	@echo Ejecutable generado con éxito
 	@echo ""
 
 $(OBJ)/main.o: $(SRC)/main.c
-	gcc -o $@ -c $(SRC)/main.c
+	gcc -o $@ -c $(SRC)/main.c -I$(INCLUDE)
 
 $(OBJ)/y.tab.o: $(SRC)/y.tab.c
-	gcc -o $@ -c $(SRC)/y.tab.c
+	gcc -o $@ -c $(SRC)/y.tab.c -I$(INCLUDE)
 
-$(SRC)/y.tab.c: $(SRC)/syntactic.y $(SRC)/lex.yy.c
-	bison -v -d -o $@ $(SRC)/syntactic.y
+$(SRC)/y.tab.c: $(SRC)/semantic.y $(SRC)/lex.yy.c
+	bison -v -d -o $@ $(SRC)/semantic.y
 
 $(SRC)/lex.yy.c: $(SRC)/lexicon.l
 	lex -o $@ $(SRC)/lexicon.l
 
+$(OBJ)/semantic.o: $(SRC)/semantic.c
+	gcc -o $@ -c $(SRC)/semantic.c -I$(INCLUDE)
+
 all:
-	make syntactic
+	make semantic
 
 clean:
 	@echo ""
 	@echo Limpiando los ficheros...
 	@echo ""
-	rm -rf $(BIN)/syntactic $(OBJ)/* $(SRC)/y.tab.c $(SRC)/lex.yy.c
+	rm -rf $(BIN)/semantic $(OBJ)/* $(SRC)/y.tab.c $(SRC)/lex.yy.c
 	@echo ""
 	@echo Limpieza finalizada
 	@echo ""
