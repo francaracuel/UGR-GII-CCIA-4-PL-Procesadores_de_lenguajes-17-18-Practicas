@@ -12,732 +12,765 @@
 //
 // semantic.c
 //
-// Fichero C para crear las funciones del analizador semántico
+// Fichero C que define los métodos en semantic.h
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "semantico.h"
+#include "semantic.h"
 
-entradaTS TS[MAX_ENTRADAS];
-int lineaActual = 1;
-long int TOPE = 0;
-int declarVar = 0;
-int declarPar = 0;
+inTS ts[MAX_IN];
+int line = 1;
+long int LIMIT = 0;
+int decVar = 0;
+int decParam = 0;
 int subProg = 0;
-tDato tipoGlobal = DESC;
-int numParam = 0;
-int funcionActual = -1;
-int auxiliarAgregados = 0;
+tData globalType = NA;
+int nParam = 0;
+int currentFunction = -1;
+int aux = 0;
 
-/**
- * Indica si el atributo es un array o no
- */
-int esArray(atributos e) {
-	return (e.numDim!=0);
+// Devuelve si el atributo es array o no
+int isArray(attrs e){
+
+    return (e.nDim!=0);
 }
 
-/**
- * Indica que si siendo arrays los dos entradaTS tienen el mismo tamanyo.
- */
-int igualTam(atributos e1, atributos e2) {
-	return (e1.numDim==e2.numDim && e1.tamDim1==e2.tamDim1 && e1.tamDim2==e2.tamDim2);
+// Devuelve si los dos posibles arrays que recibe tienen el mismo tamaño
+int equalSize(attrs e1, attrs e2){
+
+    return (e1.nDim == e2.nDim &&
+        e1.tDim1 == e2.tDim1 &&
+        e1.tDim2 == e2.tDim2);
+
 }
 
-/**
- * Almacena en la variable global tipo el tipo de la variable
- */
-int asignaTipoGlobal(atributos elem) {
-	tipoGlobal = elem.tipo;
+// Guarda el type de la variable
+int setType(attrs value){
+
+    globalType = value.type;
+
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Tabla de Símbolos
+//
 
+// Inserta una in en la tabla de símbolos
+int tsAddIn(inTS in){
 
+    // Si se tienen más entradas de las que puede alojar la tabla de símbolos
+    // dará un error, si no, se inserta
+	if(LIMIT < MAX_IN) {
 
-//------------  Funciones de manejo de la Tabla de Simbolos  ------------------------
-/**
-  * Inserta una entrada a la tabla de simbolos
-**/
-int tsAddEntrada(entradaTS ent) {
-	if(TOPE < MAX_ENTRADAS) {
-		TS[TOPE].entrada=ent.entrada;
-		TS[TOPE].lexema=ent.lexema;
-		TS[TOPE].tipoDato=ent.tipoDato;
-		TS[TOPE].nParam=ent.nParam;
-		TS[TOPE].numDim=ent.numDim;
-		TS[TOPE].tamDim1=ent.tamDim1;
-		TS[TOPE].tamDim2=ent.tamDim2;
-		TOPE++;
-		imprimeTS();
+		ts[LIMIT].in=in.in;
+		ts[LIMIT].lex=in.lex;
+		ts[LIMIT].type=in.type;
+		ts[LIMIT].nParam=in.nParam;
+		ts[LIMIT].nDim=in.nDim;
+		ts[LIMIT].tDim1=in.tDim1;
+		ts[LIMIT].tDim2=in.tDim2;
+
+        // Se aumenta el contador de entradas
+		LIMIT++;
+
+        // Se muestra la tabla de símbolos por pantalla
+		printTS();
+
 		return 1;
+
 	} else {
-		printf("ERROR PILA LLENA");
-		return 0;
-	}
-};
 
-/**
-  * Elimina el elemento TOPE de tabla de simbolos
-**/
-int tsDelEntrada() {
-	// Si la pila no está vacía.
-	if(TOPE > 0){
-		TOPE--;
+		printf("Error(%d): Stack overflow", line);
+
+		return 0;
+
+	}
+
+}
+
+// Elimina una in de la tabla de símbolos
+int tsDelIn(){
+
+    // Si la tabla de símbolos tiene alguna in puede eliminar la última
+    if(LIMIT > 0){
+
+		LIMIT--;
 		return 1;
+
 	}else{
-		printf("ERROR: PILA VACIA");
+
+		printf("Error(%d): Empty table", line);
 		return 0;
-	}
-};
 
-/**
- * Elimina de la tabla de simbolos todas las entradas hasta la ultima marca de inicio de bloque, tambien incluida
- */
-void tsVaciarEntradas() {
-	while (TS[TOPE-1].entrada != MARCA && TOPE > 0) {
-		TOPE--;
 	}
-	if (TS[TOPE-1].entrada == MARCA) {
-		TOPE--;
-	}
+
 }
 
-/**
-  * Busca un identificador en la TS para comprobar que ha sido declarado
-**/
-int tsBuscarIdent(atributos elem) {
+// Elimina las entradas de la tabla de símbolos hasta la mark de tope
+void tsCleanIn(){
 
-	int i = TOPE - 1;
-	int encontrado = 0;
+    while(ts[LIMIT-1].in != MARK && LIMIT > 0){
+		LIMIT--;
+	}
+	if (ts[LIMIT-1].in == MARK) {
+		LIMIT--;
+	}
 
-	while (i > 0 && !encontrado && TS[i].entrada != MARCA) {
-		if (TS[i].entrada == VARIABLE && strcmp(elem.lexema, TS[i].lexema) == 0) {
-			encontrado = 1;
+}
+
+// Busca una in según el id
+int tsSearchId(attrs e){
+
+    int i = LIMIT - 1;
+	int found = 0;
+
+	while (i > 0 && !found && ts[i].in != MARK) {
+		if (ts[i].in == VAR && strcmp(e.lex, ts[i].lex) == 0) {
+			found = 1;
 		} else{
 			i--;
 		}
 	}
 
-	if(!encontrado) {
-		//printf("Error linea %d. Identificador no declarado: %s\n", lineaActual, elem.lexema);
+	if(!found) {
+		printf("Error(%d): Ident not declared: %s\n", line, e.lex);
 		return -1;
 	} else {
 		return i;
 	}
+
 }
 
-/**
-  * Busca una entrada dado su nombre:
-  * Si la encuentra devuelve el indice donde se encuentra la entrada
-  * Si no la encuentra devuelve -1
-**/
-int tsBuscarFuncion(atributos elem) {
-	int i = TOPE - 1;
-	int encontrado = 0;
+// Busca una in según el nombre
+int tsSearchName(attrs e){
 
-	while (i > 0 && !encontrado && TS[i].entrada != MARCA) {
-		if (TS[i].entrada == FUNCION && strcmp(elem.lexema, TS[i].lexema) == 0) {
-			encontrado = 1;
+    int i = LIMIT - 1;
+	int found = 0;
+
+	while (i > 0 && !found && ts[i].in != MARK) {
+		if (ts[i].in == FUNCTION && strcmp(e.lex, ts[i].lex) == 0) {
+			found = 1;
 		} else{
 			i--;
 		}
 	}
 
-	if(!encontrado) {
-		//printf("Error linea %d. Identificador no declarado: %s\n", lineaActual, elem.lexema);
+	if(!found) {
+		printf("Error(%d): Ident not declared: %s\n", line, e.lex);
 		return -1;
 	} else {
 		return i;
 	}
+
 }
 
+// Añade un id
+void tsAddId(attrs e){
 
+    // Para añadir un id a la pila no se puede haber llegado al tope,
+    // el id no puede existir y se deben estar declarando variables
+	int j = LIMIT-1;
+	int found = 0;
 
+	if(j >= 0 && decVar == 1){
 
-/**
- * Inserta un nuevo identificador en la tabla de simbolos
- */
-void tsInsertaIdent(atributos elem){
-	//Se comprueba que no hemos llegado al tope de la pila, que el identificador no esta ya
-	//declarado previamente y que estamos declarando variables
-	int j = TOPE-1;
-	int encontrado = 0;
+		// Se obtiene la posición de la mark del bloque
+		while((ts[j].in != MARK) && (j >= 0) && !found){
 
-	if(j >= 0 && declarVar == 1) {
-		//Se busca la marca de comienzo de bloue
-		while((TS[j].entrada != MARCA) && (j >= 0) && !encontrado) {
-			if(strcmp(TS[j].lexema, elem.lexema) != 0) {
+			if(strcmp(ts[j].lex, e.lex) != 0){
+
 				j--;
-			}
-			else {
-				encontrado = 1;
-				printf("Error linea %d. Identificador duplicado: %s\n", lineaActual, elem.lexema);
+
+			} else{
+
+				found = 1;
+				printf("Error(%d): Exist ident: %s\n", line, e.lex);
+
 	 		}
+
 		}
 
-		//Si no hemos encontrado el identificador lo insertamos en la TS
-		if(!encontrado) {
-			entradaTS nuevaEntrada;
-			nuevaEntrada.entrada = VARIABLE;
-			nuevaEntrada.lexema = elem.lexema;
-			//Asignamos el tipo desde la variable global
-			nuevaEntrada.tipoDato = tipoGlobal;
-			nuevaEntrada.nParam = 0;
-			nuevaEntrada.numDim=elem.numDim;
-			nuevaEntrada.tamDim1=elem.tamDim1;
-			nuevaEntrada.tamDim2=elem.tamDim2;
-			tsAddEntrada(nuevaEntrada);
+		// Si no se ha encontrado significa que no existe, por lo que se añade
+        // a la pila
+		if(!found) {
+
+			inTS newIn;
+			newIn.in = VAR;
+			newIn.lex = e.lex;
+			newIn.type = globalType;
+			newIn.nParam = 0;
+			newIn.nDim=e.nDim;
+			newIn.tDim1=e.tDim1;
+			newIn.tDim2=e.tDim2;
+			tsAddIn(newIn);
+
 		}
+
 	}
-};
 
-/**
- * Inserta una marca de comienzo de un bloque
- */
-void tsInsertaMarca(){
-	entradaTS entradaInicioBloque;
+}
 
-	entradaInicioBloque.entrada = MARCA;
-	//strcpy(entradaInicioBloque.lexema, "{");
-	entradaInicioBloque.lexema = "{";
-	entradaInicioBloque.tipoDato = DESC;
-	entradaInicioBloque.nParam = 0;
-	entradaInicioBloque.numDim = 0;
-	entradaInicioBloque.tamDim1 = 0;
-	entradaInicioBloque.tamDim2 = 0;
+// Añade una mark de tope
+void tsAddMark(){
 
-	tsAddEntrada(entradaInicioBloque);
+    inTS inInitScope;
 
-	//Se insertan los parametros formales de la funcion como variables locales a esta
+	inInitScope.in = MARK;
+	inInitScope.lex = "INI_BLOQUE";
+	inInitScope.type = NA;
+	inInitScope.nParam = 0;
+	inInitScope.nDim = 0;
+	inInitScope.tDim1 = 0;
+	inInitScope.tDim2 = 0;
+
+	tsAddIn(inInitScope);
+
+    // Se añaden a la tabla de símbolos los parámetros de la función como las
+    // variables locales de ese bloque
 	if(subProg == 1){
-		int j = TOPE - 2, marca = 0, funcion = 0;
 
-		while(j > 0 && TS[j].entrada == PAR_FORMAL){
-			//printf("\n\n");
-			//imprimeEntrada(j);
-			//printf("\n\n");
-			if(TS[j].entrada == PAR_FORMAL) {
-				entradaTS nuevaEntrada;
-				nuevaEntrada.entrada = VARIABLE;
-				nuevaEntrada.lexema = TS[j].lexema;
-				nuevaEntrada.tipoDato = TS[j].tipoDato;
-				nuevaEntrada.nParam = TS[j].nParam;
-				nuevaEntrada.numDim = TS[j].numDim;
-				nuevaEntrada.tamDim1 = TS[j].tamDim1;
-				nuevaEntrada.tamDim2 = TS[j].tamDim2;
-				tsAddEntrada(nuevaEntrada);
+		int j = LIMIT - 2, mark = 0, funct = 0;
+
+		while(j > 0 && ts[j].in == FORM){
+
+			printf("\n\n");
+			printIn(j);
+			printf("\n\n");
+
+			if(ts[j].in == FORM) {
+
+				inTS newIn;
+				newIn.in = VAR;
+				newIn.lex = ts[j].lex;
+				newIn.type = ts[j].type;
+				newIn.nParam = ts[j].nParam;
+				newIn.nDim = ts[j].nDim;
+				newIn.tDim1 = ts[j].tDim1;
+				newIn.tDim2 = ts[j].tDim2;
+				tsAddIn(newIn);
+
 			}
+
 			j--;
+
 		}
+
 	}
 
 }
 
-/**
- * Inserta una entrada de subprograma en la tabla de simbolos
-*/
-void tsInsertaSubprog(atributos elem) {
-	entradaTS entradaSubProg;
+// Añade una in de subprograma
+void tsAddSubprog(attrs e){
 
-	entradaSubProg.entrada = FUNCION;
-	entradaSubProg.lexema = elem.lexema;
-	entradaSubProg.nParam = 0;
-	entradaSubProg.numDim = 0;
-	entradaSubProg.tamDim1 = 0;
-	entradaSubProg.tamDim2 = 0;
-	entradaSubProg.tipoDato = elem.tipo;
+    inTS inSubProg;
 
-	funcionActual = TOPE;
-	tsAddEntrada(entradaSubProg);
+	inSubProg.in = FUNCTION;
+	inSubProg.lex = e.lex;
+	inSubProg.nParam = 0;
+	inSubProg.nDim = 0;
+	inSubProg.tDim1 = 0;
+	inSubProg.tDim2 = 0;
+	inSubProg.type = e.type;
+
+	currentFunction = LIMIT;
+	tsAddIn(inSubProg);
+
 }
 
-/**
- * Inserta una entrada de parametro formal de un subprograma en la tabla de simbolos
- */
-void tsInsertaParamFormal(atributos elem) {
-	int j = TOPE - 1, encontrado = 0;
+// Añade una in de param formal
+void tsAddParam(attrs e){
 
-	while((j != funcionActual)  && (!encontrado) ) {
-		if(strcmp(TS[j].lexema, elem.lexema) != 0) {
+    int j = LIMIT - 1, found = 0;
+
+	while((j != currentFunction)  && (!found) ){
+
+		if(strcmp(ts[j].lex, e.lex) != 0) {
+
 			j--;
-		}
-		else {
-			encontrado = 1;
-			printf("Error linea %d. Parametro duplicado: %s\n", lineaActual, elem.lexema);
- 		}
+
+		} else{
+
+			found = 1;
+			printf("Error(%d): Exist param: %s\n", line, e.lex);
+
+        }
+
 	}
-	if(!encontrado) {
-		entradaTS nuevaEntrada;
-		nuevaEntrada.entrada = PAR_FORMAL;
-		nuevaEntrada.lexema = elem.lexema;
-		//Asignamos el tipo desde la variable global
-		nuevaEntrada.tipoDato = tipoGlobal;
-		nuevaEntrada.nParam = 0;
-		nuevaEntrada.numDim = elem.numDim;
-		nuevaEntrada.tamDim1 = elem.tamDim1;
-		nuevaEntrada.tamDim2 = elem.tamDim2;
-		tsAddEntrada(nuevaEntrada);
+
+	if(!found) {
+
+		inTS newIn;
+		newIn.in = FORM;
+		newIn.lex = e.lex;
+		newIn.type = globalType;
+		newIn.nParam = 0;
+		newIn.nDim = e.nDim;
+		newIn.tDim1 = e.tDim1;
+		newIn.tDim2 = e.tDim2;
+		tsAddIn(newIn);
+
 	}
 
 }
 
-/**
- * Actualiza el numero de parametros de la funcion que estamos declarando
- */
-void tsActualizaNparam(atributos elem) {
-	TS[funcionActual].nParam = numParam;
-	TS[funcionActual].numDim=elem.numDim;
-	TS[funcionActual].tamDim1=elem.tamDim1;
-	TS[funcionActual].tamDim2=elem.tamDim2;
+// Actualiza el número de parámetros de la función
+void tsUpdateNparam(attrs e){
+
+    ts[currentFunction].nParam = nParam;
+	ts[currentFunction].nDim=e.nDim;
+	ts[currentFunction].tDim1=e.tDim1;
+	ts[currentFunction].tDim2=e.tDim2;
+
 }
 
+//
+///////////////////////////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////////////////////
+// Analizador Semántico
+//
 
+// Devuelve la in que sea función más cercana
+int tsGetNextFunction(){
 
-//------------  Funciones para las comprobaciones semanticas ------------------------
+    int i = LIMIT - 1;
+	int found = 0;
 
-/**
- * Busca la entrada de tipo Funcion mas proxima desde el tope de la tabla de simbolos
- * y devuelve el indice
- */
-int tsGetFuncionProxima() {
-	int i = TOPE - 1;
-	int encontrado = 0;
-	while (i > 0 && !encontrado) {
-		if (TS[i].entrada == FUNCION) {
-			encontrado = 1;
+	while (i > 0 && !found) {
+
+		if (ts[i].in == FUNCTION) {
+			found = 1;
 		} else {
 			i--;
 		}
+
 	}
 
-	if(!encontrado) {
+	if(!found) {
 		return -1;
 	} else {
 		return i;
 	}
+
 }
 
-/**
- * Comprobacion semantica de la sentencia de retorno.
- * Comprueba que el tipo de expresion es el mismo que el de la funcion
- * donde se encuentra
- */
-void tsCompruebaRetorno(atributos expresion, atributos* retorno) {
+// Comprueba si el type de la expresión coincide con lo que devuelve la función
+void tsCheckReturn(attrs expr, attrs* res){
 
-	int indice = tsGetFuncionProxima();
+    int index = tsGetNextFunction();
 
-	if (indice > -1) {
-		if (expresion.tipo != TS[indice].tipoDato) {
-			printf("Error linea %d: La expresion de la sentencia retorno no es del tipo que devuelve la funcion.\n",lineaActual);
+	if (index > -1) {
+
+		if (expr.type != ts[index].type) {
+			printf("Error(%d): Return not equal to return function.\n", line);
 			return;
 		}
 
-		atributos tmp;
-		tmp.numDim = TS[indice].numDim;
-		tmp.tamDim1 = TS[indice].tamDim1;
-		tmp.tamDim2 = TS[indice].tamDim2;
+		attrs tmp;
+		tmp.nDim = ts[index].nDim;
+		tmp.tDim1 = ts[index].tDim1;
+		tmp.tDim2 = ts[index].tDim2;
 
-		if (!igualTam(expresion,tmp)) {
-			printf("Error linea %d: La expresion de la sentencia retorno no es del mismo tamanyo que la que devuelve la funcion.\n", lineaActual);
+		if (!equalSize(expr,tmp)) {
+			printf("Error(%d): Return expresion not same size than return function.\n", line);
 			return;
 		}
 
-		retorno->tipo = expresion.tipo;
-		retorno->numDim = expresion.numDim;
-		retorno->tamDim1 = expresion.tamDim1;
-		retorno->tamDim2 = expresion.tamDim2;
-	}
-	else {
-		printf("Error linea %d: La sentencia retorno no se encuentra declarada dentro de ninguna funcion.\n", lineaActual);
-		return;
-	}
-}
+		res->type = expr.type;
+		res->nDim = expr.nDim;
+		res->tDim1 = expr.tDim1;
+		res->tDim2 = expr.tDim2;
 
-/**
- * Busca el identificador en la tabla de simbolos y lo rellena en el atributo de salida
- */
-void tsGetIdent(atributos identificador, atributos* res) {
-	int indice = tsBuscarIdent (identificador);
-	if(indice==-1) {
-		printf("Error linea %d: No se ha encontrado el identificador %s.\n", lineaActual, identificador.lexema);
-	}
-	else {
-		res->lexema = strdup(TS[indice].lexema);
-		res->tipo = TS[indice].tipoDato;
-		res->numDim = TS[indice].numDim;
-		res->tamDim1 = TS[indice].tamDim1;
-		res->tamDim2 = TS[indice].tamDim2;
-	}
-
-}
-
-/**
- * Comprobacion semantica de la operacion NOT
- */
-void tsOpNot(atributos operador, atributos o, atributos* res) {
-
-	if (o.tipo != BOOLEANO || esArray(o)) {
-		printf("Error not linea %d: El operador NOT espera una expresion de tipo Logico.", lineaActual);
-		//hay_error=1;
-	}
-	res->tipo = BOOLEANO ;
-	res->numDim = 0;
-	res->tamDim1 = 0;
-	res->tamDim2 = 0;
-
-}
-
-/**
- * Comprobacion semantica de los operadores unarios + y -
- */
-void tsOpSumResUnario(atributos operador, atributos o, atributos* res) {
-	if ((o.tipo != REAL && o.tipo != ENTERO) || esArray(o)) {
-		printf("Error sumres unario linea %d: El operador + o - esperaba una expresion de tipo Real o Entero.", lineaActual);
-		//hay_error=1;
-	}
-	res->tipo = o.tipo;
-	res->numDim = 0;
-	res->tamDim1 = 0;
-	res->tamDim2 = 0;
-}
-
-/**
- * Comprobacion semantica de las operaciones * y /
- */
-void tsOpMulDiv(atributos o1, atributos operador, atributos o2, atributos* res) {
-
-	if (o1.tipo != o2.tipo) {
-		printf("Error muldiv linea %d: El operador * o / espera que los tipos de los operandos sean iguales.\n", lineaActual);
-		//hay_error=1;
-		return;
-	}
-	if (o1.tipo != ENTERO && o1.tipo != REAL) { // O bien son enteros, o bien reales
-		printf("Error muldiv linea %d: Tipo invalido de los operandos. Se esperaba Entero o Real para los dos operandos.\n", lineaActual);
-		//hay_error=1;
-		return;
-	}
-
-	if (esArray(o1) && esArray(o2)) { // Si ambos son array
-		if(igualTam(o1,o2)) { // Si tienen el mismo tamanyo
-			res->tipo = o1.tipo;
-			res->numDim = o1.numDim;
-			res->tamDim1 = o1.tamDim1;
-			res->tamDim2 = o1.tamDim2;
-		} else { // Si no tienen el mismo tamanyo, error
-			printf("Error muldiv linea %d: Los arrays no son de distinto tamanyo.", lineaActual);
-			//hay_error=1;
-			return;
-		}
-	} else { // Si ambos no son array
-		if (esArray(o1) && !esArray(o2)) { // Si el primero es array, pero el segundo no, es válido tanto para multi como división
-			res->tipo = o1.tipo;
-			res->numDim = o1.numDim;
-			res->tamDim1 = o1.tamDim1;
-			res->tamDim2 = o1.tamDim2;
-		}
-		if (!esArray(o1) && esArray(o2)) { // Si el primero no es array, pero el segundo sí
-			if (strcmp(operador.lexema,"/")==0) { // En el caso de la división no es válido
-				printf("Error muldiv linea %d: No se puede dividir un valor con un array.", lineaActual);
-				//hay_error=1;
-				return;
-			} else { // Pero en el caso de la multiplicación, sí
-				res->tipo = o2.tipo;
-				res->numDim = o2.numDim;
-				res->tamDim1 = o2.tamDim1;
-				res->tamDim2 = o2.tamDim2;
-			}
-		}
-	}
-}
-
-/**
- * Comprobacion semantica de las operaciones || y XOR
- */
-void tsOpOrXor(atributos o1, atributos operador, atributos o2, atributos* res) {
-	if (o1.tipo != o2.tipo) {
-		printf("Error or linea %d: El operador OR o XOR espera que los tipos de los operandos sean iguales.", lineaActual);
-		//hay_error=1;
-		return;
-	}
-	if (o1.tipo != BOOLEANO || esArray(o1) || esArray(o2)) {
-		printf("Error or linea %d: Tipo invalido de los operandos. Se esperaba Logico para los dos operandos.", lineaActual);
-		//hay_error=1;
-		return;
-	}
-
-	res->tipo = BOOLEANO;
-	res->numDim = 0;
-	res->tamDim1 = 0;
-	res->tamDim2 = 0;
-}
-
-/**
- * Comprobacion semantica de la operacion **
- */
-void tsOpPot(atributos o1, atributos operador, atributos o2, atributos* res) {
-	if (o1.tipo != o2.tipo) {
-		printf("Error pot linea %d: El operador ** espera que los tipos de los operandos sean iguales.", lineaActual);
-		//hay_error=1;
-		return;
-	}
-	if (o1.tipo != ENTERO && o1.tipo != REAL) {
-		printf("Error pot linea %d: Tipo invalido de los operandos. Se esperaba Entero o Real para los dos operandos.\n", lineaActual);
-		//hay_error=1;
-		return;
-	}
-
-	if (esArray(o1) && esArray(o2)) { // Si ambos son array
-		if (o1.tamDim1 == o2.tamDim2) { // Si tienen el mismo tamanyo
-			res->tipo = o1.tipo;
-			res->tamDim1 = o2.tamDim1;
-			res->tamDim2 = o1.tamDim2;
-			res->numDim = (res->tamDim2 > 0) ? 2 : 1;
-		} else { // Si no tienen el mismo tamano
-			printf("Error pot linea %d: No puede realizarse la multiplicacion de matrices porque los tamanyos de los arrays son invalidos.\n", lineaActual);
-			//hay_error=1;
-			return;
-		}
-	} else if (esArray(o1) || esArray(o2)) { // Si uno de los dos es array
-		printf("Error linea pot %d: Operandos invalidos para el operador **.\n", lineaActual);
-		//hay_error=1;
-		return;
-	}
-}
-
-/**
- * Comprobacion semantica de las operaciones <, >, <= y >=
- */
-void tsOpRel(atributos o1, atributos operador, atributos o2, atributos* res) {
-	if (o1.tipo != o2.tipo) {
-		printf("Error rel linea %d: El operador <,>,<= o >= espera que los tipos de los operandos sean iguales.", lineaActual);
-		//hay_error=1;
-		return;
-	}
-	if ((o1.tipo != ENTERO && o1.tipo != REAL) || esArray(o1) || esArray(o2)) {
-		printf("Error rel linea %d: Tipo invalido de los operandos. Se esperaba Entero o Real para los dos operandos.", lineaActual);
-		//hay_error=1;
-		return;
-	}
-
-	res->tipo = BOOLEANO;
-	res->numDim = 0;
-	res->tamDim1 = 0;
-	res->tamDim2 = 0;
-}
-
-/**
- * Comprobacion semantica de las operaciones == y !=
- */
-void tsOpIgual(atributos o1, atributos operador, atributos o2, atributos* res) {
-	if (o1.tipo != o2.tipo) {
-		printf("Error igual linea %d: El operador == o != espera que los tipos de los operandos sean iguales.", lineaActual);
-		//hay_error=1;
-		return;
-	}
-	if (esArray(o1) || esArray(o2)) {
-		printf("Error igual linea %d: Tipo invalido de los operandos. Se esperaba Entero o Real para los dos operandos.", lineaActual);
-		//hay_error=1;
-		return;
-	}
-
-	res->tipo = BOOLEANO;
-	res->numDim = 0;
-	res->tamDim1 = 0;
-	res->tamDim2 = 0;
-}
-
-/**
- * Comprobacion semantica de las operaciones &&
- */
-void tsOpAnd(atributos o1, atributos operador, atributos o2, atributos* res) {
-	if (o1.tipo != o2.tipo) {
-		printf("Error and linea %d: El operador AND espera que los tipos de los operandos sean iguales.", lineaActual);
-		//hay_error=1;
-		return;
-	}
-	if (o1.tipo != BOOLEANO || esArray(o1) || esArray(o2)) {
-		printf("Error and linea %d: Tipo invalido de los operandos. Se esperaba Logico para los dos operandos.", lineaActual);
-		//hay_error=1;
-		return;
-	}
-
-	res->tipo = BOOLEANO;
-	res->numDim = 0;
-	res->tamDim1 = 0;
-	res->tamDim2 = 0;
-}
-
-/**
- * Comprobacion semantica de las operaciones binarias + y -
- */
-void tsOpSumRes(atributos o1, atributos operador, atributos o2, atributos* res) {
-	if (o1.tipo != o2.tipo) {
-		printf("Error sumres linea %d: El operador + o - espera que los tipos de los operandos sean iguales.", lineaActual);
-		//hay_error=1;
-		return;
-	}
-	if (o1.tipo != ENTERO && o1.tipo != REAL) {
-		printf("Error sumres linea %d: Tipo invalido de los operandos. Se esperaba Entero o Real para los dos operandos.", lineaActual);
-		//hay_error=1;
-		return;
-	}
-
-	if (esArray(o1) && esArray(o2)) { // Si ambos son array
-		if(igualTam(o1,o2)) { // Si tienen el mismo tamanyo
-			res->tipo = o1.tipo;
-			res->numDim = o1.numDim;
-			res->tamDim1 = o1.tamDim1;
-			res->tamDim2 = o1.tamDim2;
-		} else { // Si no tienen el mismo tamanyo, error
-			printf("Error sumres linea %d: Los arrays son de distinto tamanyo.", lineaActual);
-			//hay_error=1;
-			return;
-		}
 	} else {
-		if (esArray(o1) && !esArray(o2)) { // Si el primero es array y el segundo no
-			res->tipo = o1.tipo;
-			res->numDim = o1.numDim;
-			res->tamDim1 = o1.tamDim1;
-			res->tamDim2 = o1.tamDim2;
-		}
-		if (!esArray(o1) && esArray(o2)) { // Si el primero no es array, pero el segundo si
-			if (strcmp(operador.lexema,"-")==0) { // Caso de que el operador sea -, es invalido
-				printf("Error linea %d: No se puede restar un valor con un array.", lineaActual);
-				//hay_error=1;
-				return;
-			} else { // Si es +, es valido
-				res->tipo = o2.tipo;
-				res->numDim = o2.numDim;
-				res->tamDim1 = o2.tamDim1;
-				res->tamDim2 = o2.tamDim2;
-			}
-		}
+
+		printf("Error(%d): res not declared into function.\n", line);
+		return;
+
 	}
+
 }
 
-/**
- * Comprobacion semantica de la llamada a subprograma
- */
-void tsLlamadaFuncion(atributos identificador, atributos* res) {
+// Devuelve el identificar
+void tsGetId(attrs id, attrs* res){
 
-	int indice = tsBuscarFuncion (identificador);
-	if(indice==-1) {
-		funcionActual = -1;
-		printf("Error linea %d: No se ha encontrado el identificador %s.\n", lineaActual, identificador.lexema);
+    int index = tsSearchId(id);
+
+	if(index==-1) {
+		printf("Error(%d): Id not found %s.\n", line, id.lex);
+	} else {
+
+		res->lex = strdup(ts[index].lex);
+		res->type = ts[index].type;
+		res->nDim = ts[index].nDim;
+		res->tDim1 = ts[index].tDim1;
+		res->tDim2 = ts[index].tDim2;
+
 	}
-	else {
-		if (numParam != TS[indice].nParam) {
-			printf("Error, numero de parametros incorrecto\n");
+
+}
+
+// Realiza la comprobación de la operación !, &, ~
+void tsOpUnary(attrs op, attrs o, attrs* res){
+
+    if (o.type != BOOLEANO || isArray(o)) {
+		printf("Error(%d): Not operator expects logic expression.", line);
+	}
+
+	res->type = BOOLEANO;
+	res->nDim = 0;
+	res->tDim1 = 0;
+	res->tDim2 = 0;
+
+}
+
+// Realiza la comprobación de la operación +, -
+void tsOpSign(attrs op, attrs o, attrs* res){
+
+    if ((o.type != REAL && o.type != ENTERO) || isArray(o)) {
+		printf("Error(%d): Operator expects integer or real expression.", line);
+	}
+
+	res->type = o.type;
+	res->nDim = 0;
+	res->tDim1 = 0;
+	res->tDim2 = 0;
+
+}
+
+// Realiza la comprobación de la operación +, - binaria
+void tsOpSignBin(attrs o1, attrs op, attrs o2, attrs* res){
+
+    if (o1.type != o2.type) {
+		printf("Error(%d): Expressions must be equals types.", line);
+		return;
+	}
+
+	if (o1.type != ENTERO && o1.type != REAL) {
+		printf("Error%d): Invalid type in op. Both must be equals.", line);
+		return;
+	}
+
+	if (isArray(o1) && isArray(o2)){
+
+		if(equalSize(o1,o2)){
+
+			res->type = o1.type;
+			res->nDim = o1.nDim;
+			res->tDim1 = o1.tDim1;
+			res->tDim2 = o1.tDim2;
+
 		} else {
-			funcionActual = indice;
-			res->lexema = strdup(TS[indice].lexema);
-			res->tipo = TS[indice].tipoDato;
-			res->numDim = TS[indice].numDim;
-			res->tamDim1 = TS[indice].tamDim1;
-			res->tamDim2 = TS[indice].tamDim2;
+
+            printf("Error(%d): Size arrays must be same", line);
+			return;
+
 		}
+
+	} else {
+
+		if (isArray(o1) && !isArray(o2)) {
+
+			res->type = o1.type;
+			res->nDim = o1.nDim;
+			res->tDim1 = o1.tDim1;
+			res->tDim2 = o1.tDim2;
+
+		}
+
+		if (!isArray(o1) && isArray(o2)){
+
+			if (strcmp(op.lex,"-")==0){
+
+				printf("Error(%d): Operation not allowed.", line);
+				return;
+
+			} else {
+
+				res->type = o2.type;
+				res->nDim = o2.nDim;
+				res->tDim1 = o2.tDim1;
+				res->tDim2 = o2.tDim2;
+
+			}
+
+		}
+
 	}
+
 }
 
-/**
- * Comprobacion semantica de cada parametro en una llamada a una funcion
- */
-void tsCompruebaParametro(atributos parametro, int parametroAComprobar) {
+// Realiza la comprobación de la operación *, /
+void tsOpMul(attrs o1, attrs op, attrs o2, attrs* res){
 
-	int posicionParametro = (funcionActual + TS[funcionActual].nParam) - (parametroAComprobar - 1);
-
-	int errorRealmente = TS[funcionActual].nParam - parametroAComprobar + 1;
-	//printf("voy a comprobar el parametro %d\n", parametroAComprobar);
-	//imprimeAtributo(parametro, "a Comprobar");
-	//imprimeEntrada(posicionParametro);
-	if (parametro.tipo != TS[posicionParametro].tipoDato) {
-		printf("Error linea %d. El tipo del parametro esperado en el parametro %d no es el correcto\n", lineaActual, errorRealmente);
+    if (o1.type != o2.type) {
+		printf("Error(%d): Expressions must be same types.", line);
 		return;
 	}
-	if (parametro.numDim != TS[posicionParametro].numDim || parametro.tamDim1 != TS[posicionParametro].tamDim1  || parametro.tamDim2 != TS[posicionParametro].tamDim2) {
-		printf("Error linea %d. El tamanyo esperado en el parametro %d no es el correcto\n", lineaActual, errorRealmente);
+
+	if (o1.type != ENTERO && o1.type != REAL) {
+		printf("Error%d): Invalid type in op. Both must be same.", line);
+		return;
+	}
+
+	if (isArray(o1) && isArray(o2)){
+
+		if(equalSize(o1,o2)){
+
+			res->type = o1.type;
+			res->nDim = o1.nDim;
+			res->tDim1 = o1.tDim1;
+			res->tDim2 = o1.tDim2;
+
+		} else {
+
+            printf("Error(%d): Size arrays must be same", line);
+			return;
+
+		}
+
+	} else {
+
+		if (isArray(o1) && !isArray(o2)) {
+
+			res->type = o1.type;
+			res->nDim = o1.nDim;
+			res->tDim1 = o1.tDim1;
+			res->tDim2 = o1.tDim2;
+
+		}
+
+		if (!isArray(o1) && isArray(o2)){
+
+			if (strcmp(op.lex,"-")==0){
+
+				printf("Error(%d): Operation not allowed.", line);
+				return;
+
+			} else {
+
+				res->type = o2.type;
+				res->nDim = o2.nDim;
+				res->tDim1 = o2.tDim1;
+				res->tDim2 = o2.tDim2;
+
+			}
+
+		}
+
+	}
+
+}
+
+// Realiza la comprobación de la operación &&
+void tsOpAnd(attrs o1, attrs op, attrs o2, attrs* res){
+
+    if (o1.type != o2.type) {
+		printf("Error (%d): Expressions must be same types.", line);
+		return;
+	}
+	if (o1.type != BOOLEANO || isArray(o1) || isArray(o2)) {
+		printf("Error(%d):Invalid type in op. Both must be same. Expects BOOLEANO", line);
+		return;
+	}
+
+	res->type = BOOLEANO;
+	res->nDim = 0;
+	res->tDim1 = 0;
+	res->tDim2 = 0;
+
+}
+
+// Realiza la comprobación de la operación ||
+void tsOpOr(attrs o1, attrs op, attrs o2, attrs* res){
+
+    if (o1.type != o2.type) {
+		printf("Error (%d): Expressions must be same types.", line);
+		return;
+	}
+	if (o1.type != BOOLEANO || isArray(o1) || isArray(o2)) {
+		printf("Error(%d):Invalid type in op. Both must be same. Expects BOOLEANO", line);
+		return;
+	}
+
+	res->type = BOOLEANO;
+	res->nDim = 0;
+	res->tDim1 = 0;
+	res->tDim2 = 0;
+
+}
+
+// Realiza la comprobación de la operación ==, !=
+void tsOpEqual(attrs o1, attrs op, attrs o2, attrs* res){
+
+    if (o1.type != o2.type) {
+		printf("Error (%d): Expressions must be same types.", line);
+		return;
+	}
+	if (isArray(o1) || isArray(o2)) {
+		printf("Error(%d):Invalid type in op. Both must be same. Expects ENTERO or REAL.", line);
+		return;
+	}
+
+	res->type = BOOLEANO;
+	res->nDim = 0;
+	res->tDim1 = 0;
+	res->tDim2 = 0;
+
+}
+
+// Realiza la comprobación de la operación <, >, <=, >=, <>
+void tsOpRel(attrs o1, attrs op, attrs o2, attrs* res){
+
+    if (o1.type != o2.type) {
+		printf("Error (%d): Expressions must be same types.", line);
+		return;
+	}
+	if (o1.type != BOOLEANO || isArray(o1) || isArray(o2)) {
+		printf("Error(%d):Invalid type in op. Both must be same. Expects ENTERO or REAL.", line);
+		return;
+	}
+
+	res->type = BOOLEANO;
+	res->nDim = 0;
+	res->tDim1 = 0;
+	res->tDim2 = 0;
+
+}
+
+// Realiza la comprobación de la llamada a una función
+void tsFunctionCall(attrs id, attrs* res){
+
+    int index = tsSearchName(id);
+
+	if(index==-1) {
+
+		currentFunction = -1;
+
+		printf("Error(%d)): Id not found %s.\n", line, id.lex);
+
+    } else {
+
+		if (nParam != ts[index].nParam) {
+			printf("Error(%d): Number of param not valid.\n", line);
+		} else {
+
+			currentFunction = index;
+			res->lex = strdup(ts[index].lex);
+			res->type = ts[index].type;
+			res->nDim = ts[index].nDim;
+			res->tDim1 = ts[index].tDim1;
+			res->tDim2 = ts[index].tDim2;
+
+		}
+
+	}
+
+}
+
+// Realiza la comprobación de cada parámetro de una función
+void tsCheckParam(attrs param, int checkParam){
+
+    int posParam = (currentFunction + ts[currentFunction].nParam) - (checkParam - 1);
+
+	int error = ts[currentFunction].nParam - checkParam + 1;
+
+	if (param.type != ts[posParam].type) {
+		printf("Error(%d): Param type (%d) not valid.\n", line, error);
+		return;
+	}
+
+	if (param.nDim != ts[posParam].nDim || param.tDim1 != ts[posParam].tDim1  || param.tDim2 != ts[posParam].tDim2) {
+		printf("Error(%d): Size param (%d) not valid.\n", line, error);
 		return;
 	}
 
 }
 
+//
+////////////////////////////////////////////////////////////////////////////////
 
-//----------------------  Funciones de Impresion --------------------------------------
+////////////////////////////////////////////////////////////////////////////////
+// Visualización
+//
 
-/**
- * Imprime como una cadena de caracteres una entrada de la tabla de simbolos dada
- */
-void imprimeEntrada(int indice) {
-	entradaTS e = TS[indice];
+// Muestra una in de la tabla de símbolos
+void printIn(int row){
+
+    inTS e = ts[row];
 	printf("\n\nTipo Entrada: %d\nLexema: %s\nTipo Dato: %d\nNum Parametros: %d\nDimensiones[i][j]: %d[%d][%d]\n",
-		e.entrada, e.lexema, e.tipoDato, e.nParam, e.numDim, e.tamDim1, e.tamDim2);
+		e.in, e.lex, e.type, e.nParam, e.nDim, e.tDim1, e.tDim2);
+
 }
 
-/**
-  * Imprime como cadena el tipo de entrada dado
-**/
-void imprimeTipoEntrada(tEntrada tipo);
+// Muestra el type de la in
+void printInType(tIn type){
 
-/**
-  * Imprime como cadena el tipo de dato dado
-**/
-void imprimeTipoDato(tDato tipo);
 
-/**
- * Imprime por pantalla la tabla de simbolos a continuacion del mensaje dado
- */
-void imprimeTS() {
-	int j = 0;
+
+}
+
+// Muestra el type del dato recibido
+void printDataType(tData type){
+
+
+
+}
+
+// Muestra la tabla de símbolos
+void printTS(){
+
+    int j = 0;
 	char *t, *e;
 
 	printf("--------------------------------\n");
-	while(j <= TOPE-1) {
-		if(TS[j].entrada == 0) { e = "MARCA"; }
-		if(TS[j].entrada == 1) { e = "FUNCION"; }
-		if(TS[j].entrada == 2) { e = "VARIABLE"; }
-		if(TS[j].entrada == 3) { e = "PAR_FORMAL"; }
+	while(j <= LIMIT-1) {
+		if(ts[j].in == 0) { e = "MARK"; }
+		if(ts[j].in == 1) { e = "FUNCTION"; }
+		if(ts[j].in == 2) { e = "VAR"; }
+		if(ts[j].in == 3) { e = "FORM"; }
 
-		if(TS[j].tipoDato == 0) { t = "NO_ASIG"; }
-		if(TS[j].tipoDato == 1) { t = "ENTERO"; }
-		if(TS[j].tipoDato == 2) { t = "REAL"; }
-		if(TS[j].tipoDato == 3) { t = "CARACTER"; }
-		if(TS[j].tipoDato == 4) { t = "BOOLEANO"; }
-		if(TS[j].tipoDato == 5) { t = "STRING"; }
-		if(TS[j].tipoDato == 6) { t = "MATRIZ"; }
-		if(TS[j].tipoDato == 7) { t = "DESC"; }
+		if(ts[j].type == 0) { t = "NO_ASIG"; }
+		if(ts[j].type == 1) { t = "ENTERO"; }
+		if(ts[j].type == 2) { t = "REAL"; }
+		if(ts[j].type == 3) { t = "CARACTER"; }
+		if(ts[j].type == 4) { t = "BOOLEANO"; }
+		if(ts[j].type == 5) { t = "STRING"; }
+		if(ts[j].type == 6) { t = "MATRIZ"; }
+		if(ts[j].type == 7) { t = "NA"; }
 		printf("----ELEMENTO %d-----------------\n", j);
 		printf("-Entrada: %-12s", e);
-		printf("-Lexema: %-12s", TS[j].lexema);
-		printf("-tipoDato: %-10s", t);
-		printf("-nParam: %-4d", TS[j].nParam);
-		printf("-numDim: %-4d", TS[j].numDim);
-		printf("-tamDim1: %-4d", TS[j].tamDim1);
-		printf("-tamDim2: %-4d\n", TS[j].tamDim2);
+		printf("-Lexema: %-12s", ts[j].lex);
+		printf("-type: %-10s", t);
+		printf("-nParam: %-4d", ts[j].nParam);
+		printf("-nDim: %-4d", ts[j].nDim);
+		printf("-tDim1: %-4d", ts[j].tDim1);
+		printf("-tDim2: %-4d\n", ts[j].tDim2);
 		j++;
 	}
 	printf("--------------------------------\n");
+
 }
 
-/**
- * Imprime por pantalla un atributo dado
- */
-void imprimeAtributo(atributos elem, char *msj){
-	char *t;
+// Muestra un atributo recibido
+void printAttr(attrs e, char *msg){
 
-	if(elem.tipo == 0) { t = "NO_ASIG"; }
-	if(elem.tipo == 1) { t = "ENTERO"; }
-	if(elem.tipo == 2) { t = "REAL"; }
-	if(elem.tipo == 3) { t = "CARACTER"; }
-	if(elem.tipo == 4) { t = "BOOLEANO"; }
-	if(elem.tipo == 5) { t = "STRING"; }
-	if(elem.tipo == 6) { t = "MATRIZ"; }
-	if(elem.tipo == 7) { t = "DESC"; }
-	printf("------%s-------------------------\n", msj);
-	printf("-Atributos: %-4d", elem.atrib);
-	printf("-Lexema: %-12s", elem.lexema);
-	printf("-tipoDato: %-10s", t);
-	printf("-numDim: %-4d", elem.numDim);
-	printf("-tamDim1: %-4d", elem.tamDim1);
-	printf("-tamDim2: %-4d\n", elem.tamDim2);
+    char *t;
+
+	if(e.type == 0) { t = "NO_ASIG"; }
+	if(e.type == 1) { t = "ENTERO"; }
+	if(e.type == 2) { t = "REAL"; }
+	if(e.type == 3) { t = "CARACTER"; }
+	if(e.type == 4) { t = "BOOLEANO"; }
+	if(e.type == 5) { t = "STRING"; }
+	if(e.type == 6) { t = "MATRIZ"; }
+	if(e.type == 7) { t = "NA"; }
+	printf("------%s-------------------------\n", msg);
+	printf("-Atributos: %-4d", e.attr);
+	printf("-Lexema: %-12s", e.lex);
+	printf("-type: %-10s", t);
+	printf("-nDim: %-4d", e.nDim);
+	printf("-tDim1: %-4d", e.tDim1);
+	printf("-tDim2: %-4d\n", e.tDim2);
 	printf("-------------------------------\n");
+
 }

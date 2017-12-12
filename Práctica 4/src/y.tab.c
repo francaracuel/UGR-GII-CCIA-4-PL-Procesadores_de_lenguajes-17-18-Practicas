@@ -77,9 +77,9 @@
 //
 // Curso 2017-2018
 //
-// syntactic.y
+// semantic.y
 //
-// Fichero Yacc para crear el analizador sintáctico
+// Fichero Yacc para crear el analizador semántico
 //
 ////////////////////////////////////////////////////////////////////////////////
 

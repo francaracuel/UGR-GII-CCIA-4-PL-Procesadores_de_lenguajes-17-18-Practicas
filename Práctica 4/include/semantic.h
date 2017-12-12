@@ -22,245 +22,195 @@
 #include <string.h>
 
 typedef enum {
-	MARCA = 0,
-	FUNCION,
-	VARIABLE,
-	PAR_FORMAL
-} tEntrada;
+
+	MARK = 0,
+	FUNCTION,
+	VAR,
+	FORM
+
+} tIn;
 
 typedef enum {
-	NO_ASIG = 0, //NO ASIGNADO (PARA CUANDO AUN NO HEMOS DECLARADO EL TIPO DE LA VARIABLE)
+
+	NOT_ASIG = 0,
 	ENTERO,
-	REAL,
+	FLOTANTE,
 	CARACTER,
 	BOOLEANO,
 	STRING,
 	MATRIZ,
-	DESC //DESCONOCIDO O ERRONEO
-} tDato;
+	NA
+
+} tData;
 
 typedef struct {
-	tEntrada entrada; //TIPO DE ENTRADA
-	char *lexema;
-	tDato tipoDato; //TIPO DE DATO
-	int nParam; //NUMERO DE PARAMETROS
 
-	//DIMENSIONES DE LA MATRIZ
-	unsigned int numDim;
-	int tamDim1;
-	int tamDim2;
-} entradaTS;
+	tIn in;
+	char *lex;
+	tData type;
+	int nParam;
+	unsigned int nDim;
+
+	// Tamaño de la dimensión 1
+	int tDim1;
+
+	// Tamaño de la dimensión 2
+	int tDim2;
+
+} inTS;
 
 typedef struct {
-	int atrib; //ATRIBUTOS (SI LOS TIENE)
-	char *lexema;
-	tDato tipo; //TIPO DE DATO
 
-	//DIMENSIONES DE LA MATRIZ
-	unsigned int numDim;
-	int tamDim1;
-	int tamDim2;
-} atributos;
+	int attr;
+	char *lex;
+	tData type;
+	unsigned int nDim;
 
-#define YYSTYPE atributos
-#define MAX_ENTRADAS 500
+	// Tamaño de la dimensión 1
+	int tDim1;
 
-extern long int TOPE;
+	// Tamaño de la dimensión 2
+	int tDim2;
 
-extern entradaTS ts[MAX_ENTRADAS];
-// Variable que almacena la linea actual por la cual se va analizando
-extern int lineaActual;
-//1 si estamos declarando 0 si estamos utilizando la variable
-extern int declarVar;
-// Variable que indica el comienzo de una declaracion de un subprograma o funcion
-// 1 si estoy en cabec_subprog 0 si estoy en bloque
+} attrs;
+
+#define YYSTYPE attrs
+#define MAX_IN 1000
+
+extern long int LIMIT;
+
+extern inTS ts[MAX_IN];
+
+// Línea del fichero que se está analizando
+extern int line;
+
+// Se indica si se están utilizando las variables (0) o si se están declarando (1)
+extern int decVar;
+
+// Indica el comienzo de un subprograma o función con 0 si es un bloque y 1 si
+// es la cabecera del subprograma
 extern int subProg;
-//Variable que indica si se estan declarando parametros formales dentro
-//de la definicion de una funcion
-extern int declarPar;
-// Variable global para almacenar el tipo en las declaraciones
-extern tDato tipoGlobal;
-//Variable que cuenta el numero de parametros formales de una funcion
-extern int numParam;
-// Almacena el indice de la TS de la funcion que se esta analizando
-extern int funcionActual;
-extern int auxiliarAgregados;
 
+// Indica si se están declarando parámetros formales en una función
+extern int decParam;
 
-/**
- * Indica si el atributo es un array o no
- */
-int esArray(atributos e);
+// Variable global que almacena el tipo en las declaraciones
+extern tData globalType;
 
-/**
- * Indica que si siendo arrays los dos entradaTS tienen el mismo tamanyo.
- */
-int igualTam(atributos e1, atributos e2);
+// Cuenta el número de parámetros de una función
+extern int nParam;
 
-/**
- * Almacena en la variable global tipo el tipo de la variable
- */
-int asignaTipoGlobal(atributos elem);
+// Índice de la tabla de símbolos de la función que se está utilizando
+extern int currentFunction;
+extern int aux;
 
+// Devuelve si el atributo es array o no
+int isArray(attrs e);
 
+// Devuelve si los dos posibles arrays que recibe tienen el mismo tamaño
+int equalSize(attrs e1, attrs e2);
 
+// Guarda el tipo de la variable
+int setType(attrs value);
 
-//------------  Funciones de manejo de la Tabla de Simbolos  ------------------------
-/**
-  * Inserta una entrada a la tabla de simbolos e incrementa el TOPE en 1
-**/
-int tsAddEntrada(entradaTS ent);
+///////////////////////////////////////////////////////////////////////////////
+// Tabla de Símbolos
+//
 
-/**
-  * Elimina el elemento TOPE de tabla de simbolos y decrementa el TOPE en 1
-**/
-int tsDelEntrada();
+// Inserta una entrada en la tabla de símbolos
+int tsAddIn(inTS in);
 
-/**
- * Elimina de la tabla de simbolos todas las entradas hasta la ultima marca de inicio de bloque, tambien incluida
- */
-void tsVaciarEntradas();
+// Elimina una entrada de la tabla de símbolos
+int tsDelIn();
 
-/**
-  * Busca un identificador en la TS para comprobar que ha sido declarado
-**/
-int tsBuscarIdent(atributos elem);
+// Elimina las entradas de la tabla de símbolos hasta la marca de tope
+void tsCleanIn();
 
-/**
-  * Busca una entrada dado su nombre:
-  * Si la encuentra devuelve el indice donde se encuentra la entrada
-  * Si no la encuentra devuelve -1
-**/
-int tsBuscarFuncion(atributos elem);
+// Busca una entrada según el identificador
+int tsSearchId(attrs e);
 
-/**
- * Inserta un nuevo identificador en la tabla de simbolos
- */
-void tsInsertaIdent(atributos elem);
+// Busca una entrada según el nombre
+int tsSearchName(attrs e);
 
-/**
- * Inserta una marca de comienzo de un bloque
- */
-void tsInsertaMarca();
+// Añade un identificador
+void tsAddId(attrs e);
 
-/**
- * Inserta una entrada de subprograma en la tabla de simbolos
-*/
-void tsInsertaSubprog(atributos elem);
+// Añade una marca de tope
+void tsAddMark();
 
-/**
- * Inserta una entrada de parametro formal de un subprograma en la tabla de simbolos
- */
-void tsInsertaParamFormal(atributos elem);
+// Añade una entrada de subprograma
+void tsAddSubprog(attrs e);
 
-/**
- * Actualiza el numero de parametros de la funcion que estamos declarando
- */
-void tsActualizaNparam(atributos elem);
+// Añade una entrada de parametro formal
+void tsAddParam(attrs e);
 
+// Actualiza el número de parámetros de la función
+void tsUpdateNparam(attrs e);
 
+//
+///////////////////////////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////////////////////
+// Analizador Semántico
+//
 
-//------------  Funciones para las comprobaciones semanticas ------------------------
-/**
- * Busca la entrada de tipo Funcion mas proxima desde el tope de la tabla de simbolos
- * y devuelve el indice
- */
-int tsGetFuncionProxima();
+// Devuelve la entrada que sea función más cercana
+int tsGetNextFunction();
 
-/**
- * Comprobacion semantica de la sentencia de retorno.
- * Comprueba que el tipo de expresion es el mismo que el de la funcion
- * donde se encuentra
- */
-void tsCompruebaRetorno(atributos expresion, atributos* retorno);
+// Comprueba si el tipo de la expresión coincide con lo que devuelve la función
+void tsCheckReturn(attrs expr, attrs* res);
 
-/**
- * Busca el identificador en la tabla de simbolos y lo rellena en el atributo de salida
- */
-void tsGetIdent(atributos identificador, atributos* res);
+// Devuelve el identificar
+void tsGetId(attrs id, attrs* res);
 
-/**
- * Comprobacion semantica de la operacion NOT
- */
-void tsOpNot(atributos operador, atributos o, atributos* res);
+// Realiza la comprobación de la operación !, &, ~
+void tsOpUnary(attrs op, attrs o, attrs* res);
 
-/**
- * Comprobacion semantica de los operadores unarios + y -
- */
-void tsOpSumResUnario(atributos operador, atributos o, atributos* res);
+// Realiza la comprobación de la operación +, -
+void tsOpSign(attrs op, attrs o, attrs* res);
 
-/**
- * Comprobacion semantica de las operaciones * y /
- */
-void tsOpMulDiv(atributos o1, atributos operador, atributos o2, atributos* res);
+// Realiza la comprobación de la operación +, - binaria
+void tsOpSignBin(attrs o1, attrs op, attrs o2, attrs* res);
 
-/**
- * Comprobacion semantica de las operaciones || y XOR
- */
-void tsOpOrXor(atributos o1, atributos operador, atributos o2, atributos* res);
+// Realiza la comprobación de la operación *, /
+void tsOpMul(attrs o1, attrs op, attrs o2, attrs* res);
 
-/**
- * Comprobacion semantica de la operacion **
- */
-void tsOpPot(atributos o1, atributos operador, atributos o2, atributos* res);
+// Realiza la comprobación de la operación &&
+void tsOpAnd(attrs o1, attrs op, attrs o2, attrs* res);
 
-/**
- * Comprobacion semantica de las operaciones <, >, <= y >=
- */
-void tsOpRel(atributos o1, atributos operador, atributos o2, atributos* res);
+// Realiza la comprobación de la operación ||
+void tsOpOr(attrs o1, attrs op, attrs o2, attrs* res);
 
-/**
- * Comprobacion semantica de las operaciones == y !=
- */
-void tsOpIgual(atributos o1, atributos operador, atributos o2, atributos* res);
+// Realiza la comprobación de la operación ==, !=
+void tsOpEqual(attrs o1, attrs op, attrs o2, attrs* res);
 
-/**
- * Comprobacion semantica de las operaciones &&
- */
-void tsOpAnd(atributos o1, atributos operador, atributos o2, atributos* res);
+// Realiza la comprobación de la operación <, >, <=, >=, <>
+void tsOpRel(attrs o1, attrs op, attrs o2, attrs* res);
 
-/**
- * Comprobacion semantica de las operaciones binarias + y -
- */
-void tsOpSumRes(atributos o1, atributos operador, atributos o2, atributos* res);
+// Realiza la comprobación de la llamada a una función
+void tsFunctionCall(attrs id, attrs* res);
 
-/**
- * Comprobacion semantica de la llamada a subprograma
- */
-void tsLlamadaFuncion(atributos identificador, atributos* res);
+// Realiza la comprobación de cada parámetro de una función
+void tsCheckParam(attrs param, int checkParam);
 
-/**
- * Comprobacion semantica de cada parametro en una llamada a una funcion
- */
-void tsCompruebaParametro(atributos parametro, int parametroAComprobar);
+//
+////////////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////////////
+// Visualización
+//
 
+// Muestra una entrada de la tabla de símbolos
+void printIn(int row);
 
+// Muestra el tipo de la entrada
+void printInType(tIn tipo);
 
-//----------------------  Funciones de Impresion --------------------------------------
+// Muestra el tipo del dato recibido
+void printDataType(tData type);
 
-/**
- * Imprime como una cadena de caracteres una entrada de la tabla de simbolos dada
- */
-void imprimeEntrada(int indice);
+// Muestra la tabla de símbolos
+void printTS();
 
-/**
-  * Imprime como cadena el tipo de entrada dado
-**/
-void imprimeTipoEntrada(tEntrada tipo);
-
-/**
-  * Imprime como cadena el tipo de dato dado
-**/
-void imprimeTipoDato(tDato tipo);
-
-/**
- * Imprime por pantalla la tabla de simbolos a continuacion del mensaje dado
- */
-void imprimeTS();
-
-/**
- * Imprime por pantalla un atributo dado
- */
-void imprimeAtributo(atributos e, char *msj);
+// Muestra un atributo recibido
+void printAttr(attrs e, char *t);
