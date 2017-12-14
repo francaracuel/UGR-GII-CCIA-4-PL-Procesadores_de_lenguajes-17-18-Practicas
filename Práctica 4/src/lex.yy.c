@@ -1043,7 +1043,7 @@ YY_RULE_SETUP
 #line 130 "src/lexicon.l"
 {
     ECHO;
-    yylval.type = ENTERO;
+    yylval.tipo = ENTERO;
     return(TIPO_BASICO);
 }
 	YY_BREAK
@@ -1052,7 +1052,7 @@ YY_RULE_SETUP
 #line 136 "src/lexicon.l"
 {
     ECHO;
-    yylval.type = BOOLEANO;
+    yylval.tipo = BOOLEANO;
     return(TIPO_BASICO);
 }
 	YY_BREAK
@@ -1061,7 +1061,7 @@ YY_RULE_SETUP
 #line 142 "src/lexicon.l"
 {
     ECHO;
-    yylval.type = CARACTER;
+    yylval.tipo = CARACTER;
     return(TIPO_BASICO);
 }
 	YY_BREAK
@@ -1070,7 +1070,7 @@ YY_RULE_SETUP
 #line 148 "src/lexicon.l"
 {
     ECHO;
-    yylval.type = FLOTANTE;
+    yylval.tipo = FLOTANTE;
     return(TIPO_BASICO);
 }
 	YY_BREAK
@@ -1095,7 +1095,7 @@ YY_RULE_SETUP
 #line 164 "src/lexicon.l"
 {
     ECHO;
-    yylval.attr = 0;
+    yylval.atrib = 0;
     return(OPSIGNO);
 }
 	YY_BREAK
@@ -1104,7 +1104,7 @@ YY_RULE_SETUP
 #line 170 "src/lexicon.l"
 {
     ECHO;
-    yylval.attr = 1;
+    yylval.atrib = 1;
     return(OPSIGNO);
 }
 	YY_BREAK
@@ -1113,7 +1113,7 @@ YY_RULE_SETUP
 #line 176 "src/lexicon.l"
 {
     ECHO;
-    yylval.attr = 0;
+    yylval.atrib = 0;
     return(OP_UNARIO);
 }
 	YY_BREAK
@@ -1122,7 +1122,7 @@ YY_RULE_SETUP
 #line 182 "src/lexicon.l"
 {
     ECHO;
-    yylval.attr = 1;
+    yylval.atrib = 1;
     return(OP_UNARIO);
 }
 	YY_BREAK
@@ -1131,7 +1131,7 @@ YY_RULE_SETUP
 #line 188 "src/lexicon.l"
 {
     ECHO;
-    yylval.attr = 2;
+    yylval.atrib = 2;
     return(OP_UNARIO);
 }
 	YY_BREAK
@@ -1140,7 +1140,7 @@ YY_RULE_SETUP
 #line 194 "src/lexicon.l"
 {
     ECHO;
-    yylval.attr = 0;
+    yylval.atrib = 0;
     return(OPMULTIPLICATIVO);
 }
 	YY_BREAK
@@ -1149,7 +1149,7 @@ YY_RULE_SETUP
 #line 200 "src/lexicon.l"
 {
     ECHO;
-    yylval.attr = 1;
+    yylval.atrib = 1;
     return(OPMULTIPLICATIVO);
 }
 	YY_BREAK
@@ -1158,7 +1158,7 @@ YY_RULE_SETUP
 #line 206 "src/lexicon.l"
 {
     ECHO;
-    yylval.attr = 0;
+    yylval.atrib = 0;
     return(OPIGUALDAD);
 }
 	YY_BREAK
@@ -1167,7 +1167,7 @@ YY_RULE_SETUP
 #line 212 "src/lexicon.l"
 {
     ECHO;
-    yylval.attr = 1;
+    yylval.atrib = 1;
     return(OPIGUALDAD);
 }
 	YY_BREAK
@@ -1176,7 +1176,7 @@ YY_RULE_SETUP
 #line 218 "src/lexicon.l"
 {
     ECHO;
-    yylval.attr = 0;
+    yylval.atrib = 0;
     return(OPRELACION);
 }
 	YY_BREAK
@@ -1185,7 +1185,7 @@ YY_RULE_SETUP
 #line 224 "src/lexicon.l"
 {
     ECHO;
-    yylval.attr = 1;
+    yylval.atrib = 1;
     return(OPRELACION);
 }
 	YY_BREAK
@@ -1194,7 +1194,7 @@ YY_RULE_SETUP
 #line 230 "src/lexicon.l"
 {
     ECHO;
-    yylval.attr = 2;
+    yylval.atrib = 2;
     return(OPRELACION);
 }
 	YY_BREAK
@@ -1203,7 +1203,7 @@ YY_RULE_SETUP
 #line 236 "src/lexicon.l"
 {
     ECHO;
-    yylval.attr = 3;
+    yylval.atrib = 3;
     return(OPRELACION);
 }
 	YY_BREAK
@@ -1212,7 +1212,7 @@ YY_RULE_SETUP
 #line 242 "src/lexicon.l"
 {
     ECHO;
-    yylval.attr = 4;
+    yylval.atrib = 4;
     return(OPRELACION);
 }
 	YY_BREAK
@@ -1237,8 +1237,8 @@ YY_RULE_SETUP
 #line 258 "src/lexicon.l"
 {
     ECHO;
-    yylval.attr = 0;
-    yylval.lex = strdup(yytext);
+    yylval.atrib = 0;
+    yylval.lexema = strdup(yytext);
     return(CONST_LOGICA);
 }
 	YY_BREAK
@@ -1247,8 +1247,8 @@ YY_RULE_SETUP
 #line 265 "src/lexicon.l"
 {
     ECHO;
-    yylval.attr = 1;
-    yylval.lex = strdup(yytext);
+    yylval.atrib = 1;
+    yylval.lexema = strdup(yytext);
     return(CONST_LOGICA);
 }
 	YY_BREAK
@@ -1258,8 +1258,8 @@ YY_RULE_SETUP
 #line 272 "src/lexicon.l"
 {
     ECHO;
-    yylval.lex = strdup(yytext);
-    yylval.attr = 0;
+    yylval.lexema = strdup(yytext);
+    yylval.atrib = 0;
     return(CONST_CARACTER);
 }
 	YY_BREAK
@@ -1268,8 +1268,8 @@ YY_RULE_SETUP
 #line 279 "src/lexicon.l"
 {
     ECHO;
-    yylval.lex = strdup(yytext);
-    yylval.attr = 1;
+    yylval.lexema = strdup(yytext);
+    yylval.atrib = 1;
     return(CONST_ENTERO_SIN_SIGNO);
 }
 	YY_BREAK
@@ -1278,8 +1278,8 @@ YY_RULE_SETUP
 #line 286 "src/lexicon.l"
 {
     ECHO;
-    yylval.lex = strdup(yytext);
-    yylval.attr = 2;
+    yylval.lexema = strdup(yytext);
+    yylval.atrib = 2;
     return(CONST_FLOTANTE);
 }
 	YY_BREAK
@@ -1289,8 +1289,8 @@ YY_RULE_SETUP
 #line 293 "src/lexicon.l"
 {
     ECHO;
-    yylval.lex = strdup(yytext);
-    yylval.attr = 3;
+    yylval.lexema = strdup(yytext);
+    yylval.atrib = 3;
     return(CADENA);
 }
 	YY_BREAK
@@ -1307,39 +1307,38 @@ YY_RULE_SETUP
 #line 304 "src/lexicon.l"
 {
     ECHO;
-    ++line;
 }
 	YY_BREAK
 case 49:
 /* rule 49 can match eol */
 YY_RULE_SETUP
-#line 309 "src/lexicon.l"
+#line 308 "src/lexicon.l"
 {
     ECHO;
 }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 313 "src/lexicon.l"
+#line 312 "src/lexicon.l"
 {
     ECHO;
-    yylval.lex = strdup(yytext);
+    yylval.lexema = strdup(yytext);
     return(IDENTIFICADOR);
 }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 319 "src/lexicon.l"
+#line 318 "src/lexicon.l"
 {
     printf(" \nError Léxico en Linea: %d. No se reconoce la palabra '%s'. ", yylineno, yytext);
 }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 323 "src/lexicon.l"
+#line 322 "src/lexicon.l"
 ECHO;
 	YY_BREAK
-#line 1343 "src/lex.yy.c"
+#line 1342 "src/lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2352,7 +2351,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 323 "src/lexicon.l"
+#line 322 "src/lexicon.l"
 
 
 

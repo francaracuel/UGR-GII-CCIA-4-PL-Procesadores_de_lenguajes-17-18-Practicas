@@ -1,6 +1,15 @@
 principal
 {
-    
+    ini_var_local
+    entero ve,a,b,c,def ;
+    flotante vf ,h,j,k;
+    caracter vc ;
+    booleano vl ;
+    entero pe[0], pe2[0] ;
+    flotante pf[0], pf2[0] ;
+    caracter pc[0], pc2[0] ;
+    booleano pl[0] ;
+    fin_var_local
 
     entero funcionA (entero a1, flotante a2, caracter a3)
     {

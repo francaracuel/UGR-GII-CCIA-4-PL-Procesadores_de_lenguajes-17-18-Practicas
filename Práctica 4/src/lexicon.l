@@ -129,25 +129,25 @@ real {entero}.{entero}
 
 "entero" {
     ECHO;
-    yylval.type = ENTERO;
+    yylval.tipo = ENTERO;
     return(TIPO_BASICO);
 }
 
 "booleano" {
     ECHO;
-    yylval.type = BOOLEANO;
+    yylval.tipo = BOOLEANO;
     return(TIPO_BASICO);
 }
 
 "caracter" {
     ECHO;
-    yylval.type = CARACTER;
+    yylval.tipo = CARACTER;
     return(TIPO_BASICO);
 }
 
 "flotante" {
     ECHO;
-    yylval.type = FLOTANTE;
+    yylval.tipo = FLOTANTE;
     return(TIPO_BASICO);
 }
 
@@ -163,85 +163,85 @@ real {entero}.{entero}
 
 "+" {
     ECHO;
-    yylval.attr = 0;
+    yylval.atrib = 0;
     return(OPSIGNO);
 }
 
 "-" {
     ECHO;
-    yylval.attr = 1;
+    yylval.atrib = 1;
     return(OPSIGNO);
 }
 
 "&" {
     ECHO;
-    yylval.attr = 0;
+    yylval.atrib = 0;
     return(OP_UNARIO);
 }
 
 "~" {
     ECHO;
-    yylval.attr = 1;
+    yylval.atrib = 1;
     return(OP_UNARIO);
 }
 
 "!" {
     ECHO;
-    yylval.attr = 2;
+    yylval.atrib = 2;
     return(OP_UNARIO);
 }
 
 "*" {
     ECHO;
-    yylval.attr = 0;
+    yylval.atrib = 0;
     return(OPMULTIPLICATIVO);
 }
 
 "/" {
     ECHO;
-    yylval.attr = 1;
+    yylval.atrib = 1;
     return(OPMULTIPLICATIVO);
 }
 
 "==" {
     ECHO;
-    yylval.attr = 0;
+    yylval.atrib = 0;
     return(OPIGUALDAD);
 }
 
 "!=" {
     ECHO;
-    yylval.attr = 1;
+    yylval.atrib = 1;
     return(OPIGUALDAD);
 }
 
 ">" {
     ECHO;
-    yylval.attr = 0;
+    yylval.atrib = 0;
     return(OPRELACION);
 }
 
 "<" {
     ECHO;
-    yylval.attr = 1;
+    yylval.atrib = 1;
     return(OPRELACION);
 }
 
 "<=" {
     ECHO;
-    yylval.attr = 2;
+    yylval.atrib = 2;
     return(OPRELACION);
 }
 
 ">=" {
     ECHO;
-    yylval.attr = 3;
+    yylval.atrib = 3;
     return(OPRELACION);
 }
 
 "<>" {
     ECHO;
-    yylval.attr = 4;
+    yylval.atrib = 4;
     return(OPRELACION);
 }
 
@@ -257,43 +257,43 @@ real {entero}.{entero}
 
 "verdadero" {
     ECHO;
-    yylval.attr = 0;
-    yylval.lex = strdup(yytext);
+    yylval.atrib = 0;
+    yylval.lexema = strdup(yytext);
     return(CONST_LOGICA);
 }
 
 "falso" {
     ECHO;
-    yylval.attr = 1;
-    yylval.lex = strdup(yytext);
+    yylval.atrib = 1;
+    yylval.lexema = strdup(yytext);
     return(CONST_LOGICA);
 }
 
 \'[^\']\' {
     ECHO;
-    yylval.lex = strdup(yytext);
-    yylval.attr = 0;
+    yylval.lexema = strdup(yytext);
+    yylval.atrib = 0;
     return(CONST_CARACTER);
 }
 
 {entero} {
     ECHO;
-    yylval.lex = strdup(yytext);
-    yylval.attr = 1;
+    yylval.lexema = strdup(yytext);
+    yylval.atrib = 1;
     return(CONST_ENTERO_SIN_SIGNO);
 }
 
 {real} {
     ECHO;
-    yylval.lex = strdup(yytext);
-    yylval.attr = 2;
+    yylval.lexema = strdup(yytext);
+    yylval.atrib = 2;
     return(CONST_FLOTANTE);
 }
 
 \"[^\"]+\" {
     ECHO;
-    yylval.lex = strdup(yytext);
-    yylval.attr = 3;
+    yylval.lexema = strdup(yytext);
+    yylval.atrib = 3;
     return(CADENA);
 }
 
@@ -303,7 +303,6 @@ real {entero}.{entero}
 
 \n {
     ECHO;
-    ++line;
 }
 
 [\n\r] {
@@ -312,7 +311,7 @@ real {entero}.{entero}
 
 ({letra}|_)({letra}|{digito}|_)* {
     ECHO;
-    yylval.lex = strdup(yytext);
+    yylval.lexema = strdup(yytext);
     return(IDENTIFICADOR);
 }
 
