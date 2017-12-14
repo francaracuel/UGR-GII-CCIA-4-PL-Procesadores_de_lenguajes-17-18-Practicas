@@ -45,12 +45,12 @@ void TS_InsertaMARCA(){
 int TS_anadirEntrada(entradaTS ent) {
   if(TOPE < MAX_TS) {
     TS[TOPE].entrada=ent.entrada;
-    TS[TOPE].nombre=ent.lexema;
+    TS[TOPE].nombre=ent.nombre;
     TS[TOPE].tipoDato=ent.tipoDato;
-    TS[TOPE].parametros=ent.nParam;
-    TS[TOPE].dimensiones=ent.numDim;
-    TS[TOPE].TamDimen1=ent.tamDim1;
-    TS[TOPE].TamDimen2=ent.tamDim2;
+    TS[TOPE].parametros=ent.parametros;
+    TS[TOPE].dimensiones=ent.dimensiones;
+    TS[TOPE].TamDimen1=ent.TamDimen1;
+    TS[TOPE].TamDimen2=ent.TamDimen2;
     TOPE++;
     imprimeTS();
     return 1;
@@ -84,12 +84,12 @@ void imprimeTS() {
     if(TS[j].tipoDato == 7) { t = "DESC"; }
     printf("----ELEMENTO %d-----------------\n", j);
     printf("-Entrada: %-12s", e);
-    printf("-Lexema: %-12s", TS[j].lexema);
+    printf("-Lexema: %-12s", TS[j].nombre);
     printf("-tipoDato: %-10s", t);
-    printf("-nParam: %-4d", TS[j].nParam);
-    printf("-numDim: %-4d", TS[j].numDim);
-    printf("-tamDim1: %-4d", TS[j].tamDim1);
-    printf("-tamDim2: %-4d\n", TS[j].tamDim2);
+    printf("-nParam: %-4d", TS[j].parametros);
+    printf("-numDim: %-4d", TS[j].dimensiones);
+    printf("-tamDim1: %-4d", TS[j].TamDimen1);
+    printf("-tamDim2: %-4d\n", TS[j].TamDimen2);
     j++;
   }
   printf("--------------------------------\n");
