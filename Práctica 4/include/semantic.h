@@ -32,7 +32,6 @@ typedef enum {
 } tipoEntrada ;
 
 typedef enum {
-
 	ENTERO,
 	FLOTANTE,
 	CARACTER,
@@ -55,34 +54,47 @@ typedef struct {
 
 } entradaTS ;
 
-#define MAX_TS 500
 
-unsigned int TOPE ;
-unsigned int Subprog ; /* Tope de la pila */
 
-/* Indicador de comienzo de bloque de un subprog */
-entradaTS TS[MAX_TS] ;
-
-/* Pila de la tabla de símbolos */
+// Pila de la tabla de símbolos
 typedef struct {
-
-	/* Atributo del símbolo (si tiene) */
+	// Atributo del símbolo (si tiene)
 	int atrib ;
-	/* Nombre del lexema */
+	// Nombre del lexema
 	char *lexema ;
-  	/* Tipo del símbolo */
+  	// Tipo del símbolo
 	dtipo tipo ;
 
+	//dimensiones de la matriz
+	unsigned int numDim;
+	int tamDim1;
+	int tamDim2;
 } atributos ;
 
 
 #define YYSTYPE atributos
+#define MAX_TS 500
+
+
+unsigned int TOPE ;
+unsigned int Subprog ; /* Tope de la pila */
+
+// Indicador de comienzo de bloque de un subprog
+entradaTS TS[MAX_TS] ;
 /* A partir de ahora, cada símbolo tiene */
 /* una estructura de tipo atributos */
 /* Lista de funciones y procedimientos para manejo de la TS */
 
+
+
+///////////////////////////FUNCIONES MANEJO TABLA SIMBOLOS////////////////
 // Inserta una marca de bloque en la tabla de símbolos
 void TS_InsertaMARCA();
+
+int TS_anadirEntrada(entradaTS ent);
+
+///////////////////////////FUNCIONES IMPRESIÓN////////////////
+void imprimeTS();
 
 /* Fin de funciones y procedimientos para manejo de la TS */
 
