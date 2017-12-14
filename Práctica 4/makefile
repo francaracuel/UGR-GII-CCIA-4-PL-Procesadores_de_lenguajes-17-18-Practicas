@@ -40,8 +40,8 @@ $(SRC)/y.tab.c: $(SRC)/semantic.y $(SRC)/lex.yy.c
 $(SRC)/lex.yy.c: $(SRC)/lexicon.l
 	lex -o $@ $(SRC)/lexicon.l
 
-$(OBJ)/semantic.o: $(SRC)/semantic.c
-	gcc -o $@ -c $(SRC)/semantic.c -I$(INCLUDE)
+$(OBJ)/semantic.o: $(SRC)/semantic_1.c
+	gcc -o $@ -c $(SRC)/semantic_1.c -I$(INCLUDE)
 
 all:
 	make semantic

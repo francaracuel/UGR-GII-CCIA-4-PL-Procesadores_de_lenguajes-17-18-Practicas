@@ -1,17 +1,17 @@
 principal
 {
     ini_var_local
-    entero a b,c,def
-    flotante vf ,h, jk;
+    entero ve,a,b,c,def ;
+    flotante vf ,h,j,k;
     caracter vc ;
     booleano vl ;
-    ent··ero pe[0], pe2[0] ;
+    entero pe[0], pe2[0] ;
     flotante pf[0], pf2[0] ;
     caracter pc[0], pc2[0] ;
     booleano pl[0] ;
     fin_var_local
 
-    entero funcionA (entero a1, flotante a2, s caracter a3)
+    entero funcionA (entero a1, flotante a2, caracter a3)
     {
         ini_var_local
         entero x1, x2 ;
@@ -27,8 +27,8 @@ principal
                 flotante x1 ;
                 fin_var_local
                 x1= 1.3 ;
-                si (c2>10+)
-                c2= c2-1) ;
+                si (c2>10)
+                c2= c2-1 ;
                 si_no
                 x1= 3.1 ;
                 devolver x1 ;
@@ -70,7 +70,7 @@ principal
 
             pf[0] = 1;
 
-            b = -(a);
+            b = --3;
 
             devolver d1 ;
         }
