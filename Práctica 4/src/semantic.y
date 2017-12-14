@@ -92,13 +92,13 @@ programa : PRINCIPAL bloque ;
 bloque : INI_BLOQUE { TS_InsertaMARCA(); }
 	declar_de_variables_locales
 	declar_de_subprogs
-	FIN_BLOQUE {tsVaciarEntradas()}
+	FIN_BLOQUE {tsVaciarEntradas(); }
 	|
 	INI_BLOQUE { TS_InsertaMARCA(); }
 	declar_de_variables_locales
 	declar_de_subprogs
 	sentencias
-	FIN_BLOQUE {tsVaciarEntradas()} ;
+	FIN_BLOQUE {tsVaciarEntradas(); } ;
 
 declar_de_subprogs : declar_de_subprogs declar_subprog
 				| ;

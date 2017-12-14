@@ -25,7 +25,7 @@
 void TS_InsertaMARCA(){
   entradaTS entrada;
   entrada.entrada = MARCA;
-  entrada.nombre = "INI_BLOQUE";
+  entrada.nombre = "{";
   entrada.tipoDato = DESCONOCIDO;
   entrada.parametros = 0;
   entrada.dimensiones = 0;
@@ -38,7 +38,7 @@ void tsVaciarEntradas() {
   while (TS[TOPE-1].entrada != MARCA && TOPE > 0) {
     TOPE--;
   }
-  if (TS[TOPE-1].entrada == MARCA) { 
+  if (TS[TOPE-1].entrada == MARCA) {
     TOPE--;
   }
 }
