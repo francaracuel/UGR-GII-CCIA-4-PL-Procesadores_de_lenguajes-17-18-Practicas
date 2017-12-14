@@ -91,6 +91,9 @@ entradaTS TS[MAX_TS] ;
 // Inserta una marca de bloque en la tabla de símbolos
 void TS_InsertaMARCA();
 
+// Quita una marca de bloque en la tabla de símbolos
+void tsVaciarEntradas();
+
 int TS_anadirEntrada(entradaTS ent);
 
 ///////////////////////////FUNCIONES IMPRESIÓN////////////////

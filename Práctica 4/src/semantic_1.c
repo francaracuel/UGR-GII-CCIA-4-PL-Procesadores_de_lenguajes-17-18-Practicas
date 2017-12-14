@@ -34,6 +34,15 @@ void TS_InsertaMARCA(){
 
 }
 
+void tsVaciarEntradas() {
+  while (TS[TOPE-1].entrada != MARCA && TOPE > 0) {
+    TOPE--;
+  }
+  if (TS[TOPE-1].entrada == MARCA) { 
+    TOPE--;
+  }
+}
+
 
 //entradaTS = entradaTS
 //tEntrada = tipoEntrada
