@@ -25,7 +25,7 @@
 void TS_InsertaMARCA(){
   entradaTS entrada;
   entrada.entrada = MARCA;
-  entrada.nombre = 'INI_BLOQUE';
+  entrada.nombre = "INI_BLOQUE";
   entrada.tipoDato = DESCONOCIDO;
   entrada.parametros = 0;
   entrada.dimensiones = 0;
@@ -45,12 +45,12 @@ void TS_InsertaMARCA(){
 int TS_anadirEntrada(entradaTS ent) {
   if(TOPE < MAX_TS) {
     TS[TOPE].entrada=ent.entrada;
-    TS[TOPE].lexema=ent.lexema;
+    TS[TOPE].nombre=ent.lexema;
     TS[TOPE].tipoDato=ent.tipoDato;
-    TS[TOPE].nParam=ent.nParam;
-    TS[TOPE].numDim=ent.numDim;
-    TS[TOPE].tamDim1=ent.tamDim1;
-    TS[TOPE].tamDim2=ent.tamDim2;
+    TS[TOPE].parametros=ent.nParam;
+    TS[TOPE].dimensiones=ent.numDim;
+    TS[TOPE].TamDimen1=ent.tamDim1;
+    TS[TOPE].TamDimen2=ent.tamDim2;
     TOPE++;
     imprimeTS();
     return 1;

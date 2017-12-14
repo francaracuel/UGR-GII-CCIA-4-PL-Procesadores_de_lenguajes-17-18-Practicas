@@ -25,10 +25,10 @@
 #include <string.h>
 
 typedef enum {
-	marca,
-	funcion,
-	variable,
-	parametro_formal,
+	MARCA,
+	FUNCION,
+	VARIABLE,
+	PARAMETRO_FORMAL,
 } tipoEntrada ;
 
 typedef enum {
