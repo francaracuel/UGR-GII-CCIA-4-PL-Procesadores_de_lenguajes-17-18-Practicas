@@ -124,6 +124,9 @@ int tsSearchId(attrs e){
     int i = LIMIT - 1;
 	int found = 0;
 
+    printf("ID e: ", e.lex);
+    printf("ID ts: ", e.lex);
+
     // Revisar: lo comentado en el if
 
 	while (i > 0 && !found /*&& ts[i].in != MARK*/) {
@@ -149,7 +152,10 @@ int tsSearchName(attrs e){
     int i = LIMIT - 1;
 	int found = 0;
 
-	while (i > 0 && !found && ts[i].in != MARK) {
+    printf("Función e: ", e.lex);
+    printf("Función ts: ", e.lex);
+
+	while (i > 0 && !found /*&& ts[i].in != MARK*/) {
 		if (ts[i].in == FUNCTION && strcmp(e.lex, ts[i].lex) == 0) {
 			found = 1;
 		} else{

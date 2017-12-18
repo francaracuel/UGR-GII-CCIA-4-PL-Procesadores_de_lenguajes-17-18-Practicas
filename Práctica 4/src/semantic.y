@@ -196,7 +196,9 @@ variable : IDENTIFICADOR {
 					if(decVar == 1){
 						$1.nDim=0; $1.tDim1 = 0; $1.tDim2 = 0; tsAddId($1);
 					} else{
-						tsGetId($1, &$$);
+						if(decVar == 2){
+							tsGetId($1, &$$);
+						}
 					}
 				}
 				| IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ {
@@ -254,7 +256,9 @@ var_array : IDENTIFICADOR {
 					if(decVar == 1){
 						$1.nDim=0; $1.tDim1 = 0; $1.tDim2 = 0; tsAddId($1);
 					} else{
-						tsGetId($1, &$$);
+						if(decVar == 2){
+							tsGetId($1, &$$);
+						}
 					}
 				}
         | IDENTIFICADOR INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ {

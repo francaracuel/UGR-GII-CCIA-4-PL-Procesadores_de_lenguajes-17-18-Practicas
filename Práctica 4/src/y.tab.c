@@ -499,9 +499,9 @@ static const yytype_uint16 yyrline[] =
      131,   132,   133,   134,   135,   137,   146,   151,   157,   163,
      169,   170,   172,   174,   174,   176,   177,   178,   179,   180,
      182,   183,   184,   185,   186,   187,   188,   189,   191,   192,
-     193,   195,   202,   202,   227,   227,   253,   260,   260,   285,
-     287,   288,   289,   291,   292,   294,   295,   297,   298,   300,
-     301,   302,   303,   304,   306,   307,   309
+     193,   195,   204,   204,   229,   229,   255,   264,   264,   289,
+     291,   292,   293,   295,   296,   298,   299,   301,   302,   304,
+     305,   306,   307,   308,   310,   311,   313
 };
 #endif
 
@@ -1597,14 +1597,16 @@ yyreduce:
 					if(decVar == 1){
 						(yyvsp[0]).nDim=0; (yyvsp[0]).tDim1 = 0; (yyvsp[0]).tDim2 = 0; tsAddId((yyvsp[0]));
 					} else{
-						tsGetId((yyvsp[0]), &(yyval));
+						if(decVar == 2){
+							tsGetId((yyvsp[0]), &(yyval));
+						}
 					}
 				}
-#line 1604 "src/y.tab.c" /* yacc.c:1646  */
+#line 1606 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 62:
-#line 202 "src/semantic.y" /* yacc.c:1646  */
+#line 204 "src/semantic.y" /* yacc.c:1646  */
     {
 						if(decVar == 1) {
 							(yyvsp[-3]).nDim=(yyvsp[-2]).nDim; (yyvsp[-3]).tDim1=(yyvsp[-2]).tDim1; (yyvsp[-3]).tDim2=(yyvsp[-2]).tDim2; tsAddId((yyvsp[-3]));
@@ -1630,17 +1632,17 @@ yyreduce:
 							}
 						}
 					}
-#line 1634 "src/y.tab.c" /* yacc.c:1646  */
+#line 1636 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 63:
-#line 226 "src/semantic.y" /* yacc.c:1646  */
+#line 228 "src/semantic.y" /* yacc.c:1646  */
     {(yyval).nDim = 1; (yyval).tDim1=atoi((yyvsp[-3]).lex); (yyval).tDim2 = 0; }
-#line 1640 "src/y.tab.c" /* yacc.c:1646  */
+#line 1642 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 64:
-#line 227 "src/semantic.y" /* yacc.c:1646  */
+#line 229 "src/semantic.y" /* yacc.c:1646  */
     {
 						if(decVar == 1) {
 							(yyvsp[-6]).nDim=(yyvsp[-5]).nDim; (yyvsp[-6]).tDim1=(yyvsp[-5]).tDim1; (yyvsp[-6]).tDim2=(yyvsp[-5]).tDim2; tsAddId((yyvsp[-6]));
@@ -1666,29 +1668,31 @@ yyreduce:
 							}
 						}
 					}
-#line 1670 "src/y.tab.c" /* yacc.c:1646  */
+#line 1672 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 65:
-#line 251 "src/semantic.y" /* yacc.c:1646  */
+#line 253 "src/semantic.y" /* yacc.c:1646  */
     {(yyval).nDim = 2; (yyval).tDim1=atoi((yyvsp[-6]).lex); (yyval).tDim2=atoi((yyvsp[-4]).lex); }
-#line 1676 "src/y.tab.c" /* yacc.c:1646  */
+#line 1678 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 66:
-#line 253 "src/semantic.y" /* yacc.c:1646  */
+#line 255 "src/semantic.y" /* yacc.c:1646  */
     {
 					if(decVar == 1){
 						(yyvsp[0]).nDim=0; (yyvsp[0]).tDim1 = 0; (yyvsp[0]).tDim2 = 0; tsAddId((yyvsp[0]));
 					} else{
-						tsGetId((yyvsp[0]), &(yyval));
+						if(decVar == 2){
+							tsGetId((yyvsp[0]), &(yyval));
+						}
 					}
 				}
-#line 1688 "src/y.tab.c" /* yacc.c:1646  */
+#line 1692 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 67:
-#line 260 "src/semantic.y" /* yacc.c:1646  */
+#line 264 "src/semantic.y" /* yacc.c:1646  */
     {
 						if(decVar == 1) {
 							(yyvsp[-3]).nDim=(yyvsp[-2]).nDim; (yyvsp[-3]).tDim1=(yyvsp[-2]).tDim1; (yyvsp[-3]).tDim2=(yyvsp[-2]).tDim2; tsAddId((yyvsp[-3]));
@@ -1714,89 +1718,89 @@ yyreduce:
 							}
 						}
 					}
-#line 1718 "src/y.tab.c" /* yacc.c:1646  */
+#line 1722 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 68:
-#line 284 "src/semantic.y" /* yacc.c:1646  */
+#line 288 "src/semantic.y" /* yacc.c:1646  */
     {(yyval).nDim = 1; (yyval).tDim1=atoi((yyvsp[-3]).lex); (yyval).tDim2 = 0; }
-#line 1724 "src/y.tab.c" /* yacc.c:1646  */
+#line 1728 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 70:
-#line 287 "src/semantic.y" /* yacc.c:1646  */
+#line 291 "src/semantic.y" /* yacc.c:1646  */
     { (yyvsp[0]).nDim=0; nParam++; setType((yyvsp[-1])); tsAddParam((yyvsp[0])); }
-#line 1730 "src/y.tab.c" /* yacc.c:1646  */
+#line 1734 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 71:
-#line 288 "src/semantic.y" /* yacc.c:1646  */
+#line 292 "src/semantic.y" /* yacc.c:1646  */
     { (yyvsp[0]).nDim=0; nParam++; setType((yyvsp[-1])); tsAddParam((yyvsp[0])); }
-#line 1736 "src/y.tab.c" /* yacc.c:1646  */
+#line 1740 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 73:
-#line 291 "src/semantic.y" /* yacc.c:1646  */
+#line 295 "src/semantic.y" /* yacc.c:1646  */
     { nParam++; tsCheckParam((yyvsp[-2]), nParam); }
-#line 1742 "src/y.tab.c" /* yacc.c:1646  */
+#line 1746 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 74:
-#line 292 "src/semantic.y" /* yacc.c:1646  */
+#line 296 "src/semantic.y" /* yacc.c:1646  */
     { nParam = 1; tsCheckParam((yyvsp[0]), nParam); }
-#line 1748 "src/y.tab.c" /* yacc.c:1646  */
+#line 1752 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 79:
-#line 300 "src/semantic.y" /* yacc.c:1646  */
+#line 304 "src/semantic.y" /* yacc.c:1646  */
     { (yyval).type = ENTERO; (yyval).nDim = 0; (yyval).tDim1 = 0; (yyval).tDim2 = 0; }
-#line 1754 "src/y.tab.c" /* yacc.c:1646  */
+#line 1758 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 80:
-#line 301 "src/semantic.y" /* yacc.c:1646  */
+#line 305 "src/semantic.y" /* yacc.c:1646  */
     { aux = 1; (yyval).type = (yyvsp[0]).type; (yyval).nDim = (yyvsp[0]).nDim; (yyval).tDim1 = (yyvsp[0]).tDim1; (yyval).tDim2 = (yyvsp[0]).tDim2; }
-#line 1760 "src/y.tab.c" /* yacc.c:1646  */
+#line 1764 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 81:
-#line 302 "src/semantic.y" /* yacc.c:1646  */
+#line 306 "src/semantic.y" /* yacc.c:1646  */
     { (yyval).type = BOOLEANO; (yyval).nDim = 0; (yyval).tDim1 = 0; (yyval).tDim2 = 0; }
-#line 1766 "src/y.tab.c" /* yacc.c:1646  */
+#line 1770 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 82:
-#line 303 "src/semantic.y" /* yacc.c:1646  */
+#line 307 "src/semantic.y" /* yacc.c:1646  */
     { (yyval).type = FLOTANTE; (yyval).nDim = 0; (yyval).tDim1 = 0; (yyval).tDim2 = 0; }
-#line 1772 "src/y.tab.c" /* yacc.c:1646  */
+#line 1776 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 83:
-#line 304 "src/semantic.y" /* yacc.c:1646  */
+#line 308 "src/semantic.y" /* yacc.c:1646  */
     { (yyval).type = CARACTER; (yyval).nDim = 0; (yyval).tDim1 = 0; (yyval).tDim2 = 0; }
-#line 1778 "src/y.tab.c" /* yacc.c:1646  */
+#line 1782 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 84:
-#line 306 "src/semantic.y" /* yacc.c:1646  */
+#line 310 "src/semantic.y" /* yacc.c:1646  */
     { tsFunctionCall((yyvsp[-3]), &(yyval)); }
-#line 1784 "src/y.tab.c" /* yacc.c:1646  */
+#line 1788 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 85:
-#line 307 "src/semantic.y" /* yacc.c:1646  */
+#line 311 "src/semantic.y" /* yacc.c:1646  */
     { tsFunctionCall((yyvsp[-2]), &(yyval)); }
-#line 1790 "src/y.tab.c" /* yacc.c:1646  */
+#line 1794 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 86:
-#line 309 "src/semantic.y" /* yacc.c:1646  */
+#line 313 "src/semantic.y" /* yacc.c:1646  */
     { (yyval).type = (yyvsp[-1]).type; (yyval).nDim = (yyvsp[-1]).nDim; (yyval).tDim1 = (yyvsp[-1]).tDim1; (yyval).tDim2 = (yyvsp[-1]).tDim2;}
-#line 1796 "src/y.tab.c" /* yacc.c:1646  */
+#line 1800 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1800 "src/y.tab.c" /* yacc.c:1646  */
+#line 1804 "src/y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2024,7 +2028,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 311 "src/semantic.y" /* yacc.c:1906  */
+#line 315 "src/semantic.y" /* yacc.c:1906  */
 
 
 // Aqui incluimos el fichero generado por el ’lex’ que implementa la función
