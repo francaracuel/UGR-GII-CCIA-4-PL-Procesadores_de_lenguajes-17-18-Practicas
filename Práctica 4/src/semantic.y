@@ -12,9 +12,9 @@
 //
 // Curso 2017-2018
 //
-// syntactic.y
+// semantic.y
 //
-// Fichero Yacc para crear el analizador sintáctico
+// Fichero Yacc para crear el analizador semántico
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -89,37 +89,41 @@ void yyerror(char * msg);
 
 programa : PRINCIPAL bloque ;
 
-bloque : INI_BLOQUE { TS_InsertaMARCA(); }
-	declar_de_variables_locales
+bloque : INI_BLOQUE
+	{ tsAddMark(); }
+	bloque2
+	FIN_BLOQUE
+	{ tsCleanIn(); }
+
+bloque2 : declar_de_variables_locales
 	declar_de_subprogs
-	FIN_BLOQUE {tsVaciarEntradas(); }
 	|
-	INI_BLOQUE { TS_InsertaMARCA(); }
 	declar_de_variables_locales
 	declar_de_subprogs
-	sentencias
-	FIN_BLOQUE {tsVaciarEntradas(); } ;
+	sentencias ;
+
 
 declar_de_subprogs : declar_de_subprogs declar_subprog
 				| ;
 
-declar_subprog : cabecera_subprograma bloque ;
+declar_subprog : cabecera_subprograma { subProg = 1; } bloque { subProg = 0; } ;
 
-declar_de_variables_locales : INI_VAR_LOCAL variables_locales FIN_VAR_LOCAL
+declar_de_variables_locales : INI_VAR_LOCAL { decVar = 1; } variables_locales FIN_VAR_LOCAL { decVar = 0; }
 				| ;
 
 variables_locales : variables_locales cuerpo_declar_variables
 				| cuerpo_declar_variables ;
 
-cuerpo_declar_variables : TIPO_BASICO lista_variables PUNTO_Y_COMA
+cuerpo_declar_variables : TIPO_BASICO { setType($1); } lista_variables PUNTO_Y_COMA
 				| error ;
 
-cabecera_subprograma : TIPO_BASICO variable PARENT_IZQUIERDO lista_parametros PARENT_DERECHO
-				| TIPO_BASICO variable PARENT_IZQUIERDO PARENT_DERECHO
-				| error ;
+cabecera_subprograma : TIPO_BASICO variable { decParam = 1;  tsAddSubprog($2); } PARENT_IZQUIERDO cabecera_subprograma2
+
+cabecera_subprograma2 :  lista_parametros PARENT_DERECHO { tsUpdateNparam($1); nParam = 0; decParam = 0; } {$1.nDim=0;}
+				| PARENT_DERECHO
 
 sentencias : sentencias sentencia
-				| sentencia ;
+				| { decVar = 2; } sentencia ;
 
 sentencia : bloque
 				| sentencia_asignacion
@@ -130,54 +134,163 @@ sentencia : bloque
 				| sentencia_devolver
 				| sentencia_hacer_hasta;
 
-sentencia_asignacion : var_array ASIGNACION expresion PUNTO_Y_COMA ;
+sentencia_asignacion : var_array ASIGNACION expresion PUNTO_Y_COMA {
+	if($1.type!=$3.type){
+		printf("Error(%d): Los types de la parte izquierda %d y derecha %d no coinciden.\n",line, $1.type, $3.type);
+	}
+	if(!equalSize($1,$3)){
+		printf("Error(%d): La parte izquierda y la parte derecha deben tener el mismo tamanyo.\n",line);
+	}
+} ;
 
-sentencia_si : SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia
-				|  SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia SI_NO sentencia ;
+sentencia_si : SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia {
+	if($3.type != BOOLEANO){
+		printf("Error(%d): La expresion no es de type logico.\n", line);
+	}
+}
+				|  SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia SI_NO sentencia {
+					if($3.type != BOOLEANO){
+						printf("Error(%d): La expresion no es de type logico.\n", line);
+					}
+				} ;
 
-sentencia_hacer_hasta : HACER sentencia HASTA PARENT_IZQUIERDO expresion PARENT_DERECHO ;
+sentencia_hacer_hasta : HACER sentencia HASTA PARENT_IZQUIERDO expresion PARENT_DERECHO {
+	if($5.type != BOOLEANO){
+		printf("Error(%d): La expresion no es de type logico.\n", line);
+	}
+} ;
 
-sentencia_mientras : MIENTRAS PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia ;
+sentencia_mientras : MIENTRAS PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia {
+	if($3.type != BOOLEANO){
+		printf("Error(%d): La expresion no es de type logico.\n", line);
+	}
+};
 
 sentencia_entrada : ENTRADA CADENA PUNTO_Y_COMA
 				|  ENTRADA CADENA COMA lista_variables PUNTO_Y_COMA ;
 
 sentencia_salida : SALIDA lista_expresiones_o_cadena PUNTO_Y_COMA ;
 
-sentencia_devolver : DEVOLVER expresion PUNTO_Y_COMA ;
+sentencia_devolver : DEVOLVER expresion { tsCheckReturn($2,&$$); } PUNTO_Y_COMA ;
 
-expresion : PARENT_IZQUIERDO expresion PARENT_DERECHO
-				| OP_UNARIO expresion
-				| constante
-				| funcion
-				| IDENTIFICADOR
-				| OPSIGNO expresion %prec OP_UNARIO
-				| expresion OPSIGNO expresion
-				| expresion OPMULTIPLICATIVO expresion
-				| expresion OPIGUALDAD expresion
-				| expresion OPRELACION expresion
-				| expresion OPAND expresion
-				| expresion OPOR expresion
+expresion :{ $$.type = $2.type; $$.nDim = $2.nDim; $$.tDim1 = $2.tDim1; $$.tDim2 = $2.tDim2; } PARENT_IZQUIERDO expresion PARENT_DERECHO 
+				| OP_UNARIO expresion {tsOpUnary($1, $2, &$$); }
+				| constante { $$.type = $1.type; $$.nDim = $1.nDim; $$.tDim1 = $1.tDim1; $$.tDim2 = $1.tDim2; }
+				| funcion {$$.type = $1.type; $$.nDim = $1.nDim; $$.tDim1 = $1.tDim1; $$.tDim2 = $1.tDim2; currentFunction = -1;}
+				| variable { decVar = 0;}
+				| OPSIGNO expresion {tsOpSign($1, $2, &$$); } %prec OP_UNARIO
+				| expresion OPSIGNO expresion { tsOpSignBin($1, $2, $3, &$$); }
+				| expresion OPMULTIPLICATIVO expresion {tsOpMul($1, $2, $3, &$$); }
+				| expresion OPIGUALDAD expresion {tsOpEqual($1, $2, $3, &$$); }
+				| expresion OPRELACION expresion {tsOpRel($1, $2, $3, &$$); }
+				| expresion OPAND expresion {tsOpAnd($1, $2, $3, &$$); }
+				| expresion OPOR expresion {tsOpOr($1, $2, $3, &$$); }
 				| error ;
 
-lista_variables : lista_variables COMA var_array   //hemos puesto var_array por variable es solo para la declaración
+lista_variables : lista_variables COMA var_array   //hemos puesto variable por variable es solo para la declaración
 				| var_array
 				| lista_variables error var_array ;
 
-variable : IDENTIFICADOR
-				| IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ
-				| IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ ;
+variable : IDENTIFICADOR {
+					if(decVar == 1){
+						$1.nDim=0; $1.tDim1 = 0; $1.tDim2 = 0; tsAddId($1);
+					} else{
+						if(decVar == 2)
+							tsGetId($1, &$$);
+					}
+				}
+				| IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ {
+						if(decVar == 1) {
+							$1.nDim=$2.nDim; $1.tDim1=$2.tDim1; $1.tDim2=$2.tDim2; tsAddId($1);
+						} else {
+							if (decVar == 2){
+								tsGetId($1, &$$);
+								if($$.nDim == $2.nDim){
+									$$.nDim = 0;
+									$$.tDim1 = 0;
+									$$.tDim2 = 0;
+								} else{
+									if($$.nDim > $2.nDim){
+										if($2.nDim == 0) {
+											$$.nDim = $2.nDim; $$.tDim1 = $2.tDim1; $$.tDim2 = $2.tDim2;
+										} else{
+											printf("Error(%d): Dimension not allowed.\n",line);
+										}
+									} else{
+										printf("Error(%d): Dimension not allowed.\n",line); }
+								}
+							} else {
+								tsGetId($1, &$$);
+							}
+						}
+					} {$$.nDim = 1; $$.tDim1=atoi($2.lex); $$.tDim2 = 0; }
+				| IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ {
+						if(decVar == 1) {
+							$1.nDim=$2.nDim; $1.tDim1=$2.tDim1; $1.tDim2=$2.tDim2; tsAddId($1);
+						} else {
+							if (decVar == 2){
+								tsGetId($1, &$$);
+								if($$.nDim == $2.nDim){
+									$$.nDim = 0;
+									$$.tDim1 = 0;
+									$$.tDim2 = 0;
+								} else{
+									if($$.nDim > $2.nDim){
+										if($2.nDim == 0) {
+											$$.nDim = $2.nDim; $$.tDim1 = $2.tDim1; $$.tDim2 = $2.tDim2;
+										} else{
+											printf("Error(%d): Dimension not allowed.\n",line);
+										}
+									} else{
+										printf("Error(%d): Dimension not allowed.\n",line); }
+								}
+							} else {
+								tsGetId($1, &$$);
+							}
+						}
+					} {$$.nDim = 2; $$.tDim1=atoi($2.lex); $$.tDim2=atoi($4.lex); } ;
 
-var_array : IDENTIFICADOR
-                | IDENTIFICADOR INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ
+var_array : IDENTIFICADOR {
+					if(decVar == 1){
+						$1.nDim=0; $1.tDim1 = 0; $1.tDim2 = 0; tsAddId($1);
+					} else{
+						if(decVar == 2)
+							tsGetId($1, &$$);
+					}
+				}
+        | IDENTIFICADOR INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ {
+						if(decVar == 1) {
+							$1.nDim=$2.nDim; $1.tDim1=$2.tDim1; $1.tDim2=$2.tDim2; tsAddId($1);
+						} else {
+							if (decVar == 2){
+								tsGetId($1, &$$);
+								if($$.nDim == $2.nDim){
+									$$.nDim = 0;
+									$$.tDim1 = 0;
+									$$.tDim2 = 0;
+								} else{
+									if($$.nDim > $2.nDim){
+										if($2.nDim == 0) {
+											$$.nDim = $2.nDim; $$.tDim1 = $2.tDim1; $$.tDim2 = $2.tDim2;
+										} else{
+											printf("Error(%d): Dimension not allowed.\n",line);
+										}
+									} else{
+										printf("Error(%d): Dimension not allowed.\n",line); }
+								}
+							} else {
+								tsGetId($1, &$$);
+							}
+						}
+					} {$$.nDim = 1; $$.tDim1=atoi($2.lex); $$.tDim2 = 0; }
 				| error ;
 
-lista_parametros : lista_parametros COMA TIPO_BASICO variable
-				| TIPO_BASICO variable
+lista_parametros : lista_parametros COMA TIPO_BASICO variable { $4.nDim=0; nParam++; setType($3); tsAddParam($4); }
+				| TIPO_BASICO variable { $2.nDim=0; nParam++; setType($1); tsAddParam($2); }
 				| lista_parametros error TIPO_BASICO variable ;
 
-lista_expresiones_o_cadena : lista_expresiones_o_cadena COMA expresion_o_cadena
-				| expresion_o_cadena;
+lista_expresiones_o_cadena : lista_expresiones_o_cadena COMA expresion_o_cadena { nParam++; tsCheckParam($1, nParam); }
+				| expresion_o_cadena { nParam = 1; tsCheckParam($1, nParam); } ;
 
 expresion_o_cadena : expresion
 				| CADENA ;
@@ -185,16 +298,16 @@ expresion_o_cadena : expresion
 lista_expresiones : lista_expresiones COMA expresion
 				| expresion;
 
-constante : CONST_ENTERO_SIN_SIGNO
-				| const_matriz
-				| CONST_LOGICA
-				| CONST_FLOTANTE
-				| CONST_CARACTER ;
+constante : CONST_ENTERO_SIN_SIGNO { $$.type = ENTERO; $$.nDim = 0; $$.tDim1 = 0; $$.tDim2 = 0; }
+				| const_matriz { aux = 1; $$.type = $1.type; $$.nDim = $1.nDim; $$.tDim1 = $1.tDim1; $$.tDim2 = $1.tDim2; }
+				| CONST_LOGICA { $$.type = BOOLEANO; $$.nDim = 0; $$.tDim1 = 0; $$.tDim2 = 0; }
+				| CONST_FLOTANTE { $$.type = FLOTANTE; $$.nDim = 0; $$.tDim1 = 0; $$.tDim2 = 0; }
+				| CONST_CARACTER  { $$.type = CARACTER; $$.nDim = 0; $$.tDim1 = 0; $$.tDim2 = 0; } ;
 
-funcion : IDENTIFICADOR PARENT_IZQUIERDO lista_expresiones PARENT_DERECHO
-				| IDENTIFICADOR PARENT_IZQUIERDO PARENT_DERECHO ;
+funcion : IDENTIFICADOR PARENT_IZQUIERDO lista_expresiones PARENT_DERECHO { tsFunctionCall($1, &$$); }
+				| IDENTIFICADOR PARENT_IZQUIERDO PARENT_DERECHO { tsFunctionCall($1, &$$); } ;
 
-const_matriz :  INI_BLOQUE lista_expresiones FIN_BLOQUE ;
+const_matriz :  INI_BLOQUE lista_expresiones FIN_BLOQUE { $$.type = $2.type; $$.nDim = $2.nDim; $$.tDim1 = $2.tDim1; $$.tDim2 = $2.tDim2;} ;
 
 %%
 
