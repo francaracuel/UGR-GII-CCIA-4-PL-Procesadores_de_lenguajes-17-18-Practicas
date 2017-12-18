@@ -173,7 +173,7 @@ sentencia_salida : SALIDA lista_expresiones_o_cadena PUNTO_Y_COMA ;
 
 sentencia_devolver : DEVOLVER expresion { tsCheckReturn($2,&$$); } PUNTO_Y_COMA ;
 
-expresion :{ $$.type = $2.type; $$.nDim = $2.nDim; $$.tDim1 = $2.tDim1; $$.tDim2 = $2.tDim2; } PARENT_IZQUIERDO expresion PARENT_DERECHO 
+expresion : PARENT_IZQUIERDO expresion PARENT_DERECHO { $$.type = $2.type; $$.nDim = $2.nDim; $$.tDim1 = $2.tDim1; $$.tDim2 = $2.tDim2; }
 				| OP_UNARIO expresion {tsOpUnary($1, $2, &$$); }
 				| constante { $$.type = $1.type; $$.nDim = $1.nDim; $$.tDim1 = $1.tDim1; $$.tDim2 = $1.tDim2; }
 				| funcion {$$.type = $1.type; $$.nDim = $1.nDim; $$.tDim1 = $1.tDim1; $$.tDim2 = $1.tDim2; currentFunction = -1;}
