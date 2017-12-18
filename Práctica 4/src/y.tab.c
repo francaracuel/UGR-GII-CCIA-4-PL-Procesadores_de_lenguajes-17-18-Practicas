@@ -1475,10 +1475,10 @@ yyreduce:
     {
 
 	if((yyvsp[-3]).type!=(yyvsp[-1]).type){
-		printf("Error(%d): Los tipos de la parte izquierda %d y derecha %d no coinciden.\n",line, (yyvsp[-3]).type, (yyvsp[-1]).type);
+		printf("Semantic Error(%d): Types are not equal.\n",line, (yyvsp[-3]).type, (yyvsp[-1]).type);
 	}
 	if(!equalSize((yyvsp[-3]),(yyvsp[-1]))){
-		printf("Error(%d): La parte izquierda y la parte derecha deben tener el mismo tamanyo.\n",line);
+		printf("Semantic Error(%d): Sizes are not equal.\n",line);
 	}
 }
 #line 1485 "src/y.tab.c" /* yacc.c:1646  */
@@ -1488,7 +1488,7 @@ yyreduce:
 #line 147 "src/semantic.y" /* yacc.c:1646  */
     {
 	if((yyvsp[-2]).type != BOOLEANO){
-		printf("Error(%d): La expresion no es de type logico.\n", line);
+		printf("Semantic Error(%d): Expression are not logic.\n", line);
 	}
 }
 #line 1495 "src/y.tab.c" /* yacc.c:1646  */
@@ -1498,7 +1498,7 @@ yyreduce:
 #line 152 "src/semantic.y" /* yacc.c:1646  */
     {
 					if((yyvsp[-4]).type != BOOLEANO){
-						printf("Error(%d): La expresion no es de type logico.\n", line);
+						printf("Semantic Error(%d): Expression are not logic.\n", line);
 					}
 				}
 #line 1505 "src/y.tab.c" /* yacc.c:1646  */
@@ -1508,7 +1508,7 @@ yyreduce:
 #line 158 "src/semantic.y" /* yacc.c:1646  */
     {
 	if((yyvsp[-1]).type != BOOLEANO){
-		printf("Error(%d): La expresion no es de type logico.\n", line);
+		printf("Semantic Error(%d): Expression are not logic.\n", line);
 	}
 }
 #line 1515 "src/y.tab.c" /* yacc.c:1646  */
@@ -1518,7 +1518,7 @@ yyreduce:
 #line 164 "src/semantic.y" /* yacc.c:1646  */
     {
 	if((yyvsp[-2]).type != BOOLEANO){
-		printf("Error(%d): La expresion no es de type logico.\n", line);
+		printf("Semantic Error(%d): Expression are not logic.\n", line);
 	}
 }
 #line 1525 "src/y.tab.c" /* yacc.c:1646  */
@@ -1626,7 +1626,7 @@ yyreduce:
 							tsGetId((yyvsp[-3]), &(yyval));
 
 							/*if($$.tDim1 < $3.tDim1){
-								printf("Error(%d): Dimension not allowed.\n",line);
+								printf("Semantic Error(%d): Dimension not allowed.\n",line);
 							}else{*/
 								(yyval).tDim1 = (yyvsp[-1]).tDim1;
 								(yyval).tDim2 = (yyvsp[-1]).tDim2;
@@ -1649,7 +1649,7 @@ yyreduce:
 						/*printf("$3.nDim:%d\n",$3.nDim );
 						printf("$6.nDim:%d\n",$6.nDim);
 						if($$.tDim1 < $3.tDim1 && $$.tDim2 < $6.tDim2){
-							printf("Error(%d): Dimension not allowed.\n",line);
+							printf("Semantic Error(%d): Dimension not allowed.\n",line);
 						}else{*/
 							(yyval).tDim1 = (yyvsp[-4]).tDim1;
 							(yyval).tDim2 = (yyvsp[-1]).tDim2;
@@ -2008,5 +2008,5 @@ yyreturn:
 // Se debe implementar la función yyerror. En este caso simplemente escribimos
 // el mensaje de error en pantalla
 void yyerror( char *msg ){
-	fprintf(stderr, "Línea %d: %s\n", yylineno, msg) ;
+	fprintf(stderr, "Line %d: %s\n", yylineno, msg) ;
 }

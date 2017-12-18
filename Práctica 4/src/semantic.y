@@ -137,33 +137,33 @@ sentencia : bloque
 sentencia_asignacion : variable ASIGNACION expresion PUNTO_Y_COMA {
 
 	if($1.type!=$3.type){
-		printf("Error(%d): Los tipos de la parte izquierda %d y derecha %d no coinciden.\n",line, $1.type, $3.type);
+		printf("Semantic Error(%d): Types are not equal.\n",line, $1.type, $3.type);
 	}
 	if(!equalSize($1,$3)){
-		printf("Error(%d): La parte izquierda y la parte derecha deben tener el mismo tamanyo.\n",line);
+		printf("Semantic Error(%d): Sizes are not equal.\n",line);
 	}
 } ;
 
 sentencia_si : SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia {
 	if($3.type != BOOLEANO){
-		printf("Error(%d): La expresion no es de type logico.\n", line);
+		printf("Semantic Error(%d): Expression are not logic.\n", line);
 	}
 }
 				|  SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia SI_NO sentencia {
 					if($3.type != BOOLEANO){
-						printf("Error(%d): La expresion no es de type logico.\n", line);
+						printf("Semantic Error(%d): Expression are not logic.\n", line);
 					}
 				} ;
 
 sentencia_hacer_hasta : HACER sentencia HASTA PARENT_IZQUIERDO expresion PARENT_DERECHO {
 	if($5.type != BOOLEANO){
-		printf("Error(%d): La expresion no es de type logico.\n", line);
+		printf("Semantic Error(%d): Expression are not logic.\n", line);
 	}
 } ;
 
 sentencia_mientras : MIENTRAS PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia {
 	if($3.type != BOOLEANO){
-		printf("Error(%d): La expresion no es de type logico.\n", line);
+		printf("Semantic Error(%d): Expression are not logic.\n", line);
 	}
 };
 
@@ -209,7 +209,7 @@ variable : IDENTIFICADOR {
 							tsGetId($1, &$$);
 
 							/*if($$.tDim1 < $3.tDim1){
-								printf("Error(%d): Dimension not allowed.\n",line);
+								printf("Semantic Error(%d): Dimension not allowed.\n",line);
 							}else{*/
 								$$.tDim1 = $3.tDim1;
 								$$.tDim2 = $3.tDim2;
@@ -227,7 +227,7 @@ variable : IDENTIFICADOR {
 						/*printf("$3.nDim:%d\n",$3.nDim );
 						printf("$6.nDim:%d\n",$6.nDim);
 						if($$.tDim1 < $3.tDim1 && $$.tDim2 < $6.tDim2){
-							printf("Error(%d): Dimension not allowed.\n",line);
+							printf("Semantic Error(%d): Dimension not allowed.\n",line);
 						}else{*/
 							$$.tDim1 = $3.tDim1;
 							$$.tDim2 = $6.tDim2;
@@ -293,5 +293,5 @@ const_matriz :  INI_BLOQUE lista_expresiones FIN_BLOQUE { $$.type = $2.type; $$.
 // Se debe implementar la función yyerror. En este caso simplemente escribimos
 // el mensaje de error en pantalla
 void yyerror( char *msg ){
-	fprintf(stderr, "Línea %d: %s\n", yylineno, msg) ;
+	fprintf(stderr, "Line %d: %s\n", yylineno, msg) ;
 }
