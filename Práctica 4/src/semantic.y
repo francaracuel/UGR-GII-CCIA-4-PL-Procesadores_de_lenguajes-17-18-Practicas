@@ -117,7 +117,7 @@ variables_locales : variables_locales cuerpo_declar_variables
 cuerpo_declar_variables : TIPO_BASICO { setType($1); } lista_variables PUNTO_Y_COMA
 				| error ;
 
-cabecera_subprograma : {decVar = 3;} TIPO_BASICO variable { decParam = 1;  tsAddSubprog($2); } PARENT_IZQUIERDO cabecera_subprograma2
+cabecera_subprograma : TIPO_BASICO IDENTIFICADOR { decParam = 1; } { tsAddSubprog($2); } PARENT_IZQUIERDO cabecera_subprograma2
 
 cabecera_subprograma2 :  lista_parametros PARENT_DERECHO { tsUpdateNparam($1); nParam = 0; decParam = 0; } {$1.nDim=0;}
 				| PARENT_DERECHO
@@ -197,9 +197,8 @@ variable : IDENTIFICADOR {
 					if(decVar == 1){
 						$1.nDim=0; $1.tDim1 = 0; $1.tDim2 = 0; tsAddId($1);
 					} else{
-						if(decVar != 3){
+						if(decParam == 0)
 							tsGetId($1, &$$);
-						}
 					}
 
 				}

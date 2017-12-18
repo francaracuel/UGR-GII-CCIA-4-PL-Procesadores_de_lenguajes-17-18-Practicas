@@ -117,6 +117,13 @@ void tsCleanIn(){
 		LIMIT--;
 	}
 
+    if (ts[LIMIT-1].in == FORM) {
+        while(ts[LIMIT-1].in != FUNCTION && LIMIT > 0){
+    		LIMIT--;
+    	}
+        LIMIT--;
+	}
+
 }
 
 // Busca una entrada según el id
@@ -356,8 +363,7 @@ int tsGetNextFunction(){
 void tsCheckReturn(attrs expr, attrs* res){
 
     int index = tsGetNextFunction();
-    printf("\n\nSiguiente Funcion: %s. Tipo: %d\n",ts[index].lex, ts[index].type );
-    printf("\n\nreturn,lex: %s. Tipo: %d\n",expr.lex, expr.type );
+
 
 	if (index > -1) {
 
@@ -396,7 +402,8 @@ void tsGetId(attrs id, attrs* res){
     int index = tsSearchId(id);
 
 	if(index==-1) {
-		printf("Error(%d): Id not found %s.\n", line, id.lex);
+        if(ts[index].in != FUNCTION)
+		      printf("Error(%d): Id not found %s.\n", line, id.lex);
 	} else {
 
 		res->lex = strdup(ts[index].lex);
@@ -601,8 +608,7 @@ void tsOpOr(attrs o1, attrs op, attrs o2, attrs* res){
 
 // Realiza la comprobación de la operación ==, !=
 void tsOpEqual(attrs o1, attrs op, attrs o2, attrs* res){
-    // printf("%d\n", o1.type );
-    // printf("%d\n", o2.type );
+
     if (o1.type != o2.type) {
 		printf("Error (%d): Expressions must be same types.", line);
 		return;
@@ -653,7 +659,7 @@ void tsFunctionCall(attrs id, attrs* res){
 
 		currentFunction = -1;
 
-		printf("Error(%d)): Id not found %s.\n", line, id.lex);
+		printf("Error(%d)): Function: Id not found %s.\n", line, id.lex);
 
     } else {
 

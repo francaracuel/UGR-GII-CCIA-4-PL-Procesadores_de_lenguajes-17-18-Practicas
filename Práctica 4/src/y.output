@@ -38,7 +38,7 @@ Grammar
 
    19 $@6: %empty
 
-   20 cabecera_subprograma: $@5 TIPO_BASICO variable $@6 PARENT_IZQUIERDO cabecera_subprograma2
+   20 cabecera_subprograma: TIPO_BASICO IDENTIFICADOR $@5 $@6 PARENT_IZQUIERDO cabecera_subprograma2
 
    21 $@7: %empty
 
@@ -169,7 +169,7 @@ CADENA (287) 41 42 75
 CONST_ENTERO_SIN_SIGNO (288) 66 67 78
 CONST_FLOTANTE (289) 81
 CONST_CARACTER (290) 82
-IDENTIFICADOR (291) 62 63 64 65 66 67 83 84
+IDENTIFICADOR (291) 20 62 63 64 65 66 67 83 84
 
 
 Nonterminals, with rules where they appear
@@ -240,7 +240,7 @@ expresion (67)
 lista_variables (68)
     on left: 59 60 61, on right: 16 42 59 61
 variable (69)
-    on left: 62 63 64, on right: 20 36 50 69 70 71
+    on left: 62 63 64, on right: 36 50 69 70 71
 var_array (70)
     on left: 65 66 67 68, on right: 59 60 61
 lista_parametros (71)
@@ -369,13 +369,13 @@ State 12
     5        | declar_de_variables_locales declar_de_subprogs . sentencias
     6 declar_de_subprogs: declar_de_subprogs . declar_subprog
 
-    FIN_BLOQUE   reduce using rule 4 (bloque2)
-    TIPO_BASICO  reduce using rule 18 ($@5)
-    $default     reduce using rule 26 ($@9)
+    TIPO_BASICO  shift, and go to state 17
 
-    declar_subprog        go to state 17
-    cabecera_subprograma  go to state 18
-    $@5                   go to state 19
+    FIN_BLOQUE  reduce using rule 4 (bloque2)
+    $default    reduce using rule 26 ($@9)
+
+    declar_subprog        go to state 18
+    cabecera_subprograma  go to state 19
     sentencias            go to state 20
     $@9                   go to state 21
 
@@ -417,25 +417,25 @@ State 16
 
 State 17
 
+   20 cabecera_subprograma: TIPO_BASICO . IDENTIFICADOR $@5 $@6 PARENT_IZQUIERDO cabecera_subprograma2
+
+    IDENTIFICADOR  shift, and go to state 25
+
+
+State 18
+
     6 declar_de_subprogs: declar_de_subprogs declar_subprog .
 
     $default  reduce using rule 6 (declar_de_subprogs)
 
 
-State 18
+State 19
 
     9 declar_subprog: cabecera_subprograma . $@2 bloque
 
     $default  reduce using rule 8 ($@2)
 
-    $@2  go to state 25
-
-
-State 19
-
-   20 cabecera_subprograma: $@5 . TIPO_BASICO variable $@6 PARENT_IZQUIERDO cabecera_subprograma2
-
-    TIPO_BASICO  shift, and go to state 26
+    $@2  go to state 26
 
 
 State 20
@@ -501,20 +501,20 @@ State 24
 
 State 25
 
-    9 declar_subprog: cabecera_subprograma $@2 . bloque
+   20 cabecera_subprograma: TIPO_BASICO IDENTIFICADOR . $@5 $@6 PARENT_IZQUIERDO cabecera_subprograma2
 
-    INI_BLOQUE  shift, and go to state 3
+    $default  reduce using rule 18 ($@5)
 
-    bloque  go to state 49
+    $@5  go to state 49
 
 
 State 26
 
-   20 cabecera_subprograma: $@5 TIPO_BASICO . variable $@6 PARENT_IZQUIERDO cabecera_subprograma2
+    9 declar_subprog: cabecera_subprograma $@2 . bloque
 
-    IDENTIFICADOR  shift, and go to state 34
+    INI_BLOQUE  shift, and go to state 3
 
-    variable  go to state 50
+    bloque  go to state 50
 
 
 State 27
@@ -756,18 +756,18 @@ State 48
 
 State 49
 
-    9 declar_subprog: cabecera_subprograma $@2 bloque .
-
-    $default  reduce using rule 9 (declar_subprog)
-
-
-State 50
-
-   20 cabecera_subprograma: $@5 TIPO_BASICO variable . $@6 PARENT_IZQUIERDO cabecera_subprograma2
+   20 cabecera_subprograma: TIPO_BASICO IDENTIFICADOR $@5 . $@6 PARENT_IZQUIERDO cabecera_subprograma2
 
     $default  reduce using rule 19 ($@6)
 
     $@6  go to state 81
+
+
+State 50
+
+    9 declar_subprog: cabecera_subprograma $@2 bloque .
+
+    $default  reduce using rule 9 (declar_subprog)
 
 
 State 51
@@ -1152,7 +1152,7 @@ State 80
 
 State 81
 
-   20 cabecera_subprograma: $@5 TIPO_BASICO variable $@6 . PARENT_IZQUIERDO cabecera_subprograma2
+   20 cabecera_subprograma: TIPO_BASICO IDENTIFICADOR $@5 $@6 . PARENT_IZQUIERDO cabecera_subprograma2
 
     PARENT_IZQUIERDO  shift, and go to state 107
 
@@ -1543,7 +1543,7 @@ State 106
 
 State 107
 
-   20 cabecera_subprograma: $@5 TIPO_BASICO variable $@6 PARENT_IZQUIERDO . cabecera_subprograma2
+   20 cabecera_subprograma: TIPO_BASICO IDENTIFICADOR $@5 $@6 PARENT_IZQUIERDO . cabecera_subprograma2
 
     PARENT_DERECHO  shift, and go to state 128
     TIPO_BASICO     shift, and go to state 129
@@ -1845,7 +1845,7 @@ State 129
 
 State 130
 
-   20 cabecera_subprograma: $@5 TIPO_BASICO variable $@6 PARENT_IZQUIERDO cabecera_subprograma2 .
+   20 cabecera_subprograma: TIPO_BASICO IDENTIFICADOR $@5 $@6 PARENT_IZQUIERDO cabecera_subprograma2 .
 
     $default  reduce using rule 20 (cabecera_subprograma)
 

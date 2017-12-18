@@ -47,12 +47,13 @@ principal
             caracter funcionE (caracter e1, caracter e2)
             {
                 leer "introduzca dos caracteres: ", e1, e2 ;
-                si (e1=='a')
-                devolver e1 ;
+                si (e1=='a'){
+                    devolver e1 ;
+                }
                 si_no si (e1=='b')
-                devolver e2 ;
+                    devolver e2 ;
                 si_no
-                devolver ' ';
+                    devolver ' ';
             }
             leer "introduzca un valor entero: ", valor ;
             si (d1>0.0)
