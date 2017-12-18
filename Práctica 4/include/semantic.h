@@ -84,7 +84,8 @@ extern inTS ts[MAX_IN];
 // Línea del fichero que se está analizando
 extern int line;
 
-// Se indica si se están utilizando las variables (0) o si se están declarando (1)
+// Se indica si se están utilizando las variables (0) o si se están declarando
+// (1), (2) llamada desde expresión
 extern int decVar;
 
 // Indica el comienzo de un subprograma o función con 0 si es un bloque y 1 si

@@ -122,7 +122,7 @@ cabecera_subprograma : {decVar = 3;} TIPO_BASICO variable { decParam = 1;  tsAdd
 cabecera_subprograma2 :  lista_parametros PARENT_DERECHO { tsUpdateNparam($1); nParam = 0; decParam = 0; } {$1.nDim=0;}
 				| PARENT_DERECHO
 
-sentencias : sentencias sentencia
+sentencias : sentencias {decVar = 2; } sentencia
 				| { decVar = 2; } sentencia ;
 
 sentencia : bloque
@@ -134,7 +134,12 @@ sentencia : bloque
 				| sentencia_devolver
 				| sentencia_hacer_hasta;
 
-sentencia_asignacion : var_array ASIGNACION expresion PUNTO_Y_COMA {
+sentencia_asignacion : variable ASIGNACION expresion PUNTO_Y_COMA {
+
+	printf("\ndecVar: %d\n", decVar);
+	printf("\nTipo izquierda: %d\n", $1.type);
+	printf("\nTipo derecha: %d\n", $3.type);
+
 	if($1.type!=$3.type){
 		printf("Error(%d): Los tipos de la parte izquierda %d y derecha %d no coinciden.\n",line, $1.type, $3.type);
 	}
@@ -174,18 +179,17 @@ sentencia_salida : SALIDA lista_expresiones_o_cadena PUNTO_Y_COMA ;
 sentencia_devolver : DEVOLVER expresion { tsCheckReturn($2,&$$); } PUNTO_Y_COMA ;
 
 expresion : PARENT_IZQUIERDO expresion PARENT_DERECHO { $$.type = $2.type; $$.nDim = $2.nDim; $$.tDim1 = $2.tDim1; $$.tDim2 = $2.tDim2; }
-				| OP_UNARIO expresion {printf(" [PRINT: OP_UNARIO] "); tsOpUnary($1, $2, &$$); }
-				| constante {printf(" [PRINT: CONSTANTE] ");  $$.type = $1.type; $$.nDim = $1.nDim; $$.tDim1 = $1.tDim1; $$.tDim2 = $1.tDim2; }
-				| funcion {printf(" [PRINT: FUNCION] "); $$.type = $1.type; $$.nDim = $1.nDim; $$.tDim1 = $1.tDim1; $$.tDim2 = $1.tDim2; currentFunction = -1;}
-				| variable {printf(" [PRINT: VARIABLE] ");  decVar = 0;}
-				/*| var_array {printf(" [PRINT: VAR_ARRAY] ");  decVar = 0;}*/
-				| OPSIGNO expresion {printf(" [PRINT: OP_SIGNO] "); tsOpSign($1, $2, &$$); } %prec OP_UNARIO
-				| expresion OPSIGNO expresion {printf(" [PRINT: OP_SINGNO BINARIA] ");  tsOpSignBin($1, $2, $3, &$$); }
-				| expresion OPMULTIPLICATIVO expresion {printf(" [PRINT: EXPRESION MUL] "); tsOpMul($1, $2, $3, &$$); }
-				| expresion OPIGUALDAD expresion {printf(" [PRINT: EXPRESION IGUALDAD] "); tsOpEqual($1, $2, $3, &$$); }
-				| expresion OPRELACION expresion {printf(" [PRINT: EXPRESION RELACION] "); tsOpRel($1, $2, $3, &$$); }
-				| expresion OPAND expresion {printf(" [PRINT: EXPRESION AND] "); tsOpAnd($1, $2, $3, &$$); }
-				| expresion OPOR expresion {printf(" [PRINT: EXPRESION OR] "); tsOpOr($1, $2, $3, &$$); }
+				| OP_UNARIO expresion {tsOpUnary($1, $2, &$$); }
+				| constante {$$.type = $1.type; $$.nDim = $1.nDim; $$.tDim1 = $1.tDim1; $$.tDim2 = $1.tDim2; }
+				| funcion {$$.type = $1.type; $$.nDim = $1.nDim; $$.tDim1 = $1.tDim1; $$.tDim2 = $1.tDim2; currentFunction = -1;}
+				| variable {decVar = 0;}
+				| OPSIGNO expresion {tsOpSign($1, $2, &$$); } %prec OP_UNARIO
+				| expresion OPSIGNO expresion  {tsOpSignBin($1, $2, $3, &$$); }
+				| expresion OPMULTIPLICATIVO expresion  {tsOpMul($1, $2, $3, &$$); }
+				| expresion OPIGUALDAD expresion  {tsOpEqual($1, $2, $3, &$$); }
+				| expresion OPRELACION expresion  {tsOpRel($1, $2, $3, &$$); }
+				| expresion OPAND expresion  {tsOpAnd($1, $2, $3, &$$); }
+				| expresion OPOR expresion  {tsOpOr($1, $2, $3, &$$); }
 				| error ;
 
 lista_variables : lista_variables COMA var_array   //hemos puesto var_array por variable es solo para la declaración
@@ -201,91 +205,57 @@ variable : IDENTIFICADOR {
 						}
 					}
 				}
-				| IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ {
+				| IDENTIFICADOR INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ {
+
+
+						if(decVar == 2) {
+
+							tsGetId($1, &$$);
+
+							if($$.nDim < $3.nDim){
+								printf("Error(%d): Dimension not allowed.\n",line);
+							}
+
+						}
+					}
+				| IDENTIFICADOR INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ {
 						if(decVar == 1) {
 							$1.nDim=$2.nDim; $1.tDim1=$2.tDim1; $1.tDim2=$2.tDim2; tsAddId($1);
-						} else {
+						}
+						else {
 							if (decVar == 2){
 								tsGetId($1, &$$);
 								if($$.nDim == $2.nDim){
 									$$.nDim = 0;
 									$$.tDim1 = 0;
 									$$.tDim2 = 0;
-								} else{
-									if($$.nDim > $2.nDim){
-										if($2.nDim == 0) {
-											$$.nDim = $2.nDim; $$.tDim1 = $2.tDim1; $$.tDim2 = $2.tDim2;
-										} else{
-											printf("Error(%d): Dimension not allowed.\n",line);
-										}
-									} else{
+								}
+								else{
+									if($$.nDim < $2.nDim){
 										printf("Error(%d): Dimension not allowed.\n",line); }
 								}
-							} else {
+							}
+							else {
 								tsGetId($1, &$$);
 							}
 						}
-					} {$$.nDim = 1; $$.tDim1=atoi($2.lex); $$.tDim2 = 0; }
-				| IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ {
-						if(decVar == 1) {
-							$1.nDim=$2.nDim; $1.tDim1=$2.tDim1; $1.tDim2=$2.tDim2; tsAddId($1);
-						} else {
-							if (decVar == 2){
-								tsGetId($1, &$$);
-								if($$.nDim == $2.nDim){
-									$$.nDim = 0;
-									$$.tDim1 = 0;
-									$$.tDim2 = 0;
-								} else{
-									if($$.nDim > $2.nDim){
-										if($2.nDim == 0) {
-											$$.nDim = $2.nDim; $$.tDim1 = $2.tDim1; $$.tDim2 = $2.tDim2;
-										} else{
-											printf("Error(%d): Dimension not allowed.\n",line);
-										}
-									} else{
-										printf("Error(%d): Dimension not allowed.\n",line); }
-								}
-							} else {
-								tsGetId($1, &$$);
-							}
-						}
-					} {$$.nDim = 2; $$.tDim1=atoi($2.lex); $$.tDim2=atoi($4.lex); } ;
+					}; /*{$$.nDim = 2; $$.tDim1=atoi($2.lex); $$.tDim2=atoi($4.lex); } ;*/ ;
 
 var_array : IDENTIFICADOR {
 					if(decVar == 1){
 						$1.nDim=0; $1.tDim1 = 0; $1.tDim2 = 0; tsAddId($1);
-					} else{
-						if(decVar != 3){
-							tsGetId($1, &$$);
-						}
 					}
 				}
-        | IDENTIFICADOR INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ {
+        | IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ {
 						if(decVar == 1) {
-							$1.nDim=$2.nDim; $1.tDim1=$2.tDim1; $1.tDim2=$2.tDim2; tsAddId($1);
-						} else {
-							if (decVar == 2){
-								tsGetId($1, &$$);
-								if($$.nDim == $2.nDim){
-									$$.nDim = 0;
-									$$.tDim1 = 0;
-									$$.tDim2 = 0;
-								} else{
-									if($$.nDim > $2.nDim){
-										if($2.nDim == 0) {
-											$$.nDim = $2.nDim; $$.tDim1 = $2.tDim1; $$.tDim2 = $2.tDim2;
-										} else{
-											printf("Error(%d): Dimension not allowed.\n",line);
-										}
-									} else{
-										printf("Error(%d): Dimension not allowed.\n",line); }
-								}
-							} else {
-								tsGetId($1, &$$);
-							}
+							$1.nDim=1; $1.tDim1=atoi($3.lex); $1.tDim2=0; tsAddId($1);
 						}
-					} {$$.nDim = 1; $$.tDim1=atoi($2.lex); $$.tDim2 = 0; }
+				}
+				| IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ {
+					if(decVar == 1) {
+						$1.nDim=2; $1.tDim1=atoi($3.lex); $1.tDim2=atoi($6.lex); tsAddId($1);
+					}
+				}
 				| error ;
 
 lista_parametros : lista_parametros COMA TIPO_BASICO variable { $4.nDim=0; nParam++; setType($3); tsAddParam($4); }

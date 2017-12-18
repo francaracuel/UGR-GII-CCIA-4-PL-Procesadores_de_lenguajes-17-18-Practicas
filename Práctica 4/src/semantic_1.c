@@ -124,11 +124,6 @@ int tsSearchId(attrs e){
     int i = LIMIT - 1;
 	int found = 0;
 
-    printf("ID e: ", e.lex);
-    printf("ID ts: ", e.lex);
-
-    // Revisar: lo comentado en el if
-
 	while (i > 0 && !found /*&& ts[i].in != MARK*/) {
 		if (ts[i].in == VAR && strcmp(e.lex, ts[i].lex) == 0) {
 			found = 1;
@@ -152,8 +147,6 @@ int tsSearchName(attrs e){
     int i = LIMIT - 1;
 	int found = 0;
 
-    printf("Función e: ", e.lex);
-    printf("Función ts: ", e.lex);
 
 	while (i > 0 && !found /*&& ts[i].in != MARK*/) {
 		if (ts[i].in == FUNCTION && strcmp(e.lex, ts[i].lex) == 0) {
@@ -445,19 +438,6 @@ void tsOpSign(attrs op, attrs o, attrs* res){
 // Realiza la comprobación de la operación +, - binaria
 void tsOpSignBin(attrs o1, attrs op, attrs o2, attrs* res){
 
-    /*int index = tsSearchId(o1);
-
-  	if(index!=-1) {
-      o1.lex = strdup(ts[index].lex);
-  		o1.type = ts[index].type;
-  		o1.nDim = ts[index].nDim;
-  		o1.tDim1 = ts[index].tDim1;
-  		o1.tDim2 = ts[index].tDim2;
-    }*/
-
-    printf("\natributo1:%s,tipo:%d\n",o1.lex, o1.type );
-    printf("\natributo1:%s,tipo:%d\n",o2.lex, o2.type );
-
     if (o1.type != o2.type) {
 	    printf("Error(%d): Expressions must be equals types.", line);
   		return;
@@ -639,11 +619,6 @@ void tsOpEqual(attrs o1, attrs op, attrs o2, attrs* res){
 
 // Realiza la comprobación de la operación <, >, <=, >=, <>
 void tsOpRel(attrs o1, attrs op, attrs o2, attrs* res){
-
-	// printf("%d\n", o1.type );
-	// printf("%d\n", o2.type );
-  //
-	// printf("%s\n", o1.lex );
 
     if (o1.type != o2.type) {
 
