@@ -188,7 +188,7 @@ k;--------------------------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
 
-    entero pe[0]--------------------------------
+    entero pe[0 [PRINT: CONSTANTE] ]--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -216,7 +216,7 @@ k;--------------------------------
 ----ELEMENTO 12-----------------
 -Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
-, pe2[0]--------------------------------
+, pe2[0 [PRINT: CONSTANTE] ]--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -247,7 +247,7 @@ k;--------------------------------
 -Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
  ;
-    flotante pf[0]--------------------------------
+    flotante pf[0 [PRINT: CONSTANTE] ]--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -279,7 +279,7 @@ k;--------------------------------
 ----ELEMENTO 14-----------------
 -Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
-, pf2[0]--------------------------------
+, pf2[0 [PRINT: CONSTANTE] ]--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -314,7 +314,7 @@ k;--------------------------------
 -Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
  ;
-    caracter pc[0]--------------------------------
+    caracter pc[0 [PRINT: CONSTANTE] ]--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -350,7 +350,7 @@ k;--------------------------------
 ----ELEMENTO 16-----------------
 -Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
-, pc2[0]--------------------------------
+, pc2[0 [PRINT: CONSTANTE] ]--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -389,7 +389,7 @@ k;--------------------------------
 -Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
  ;
-    booleano pl[0]--------------------------------
+    booleano pl[0 [PRINT: CONSTANTE] ]--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -432,7 +432,8 @@ k;--------------------------------
  ;
     fin_var_local
 
-    entero funcionA (--------------------------------
+    entero funcionA (Error(14): Id not found funcionA.
+--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -474,7 +475,8 @@ k;--------------------------------
 ----ELEMENTO 19-----------------
 -Entrada: FUNCTION    -Lexema: funcionA    -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
-entero a1,--------------------------------
+entero a1,Error(14): Id not found a1.
+--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -518,7 +520,8 @@ entero a1,--------------------------------
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
- flotante a2,--------------------------------
+ flotante a2,Error(14): Id not found a2.
+--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -564,7 +567,8 @@ entero a1,--------------------------------
 ----ELEMENTO 21-----------------
 -Entrada: FORM        -Lexema: a2          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
- caracter a3)--------------------------------
+ caracter a3)Error(14): Id not found a3.
+--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -980,7 +984,8 @@ Dimensiones[i][j]: 0[0][0]
 --------------------------------
 
         fin_var_local
-        caracter funcionB (--------------------------------
+        caracter funcionB (Error(19): Id not found funcionB.
+--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -1042,7 +1047,8 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 29-----------------
 -Entrada: FUNCTION    -Lexema: funcionB    -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
-caracter b1,--------------------------------
+caracter b1,Error(19): Id not found b1.
+--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -1106,7 +1112,8 @@ caracter b1,--------------------------------
 ----ELEMENTO 30-----------------
 -Entrada: FORM        -Lexema: b1          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
- booleano b2)--------------------------------
+ booleano b2)Error(19): Id not found b2.
+--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -1559,7 +1566,8 @@ Dimensiones[i][j]: 0[0][0]
 --------------------------------
 
             fin_var_local
-            flotante funcionC (--------------------------------
+            flotante funcionC (Error(24): Id not found funcionC.
+--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -1637,7 +1645,8 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 37-----------------
 -Entrada: FUNCTION    -Lexema: funcionC    -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
-booleano c1,--------------------------------
+booleano c1,Error(24): Id not found c1.
+--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -1717,7 +1726,8 @@ booleano c1,--------------------------------
 ----ELEMENTO 38-----------------
 -Entrada: FORM        -Lexema: c1          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
- entero c2)--------------------------------
+ entero c2)Error(24): Id not found c2.
+--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -2173,22 +2183,123 @@ Dimensiones[i][j]: 0[0][0]
 -Entrada: VAR         -Lexema: x1          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
 
+                entero pl1;--------------------------------
+----ELEMENTO 0-----------------
+-Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 1-----------------
+-Entrada: VAR         -Lexema: ve          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 2-----------------
+-Entrada: VAR         -Lexema: a           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 3-----------------
+-Entrada: VAR         -Lexema: b           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 4-----------------
+-Entrada: VAR         -Lexema: c           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 5-----------------
+-Entrada: VAR         -Lexema: def         -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 6-----------------
+-Entrada: VAR         -Lexema: vf          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 7-----------------
+-Entrada: VAR         -Lexema: h           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 8-----------------
+-Entrada: VAR         -Lexema: j           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 9-----------------
+-Entrada: VAR         -Lexema: k           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 10-----------------
+-Entrada: VAR         -Lexema: vc          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 11-----------------
+-Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 12-----------------
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 13-----------------
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 14-----------------
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 15-----------------
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 16-----------------
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 17-----------------
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 18-----------------
+-Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 19-----------------
+-Entrada: FUNCTION    -Lexema: funcionA    -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 20-----------------
+-Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 21-----------------
+-Entrada: FORM        -Lexema: a2          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 22-----------------
+-Entrada: FORM        -Lexema: a3          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 23-----------------
+-Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 24-----------------
+-Entrada: VAR         -Lexema: a3          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 25-----------------
+-Entrada: VAR         -Lexema: a2          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 26-----------------
+-Entrada: VAR         -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 27-----------------
+-Entrada: VAR         -Lexema: x1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 28-----------------
+-Entrada: VAR         -Lexema: x2          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 29-----------------
+-Entrada: FUNCTION    -Lexema: funcionB    -type: CARACTER  -nParam: 2   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 30-----------------
+-Entrada: FORM        -Lexema: b1          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 31-----------------
+-Entrada: FORM        -Lexema: b2          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 32-----------------
+-Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 33-----------------
+-Entrada: VAR         -Lexema: b2          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 34-----------------
+-Entrada: VAR         -Lexema: b1          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 35-----------------
+-Entrada: VAR         -Lexema: xf          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 36-----------------
+-Entrada: VAR         -Lexema: x2          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 37-----------------
+-Entrada: FUNCTION    -Lexema: funcionC    -type: FLOTANTE  -nParam: 2   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 38-----------------
+-Entrada: FORM        -Lexema: c1          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 39-----------------
+-Entrada: FORM        -Lexema: c2          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 40-----------------
+-Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 41-----------------
+-Entrada: VAR         -Lexema: c2          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 42-----------------
+-Entrada: VAR         -Lexema: c1          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 43-----------------
+-Entrada: VAR         -Lexema: x1          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 44-----------------
+-Entrada: VAR         -Lexema: pl1         -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+--------------------------------
+
                 fin_var_local
-                x1= 1.3 ;
-                si (c2>10)
-                c2= c2-1 ;
+                pl1 = c2 - [PRINT: VARIABLE]  1 [PRINT: CONSTANTE] ; [PRINT: OP_SINGNO BINARIA] 
+atributo1:c2,tipo:1
+
+atributo1:1,tipo:1
+
+                x1= 1.3 [PRINT: CONSTANTE]  ;
+                si (c2> [PRINT: VARIABLE] 10 [PRINT: CONSTANTE] ) [PRINT: EXPRESION RELACION] 
+                c2= c2- [PRINT: VARIABLE] 1 [PRINT: CONSTANTE]  ; [PRINT: OP_SINGNO BINARIA] 
 atributo1:c2,tipo:1
 
 atributo1:1,tipo:1
 
                 si_no
-                x1= 3.1 ;
-                devolver x1 ;
+                x1= 3.1 [PRINT: CONSTANTE]  ;
+                devolver x1 ; [PRINT: VARIABLE] 
             }
+            pl1 =Error(38): Id not found pl1.
+ 1 [PRINT: CONSTANTE] ;
 
-            x2 = x2*xf ;
+            x2 = x2* [PRINT: VARIABLE] xf ; [PRINT: VARIABLE]  [PRINT: EXPRESION MUL] 
         }
-        flotante funcionD (--------------------------------
+        flotante funcionD (Error(42): Id not found funcionD.
+--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -2256,7 +2367,8 @@ atributo1:1,tipo:1
 ----ELEMENTO 32-----------------
 -Entrada: FUNCTION    -Lexema: funcionD    -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
-flotante d1)--------------------------------
+flotante d1)Error(42): Id not found d1.
+--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -2643,7 +2755,8 @@ Dimensiones[i][j]: 0[0][0]
 --------------------------------
 
             fin_var_local
-            caracter funcionE (--------------------------------
+            caracter funcionE (Error(48): Id not found funcionE.
+--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -2723,7 +2836,8 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 38-----------------
 -Entrada: FUNCTION    -Lexema: funcionE    -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
-caracter e1,--------------------------------
+caracter e1,Error(48): Id not found e1.
+--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -2805,7 +2919,8 @@ caracter e1,--------------------------------
 ----ELEMENTO 39-----------------
 -Entrada: FORM        -Lexema: e1          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
- caracter e2)--------------------------------
+ caracter e2)Error(48): Id not found e2.
+--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -3178,15 +3293,15 @@ Dimensiones[i][j]: 0[0][0]
 --------------------------------
 
                 leer "introduzca dos caracteres: ", e1, e2 ;
-                si (e1=='a')
-                devolver e1 ;
-                si_no si (e1=='b')
-                devolver e2 ;
+                si (e1== [PRINT: VARIABLE] 'a' [PRINT: CONSTANTE] ) [PRINT: EXPRESION IGUALDAD] 
+                devolver e1 ; [PRINT: VARIABLE] 
+                si_no si (e1== [PRINT: VARIABLE] 'b' [PRINT: CONSTANTE] ) [PRINT: EXPRESION IGUALDAD] 
+                devolver e2 ; [PRINT: VARIABLE] 
                 si_no
-                devolver ' ';
+                devolver ' ' [PRINT: CONSTANTE] ;
             }
             leer "introduzca un valor entero: ", valor ;
-            si (d1>0.0)
+            si (d1> [PRINT: VARIABLE] 0.0 [PRINT: CONSTANTE] ) [PRINT: EXPRESION RELACION] 
             {--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
@@ -3365,9 +3480,8 @@ Dimensiones[i][j]: 0[0][0]
 --------------------------------
 
                 fin_var_local
-                dato= 2 ;
-                dato= valor*Error(62): Id not found valor.
-20/dato ;
+                dato= 2 [PRINT: CONSTANTE]  ;
+                dato= valor* [PRINT: VARIABLE] 20 [PRINT: CONSTANTE]  [PRINT: EXPRESION MUL] /dato ; [PRINT: VARIABLE]  [PRINT: EXPRESION MUL] 
             }
             si_no {--------------------------------
 ----ELEMENTO 0-----------------
@@ -3456,19 +3570,16 @@ Dimensiones[i][j]: 0[0][0]
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
 
-                valor=Error(65): Id not found valor.
- valor *Error(65): Id not found valor.
- 100 ;
-                d1= d1/1000.0Error(66): Expressions must be same types. ;
+                valor= valor * [PRINT: VARIABLE]  100 [PRINT: CONSTANTE]  [PRINT: EXPRESION MUL]  ;
+                d1= d1/ [PRINT: VARIABLE] 1000.0 [PRINT: CONSTANTE]  [PRINT: EXPRESION MUL]  ;
             }
 
-            pf[0]Error(69): Id not found pf.
- = 1;Error(69): La parte izquierda y la parte derecha deben tener el mismo tamanyo.
+            pf[0 [PRINT: CONSTANTE] ] = 1 [PRINT: CONSTANTE] ;Error(72): La parte izquierda y la parte derecha deben tener el mismo tamanyo.
 
 
-            b = --3;
+            b = --3 [PRINT: CONSTANTE]  [PRINT: OP_SIGNO]  [PRINT: OP_SIGNO] ;
 
-            devolver d1 ;Error(73): Return not equal to return function.
+            devolver d1 ; [PRINT: VARIABLE] Error(76): Return not equal to return function.
 
         }
 

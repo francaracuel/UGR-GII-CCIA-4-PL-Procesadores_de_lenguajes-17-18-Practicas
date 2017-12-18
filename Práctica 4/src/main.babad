@@ -25,7 +25,9 @@ principal
             {
                 ini_var_local
                 flotante x1 ;
+                entero pl1;
                 fin_var_local
+                pl1 = c2 - 1;
                 x1= 1.3 ;
                 si (c2>10)
                 c2= c2-1 ;
