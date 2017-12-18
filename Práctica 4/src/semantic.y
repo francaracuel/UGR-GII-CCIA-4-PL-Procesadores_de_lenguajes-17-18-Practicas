@@ -136,10 +136,6 @@ sentencia : bloque
 
 sentencia_asignacion : variable ASIGNACION expresion PUNTO_Y_COMA {
 
-	printf("\ndecVar: %d\n", decVar);
-	printf("\nTipo izquierda: %d\n", $1.type);
-	printf("\nTipo derecha: %d\n", $3.type);
-
 	if($1.type!=$3.type){
 		printf("Error(%d): Los tipos de la parte izquierda %d y derecha %d no coinciden.\n",line, $1.type, $3.type);
 	}
@@ -197,6 +193,7 @@ lista_variables : lista_variables COMA var_array   //hemos puesto var_array por 
 				| lista_variables error var_array ;
 
 variable : IDENTIFICADOR {
+
 					if(decVar == 1){
 						$1.nDim=0; $1.tDim1 = 0; $1.tDim2 = 0; tsAddId($1);
 					} else{
@@ -204,42 +201,43 @@ variable : IDENTIFICADOR {
 							tsGetId($1, &$$);
 						}
 					}
+
 				}
 				| IDENTIFICADOR INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ {
-
 
 						if(decVar == 2) {
 
 							tsGetId($1, &$$);
 
-							if($$.nDim < $3.nDim){
+							/*if($$.tDim1 < $3.tDim1){
 								printf("Error(%d): Dimension not allowed.\n",line);
-							}
+							}else{*/
+								$$.tDim1 = $3.tDim1;
+								$$.tDim2 = $3.tDim2;
+								$$.nDim = $$.nDim -1;
+							//}
 
 						}
+
 					}
 				| IDENTIFICADOR INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ {
-						if(decVar == 1) {
-							$1.nDim=$2.nDim; $1.tDim1=$2.tDim1; $1.tDim2=$2.tDim2; tsAddId($1);
-						}
-						else {
-							if (decVar == 2){
-								tsGetId($1, &$$);
-								if($$.nDim == $2.nDim){
-									$$.nDim = 0;
-									$$.tDim1 = 0;
-									$$.tDim2 = 0;
-								}
-								else{
-									if($$.nDim < $2.nDim){
-										printf("Error(%d): Dimension not allowed.\n",line); }
-								}
-							}
-							else {
-								tsGetId($1, &$$);
-							}
-						}
-					}; /*{$$.nDim = 2; $$.tDim1=atoi($2.lex); $$.tDim2=atoi($4.lex); } ;*/ ;
+
+					if(decVar == 2) {
+
+						tsGetId($1, &$$);
+						/*printf("$3.nDim:%d\n",$3.nDim );
+						printf("$6.nDim:%d\n",$6.nDim);
+						if($$.tDim1 < $3.tDim1 && $$.tDim2 < $6.tDim2){
+							printf("Error(%d): Dimension not allowed.\n",line);
+						}else{*/
+							$$.tDim1 = $3.tDim1;
+							$$.tDim2 = $6.tDim2;
+							$$.nDim = $$.nDim -2;
+						//}
+
+					}
+
+				};
 
 var_array : IDENTIFICADOR {
 					if(decVar == 1){

@@ -188,7 +188,7 @@ k;--------------------------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
 
-    entero pe[1],--------------------------------
+    entero pe[0],--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -214,9 +214,9 @@ k;--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 --------------------------------
- pe2[1] ;--------------------------------
+ pe2[0] ;--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -242,79 +242,12 @@ k;--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
---------------------------------
-
-    flotante pf[1],--------------------------------
-----ELEMENTO 0-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 1-----------------
--Entrada: VAR         -Lexema: ve          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 2-----------------
--Entrada: VAR         -Lexema: a           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 3-----------------
--Entrada: VAR         -Lexema: b           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 4-----------------
--Entrada: VAR         -Lexema: c           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 5-----------------
--Entrada: VAR         -Lexema: def         -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 6-----------------
--Entrada: VAR         -Lexema: vf          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 7-----------------
--Entrada: VAR         -Lexema: h           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 8-----------------
--Entrada: VAR         -Lexema: j           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 9-----------------
--Entrada: VAR         -Lexema: k           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 10-----------------
--Entrada: VAR         -Lexema: vc          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 11-----------------
--Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
---------------------------------
- pf2[3] ;--------------------------------
-----ELEMENTO 0-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 1-----------------
--Entrada: VAR         -Lexema: ve          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 2-----------------
--Entrada: VAR         -Lexema: a           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 3-----------------
--Entrada: VAR         -Lexema: b           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 4-----------------
--Entrada: VAR         -Lexema: c           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 5-----------------
--Entrada: VAR         -Lexema: def         -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 6-----------------
--Entrada: VAR         -Lexema: vf          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 7-----------------
--Entrada: VAR         -Lexema: h           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 8-----------------
--Entrada: VAR         -Lexema: j           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 9-----------------
--Entrada: VAR         -Lexema: k           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 10-----------------
--Entrada: VAR         -Lexema: vc          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 11-----------------
--Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 --------------------------------
 
-    caracter pc[3],--------------------------------
+    flotante pf[0],--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -340,17 +273,13 @@ k;--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 --------------------------------
- pc2[3] ;--------------------------------
+ pf2[0] ;--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -376,20 +305,91 @@ k;--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
+--------------------------------
+
+    caracter pc[0],--------------------------------
+----ELEMENTO 0-----------------
+-Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 1-----------------
+-Entrada: VAR         -Lexema: ve          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 2-----------------
+-Entrada: VAR         -Lexema: a           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 3-----------------
+-Entrada: VAR         -Lexema: b           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 4-----------------
+-Entrada: VAR         -Lexema: c           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 5-----------------
+-Entrada: VAR         -Lexema: def         -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 6-----------------
+-Entrada: VAR         -Lexema: vf          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 7-----------------
+-Entrada: VAR         -Lexema: h           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 8-----------------
+-Entrada: VAR         -Lexema: j           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 9-----------------
+-Entrada: VAR         -Lexema: k           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 10-----------------
+-Entrada: VAR         -Lexema: vc          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 11-----------------
+-Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 12-----------------
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 13-----------------
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 14-----------------
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 15-----------------
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
+--------------------------------
+ pc2[0] ;--------------------------------
+----ELEMENTO 0-----------------
+-Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 1-----------------
+-Entrada: VAR         -Lexema: ve          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 2-----------------
+-Entrada: VAR         -Lexema: a           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 3-----------------
+-Entrada: VAR         -Lexema: b           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 4-----------------
+-Entrada: VAR         -Lexema: c           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 5-----------------
+-Entrada: VAR         -Lexema: def         -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 6-----------------
+-Entrada: VAR         -Lexema: vf          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 7-----------------
+-Entrada: VAR         -Lexema: h           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 8-----------------
+-Entrada: VAR         -Lexema: j           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 9-----------------
+-Entrada: VAR         -Lexema: k           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 10-----------------
+-Entrada: VAR         -Lexema: vc          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 11-----------------
+-Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 12-----------------
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 13-----------------
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 14-----------------
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 15-----------------
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
+----ELEMENTO 16-----------------
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 --------------------------------
 
-    booleano pl[3][5]--------------------------------
+    flotante pl[0][0]--------------------------------
 ----ELEMENTO 0-----------------
 -Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 1-----------------
@@ -415,19 +415,19 @@ k;--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 --------------------------------
  ;
     fin_var_local
@@ -458,21 +458,21 @@ k;--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
 entero a1,--------------------------------
 ----ELEMENTO 0-----------------
@@ -500,21 +500,21 @@ entero a1,--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 --------------------------------
@@ -544,21 +544,21 @@ entero a1,--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -590,21 +590,21 @@ entero a1,--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -639,21 +639,21 @@ entero a1,--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -700,21 +700,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -763,21 +763,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -828,21 +828,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -886,21 +886,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -944,21 +944,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -1006,21 +1006,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -1068,21 +1068,21 @@ caracter b1,--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -1132,21 +1132,21 @@ caracter b1,--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -1199,21 +1199,21 @@ caracter b1,--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -1278,21 +1278,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -1359,21 +1359,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -1433,21 +1433,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -1507,21 +1507,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -1585,21 +1585,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -1663,21 +1663,21 @@ booleano c1,--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -1743,21 +1743,21 @@ booleano c1,--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -1826,21 +1826,21 @@ booleano c1,--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -1921,21 +1921,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -2018,21 +2018,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -2108,21 +2108,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -2199,21 +2199,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -2268,45 +2268,21 @@ Dimensiones[i][j]: 0[0][0]
 
                 fin_var_local
                 pl1 = c2 - 1;
-decVar: 0
-
-Tipo izquierda: 1
-
-Tipo derecha: 1
-
                 x1= 1.3 ;
-decVar: 2
-
-Tipo izquierda: 2
-
-Tipo derecha: 2
-
                 si (c2>10)
                 c2= c2-1 ;
-decVar: 0
-
-Tipo izquierda: 1
-
-Tipo derecha: 1
-
                 si_no
                 x1= 3.1 ;
-decVar: 0
-
-Tipo izquierda: 2
-
-Tipo derecha: 2
-
                 devolver x1 ;
+
+Siguiente Funcion: x2. Tipo: 2
+
+
+return,lex: x1. Tipo: 2
+
             }
 
             x2 = x2*xf ;
-decVar: 0
-
-Tipo izquierda: 2
-
-Tipo derecha: 2
-
         }
         flotante funcionD (--------------------------------
 ----ELEMENTO 0-----------------
@@ -2334,21 +2310,21 @@ Tipo derecha: 2
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -2402,21 +2378,21 @@ flotante d1)--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -2473,21 +2449,21 @@ flotante d1)--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -2556,21 +2532,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -2632,21 +2608,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -2709,21 +2685,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -2789,21 +2765,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -2869,21 +2845,21 @@ caracter e1,--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -2951,21 +2927,21 @@ caracter e1,--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -3036,21 +3012,21 @@ caracter e1,--------------------------------
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -3133,21 +3109,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -3232,21 +3208,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -3300,10 +3276,28 @@ Dimensiones[i][j]: 0[0][0]
                 leer "introduzca dos caracteres: ", e1, e2 ;
                 si (e1=='a')
                 devolver e1 ;
+
+Siguiente Funcion: valor. Tipo: 3
+
+
+return,lex: e1. Tipo: 3
+
                 si_no si (e1=='b')
                 devolver e2 ;
+
+Siguiente Funcion: valor. Tipo: 3
+
+
+return,lex: e2. Tipo: 3
+
                 si_no
                 devolver ' ';
+
+Siguiente Funcion: valor. Tipo: 3
+
+
+return,lex: ' '. Tipo: 3
+
             }
             leer "introduzca un valor entero: ", valor ;
             si (d1>0.0)
@@ -3333,21 +3327,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -3421,21 +3415,21 @@ Dimensiones[i][j]: 0[0][0]
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -3486,19 +3480,7 @@ Dimensiones[i][j]: 0[0][0]
 
                 fin_var_local
                 dato= 2 ;
-decVar: 2
-
-Tipo izquierda: 1
-
-Tipo derecha: 1
-
                 dato= valor*20/dato ;
-decVar: 0
-
-Tipo izquierda: 1
-
-Tipo derecha: 1
-
             }
             si_no {--------------------------------
 ----ELEMENTO 0-----------------
@@ -3526,21 +3508,21 @@ Tipo derecha: 1
 ----ELEMENTO 11-----------------
 -Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
+-Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
+-Entrada: VAR         -Lexema: pl          -type: FLOTANTE  -nParam: 0   -nDim: 2   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
+-Entrada: FUNCTION    -Lexema: 0           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 20-----------------
 -Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
 ----ELEMENTO 21-----------------
@@ -3588,652 +3570,22 @@ Tipo derecha: 1
 --------------------------------
 
                 valor= valor * 100 ;
-decVar: 0
-
-Tipo izquierda: 1
-
-Tipo derecha: 1
-
                 d1= d1/1000.0 ;
-decVar: 0
-
-Tipo izquierda: 2
-
-Tipo derecha: 2
-
             }
 
-            pf[0] =DETECTA VECTOR -> decvar(2):  pf[1];DETECTA VECTOR -> decvar(2): 
-decVar: 0
-
-Tipo izquierda: 2
-
-Tipo derecha: 2
-
+            pf[0] = 1.3;
 
             b = --3;
-decVar: 2
 
-Tipo izquierda: 1
+            devolver d1 ;
 
-Tipo derecha: 1
-
+Siguiente Funcion: valor. Tipo: 3
 
 
-
-            devolver d1 ;Error(77): Return not equal to return function.
+return,lex: d1. Tipo: 2
+Error(75): Return not equal to return function.
 
         }
-
-
-        flotante funcionISMAEL (--------------------------------
-----ELEMENTO 0-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 1-----------------
--Entrada: VAR         -Lexema: ve          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 2-----------------
--Entrada: VAR         -Lexema: a           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 3-----------------
--Entrada: VAR         -Lexema: b           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 4-----------------
--Entrada: VAR         -Lexema: c           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 5-----------------
--Entrada: VAR         -Lexema: def         -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 6-----------------
--Entrada: VAR         -Lexema: vf          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 7-----------------
--Entrada: VAR         -Lexema: h           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 8-----------------
--Entrada: VAR         -Lexema: j           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 9-----------------
--Entrada: VAR         -Lexema: k           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 10-----------------
--Entrada: VAR         -Lexema: vc          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 11-----------------
--Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
-----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 20-----------------
--Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 21-----------------
--Entrada: FORM        -Lexema: a2          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 22-----------------
--Entrada: FORM        -Lexema: a3          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 23-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 24-----------------
--Entrada: VAR         -Lexema: a3          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 25-----------------
--Entrada: VAR         -Lexema: a2          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 26-----------------
--Entrada: VAR         -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 27-----------------
--Entrada: VAR         -Lexema: x1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 28-----------------
--Entrada: VAR         -Lexema: x2          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 29-----------------
--Entrada: FUNCTION    -Lexema: x2          -type: CARACTER  -nParam: 2   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 30-----------------
--Entrada: FORM        -Lexema: b1          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 31-----------------
--Entrada: FORM        -Lexema: b2          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 32-----------------
--Entrada: FUNCTION    -Lexema: xf          -type: FLOTANTE  -nParam: 1   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 33-----------------
--Entrada: FORM        -Lexema: d1          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 34-----------------
--Entrada: FUNCTION    -Lexema: d1          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
---------------------------------
-booleano c1,--------------------------------
-----ELEMENTO 0-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 1-----------------
--Entrada: VAR         -Lexema: ve          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 2-----------------
--Entrada: VAR         -Lexema: a           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 3-----------------
--Entrada: VAR         -Lexema: b           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 4-----------------
--Entrada: VAR         -Lexema: c           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 5-----------------
--Entrada: VAR         -Lexema: def         -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 6-----------------
--Entrada: VAR         -Lexema: vf          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 7-----------------
--Entrada: VAR         -Lexema: h           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 8-----------------
--Entrada: VAR         -Lexema: j           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 9-----------------
--Entrada: VAR         -Lexema: k           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 10-----------------
--Entrada: VAR         -Lexema: vc          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 11-----------------
--Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
-----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 20-----------------
--Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 21-----------------
--Entrada: FORM        -Lexema: a2          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 22-----------------
--Entrada: FORM        -Lexema: a3          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 23-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 24-----------------
--Entrada: VAR         -Lexema: a3          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 25-----------------
--Entrada: VAR         -Lexema: a2          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 26-----------------
--Entrada: VAR         -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 27-----------------
--Entrada: VAR         -Lexema: x1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 28-----------------
--Entrada: VAR         -Lexema: x2          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 29-----------------
--Entrada: FUNCTION    -Lexema: x2          -type: CARACTER  -nParam: 2   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 30-----------------
--Entrada: FORM        -Lexema: b1          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 31-----------------
--Entrada: FORM        -Lexema: b2          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 32-----------------
--Entrada: FUNCTION    -Lexema: xf          -type: FLOTANTE  -nParam: 1   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 33-----------------
--Entrada: FORM        -Lexema: d1          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 34-----------------
--Entrada: FUNCTION    -Lexema: d1          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 35-----------------
--Entrada: FORM        -Lexema: c1          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
---------------------------------
- entero c2)--------------------------------
-----ELEMENTO 0-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 1-----------------
--Entrada: VAR         -Lexema: ve          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 2-----------------
--Entrada: VAR         -Lexema: a           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 3-----------------
--Entrada: VAR         -Lexema: b           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 4-----------------
--Entrada: VAR         -Lexema: c           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 5-----------------
--Entrada: VAR         -Lexema: def         -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 6-----------------
--Entrada: VAR         -Lexema: vf          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 7-----------------
--Entrada: VAR         -Lexema: h           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 8-----------------
--Entrada: VAR         -Lexema: j           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 9-----------------
--Entrada: VAR         -Lexema: k           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 10-----------------
--Entrada: VAR         -Lexema: vc          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 11-----------------
--Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
-----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 20-----------------
--Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 21-----------------
--Entrada: FORM        -Lexema: a2          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 22-----------------
--Entrada: FORM        -Lexema: a3          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 23-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 24-----------------
--Entrada: VAR         -Lexema: a3          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 25-----------------
--Entrada: VAR         -Lexema: a2          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 26-----------------
--Entrada: VAR         -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 27-----------------
--Entrada: VAR         -Lexema: x1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 28-----------------
--Entrada: VAR         -Lexema: x2          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 29-----------------
--Entrada: FUNCTION    -Lexema: x2          -type: CARACTER  -nParam: 2   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 30-----------------
--Entrada: FORM        -Lexema: b1          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 31-----------------
--Entrada: FORM        -Lexema: b2          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 32-----------------
--Entrada: FUNCTION    -Lexema: xf          -type: FLOTANTE  -nParam: 1   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 33-----------------
--Entrada: FORM        -Lexema: d1          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 34-----------------
--Entrada: FUNCTION    -Lexema: d1          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 35-----------------
--Entrada: FORM        -Lexema: c1          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 36-----------------
--Entrada: FORM        -Lexema: c2          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
---------------------------------
-
-        {--------------------------------
-----ELEMENTO 0-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 1-----------------
--Entrada: VAR         -Lexema: ve          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 2-----------------
--Entrada: VAR         -Lexema: a           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 3-----------------
--Entrada: VAR         -Lexema: b           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 4-----------------
--Entrada: VAR         -Lexema: c           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 5-----------------
--Entrada: VAR         -Lexema: def         -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 6-----------------
--Entrada: VAR         -Lexema: vf          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 7-----------------
--Entrada: VAR         -Lexema: h           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 8-----------------
--Entrada: VAR         -Lexema: j           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 9-----------------
--Entrada: VAR         -Lexema: k           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 10-----------------
--Entrada: VAR         -Lexema: vc          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 11-----------------
--Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
-----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 20-----------------
--Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 21-----------------
--Entrada: FORM        -Lexema: a2          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 22-----------------
--Entrada: FORM        -Lexema: a3          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 23-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 24-----------------
--Entrada: VAR         -Lexema: a3          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 25-----------------
--Entrada: VAR         -Lexema: a2          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 26-----------------
--Entrada: VAR         -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 27-----------------
--Entrada: VAR         -Lexema: x1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 28-----------------
--Entrada: VAR         -Lexema: x2          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 29-----------------
--Entrada: FUNCTION    -Lexema: x2          -type: CARACTER  -nParam: 2   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 30-----------------
--Entrada: FORM        -Lexema: b1          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 31-----------------
--Entrada: FORM        -Lexema: b2          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 32-----------------
--Entrada: FUNCTION    -Lexema: xf          -type: FLOTANTE  -nParam: 1   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 33-----------------
--Entrada: FORM        -Lexema: d1          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 34-----------------
--Entrada: FUNCTION    -Lexema: d1          -type: FLOTANTE  -nParam: 2   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 35-----------------
--Entrada: FORM        -Lexema: c1          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 36-----------------
--Entrada: FORM        -Lexema: c2          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 37-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
---------------------------------
-
-
-
-
-Tipo Entrada: 3
-Lexema: c2
-Tipo Dato: 1
-Num Parametros: 0
-Dimensiones[i][j]: 0[0][0]
-
-
---------------------------------
-----ELEMENTO 0-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 1-----------------
--Entrada: VAR         -Lexema: ve          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 2-----------------
--Entrada: VAR         -Lexema: a           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 3-----------------
--Entrada: VAR         -Lexema: b           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 4-----------------
--Entrada: VAR         -Lexema: c           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 5-----------------
--Entrada: VAR         -Lexema: def         -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 6-----------------
--Entrada: VAR         -Lexema: vf          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 7-----------------
--Entrada: VAR         -Lexema: h           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 8-----------------
--Entrada: VAR         -Lexema: j           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 9-----------------
--Entrada: VAR         -Lexema: k           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 10-----------------
--Entrada: VAR         -Lexema: vc          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 11-----------------
--Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
-----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 20-----------------
--Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 21-----------------
--Entrada: FORM        -Lexema: a2          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 22-----------------
--Entrada: FORM        -Lexema: a3          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 23-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 24-----------------
--Entrada: VAR         -Lexema: a3          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 25-----------------
--Entrada: VAR         -Lexema: a2          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 26-----------------
--Entrada: VAR         -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 27-----------------
--Entrada: VAR         -Lexema: x1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 28-----------------
--Entrada: VAR         -Lexema: x2          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 29-----------------
--Entrada: FUNCTION    -Lexema: x2          -type: CARACTER  -nParam: 2   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 30-----------------
--Entrada: FORM        -Lexema: b1          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 31-----------------
--Entrada: FORM        -Lexema: b2          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 32-----------------
--Entrada: FUNCTION    -Lexema: xf          -type: FLOTANTE  -nParam: 1   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 33-----------------
--Entrada: FORM        -Lexema: d1          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 34-----------------
--Entrada: FUNCTION    -Lexema: d1          -type: FLOTANTE  -nParam: 2   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 35-----------------
--Entrada: FORM        -Lexema: c1          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 36-----------------
--Entrada: FORM        -Lexema: c2          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 37-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 38-----------------
--Entrada: VAR         -Lexema: c2          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
---------------------------------
-
-
-
-
-Tipo Entrada: 3
-Lexema: c1
-Tipo Dato: 4
-Num Parametros: 0
-Dimensiones[i][j]: 0[0][0]
-
-
---------------------------------
-----ELEMENTO 0-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 1-----------------
--Entrada: VAR         -Lexema: ve          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 2-----------------
--Entrada: VAR         -Lexema: a           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 3-----------------
--Entrada: VAR         -Lexema: b           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 4-----------------
--Entrada: VAR         -Lexema: c           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 5-----------------
--Entrada: VAR         -Lexema: def         -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 6-----------------
--Entrada: VAR         -Lexema: vf          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 7-----------------
--Entrada: VAR         -Lexema: h           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 8-----------------
--Entrada: VAR         -Lexema: j           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 9-----------------
--Entrada: VAR         -Lexema: k           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 10-----------------
--Entrada: VAR         -Lexema: vc          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 11-----------------
--Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
-----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 20-----------------
--Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 21-----------------
--Entrada: FORM        -Lexema: a2          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 22-----------------
--Entrada: FORM        -Lexema: a3          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 23-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 24-----------------
--Entrada: VAR         -Lexema: a3          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 25-----------------
--Entrada: VAR         -Lexema: a2          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 26-----------------
--Entrada: VAR         -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 27-----------------
--Entrada: VAR         -Lexema: x1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 28-----------------
--Entrada: VAR         -Lexema: x2          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 29-----------------
--Entrada: FUNCTION    -Lexema: x2          -type: CARACTER  -nParam: 2   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 30-----------------
--Entrada: FORM        -Lexema: b1          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 31-----------------
--Entrada: FORM        -Lexema: b2          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 32-----------------
--Entrada: FUNCTION    -Lexema: xf          -type: FLOTANTE  -nParam: 1   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 33-----------------
--Entrada: FORM        -Lexema: d1          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 34-----------------
--Entrada: FUNCTION    -Lexema: d1          -type: FLOTANTE  -nParam: 2   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 35-----------------
--Entrada: FORM        -Lexema: c1          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 36-----------------
--Entrada: FORM        -Lexema: c2          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 37-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 38-----------------
--Entrada: VAR         -Lexema: c2          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 39-----------------
--Entrada: VAR         -Lexema: c1          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
---------------------------------
-
-            ini_var_local
-            flotante x1 ;--------------------------------
-----ELEMENTO 0-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 1-----------------
--Entrada: VAR         -Lexema: ve          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 2-----------------
--Entrada: VAR         -Lexema: a           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 3-----------------
--Entrada: VAR         -Lexema: b           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 4-----------------
--Entrada: VAR         -Lexema: c           -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 5-----------------
--Entrada: VAR         -Lexema: def         -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 6-----------------
--Entrada: VAR         -Lexema: vf          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 7-----------------
--Entrada: VAR         -Lexema: h           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 8-----------------
--Entrada: VAR         -Lexema: j           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 9-----------------
--Entrada: VAR         -Lexema: k           -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 10-----------------
--Entrada: VAR         -Lexema: vc          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 11-----------------
--Entrada: VAR         -Lexema: vl          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 12-----------------
--Entrada: VAR         -Lexema: pe          -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 13-----------------
--Entrada: VAR         -Lexema: pe2         -type: ENTERO    -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 14-----------------
--Entrada: VAR         -Lexema: pf          -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 1   -tDim2: 0   
-----ELEMENTO 15-----------------
--Entrada: VAR         -Lexema: pf2         -type: FLOTANTE  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 16-----------------
--Entrada: VAR         -Lexema: pc          -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 17-----------------
--Entrada: VAR         -Lexema: pc2         -type: CARACTER  -nParam: 0   -nDim: 1   -tDim1: 3   -tDim2: 0   
-----ELEMENTO 18-----------------
--Entrada: VAR         -Lexema: pl          -type: BOOLEANO  -nParam: 0   -nDim: 2   -tDim1: 3   -tDim2: 5   
-----ELEMENTO 19-----------------
--Entrada: FUNCTION    -Lexema: 5           -type: ENTERO    -nParam: 3   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 20-----------------
--Entrada: FORM        -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 21-----------------
--Entrada: FORM        -Lexema: a2          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 22-----------------
--Entrada: FORM        -Lexema: a3          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 23-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 24-----------------
--Entrada: VAR         -Lexema: a3          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 25-----------------
--Entrada: VAR         -Lexema: a2          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 26-----------------
--Entrada: VAR         -Lexema: a1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 27-----------------
--Entrada: VAR         -Lexema: x1          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 28-----------------
--Entrada: VAR         -Lexema: x2          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 29-----------------
--Entrada: FUNCTION    -Lexema: x2          -type: CARACTER  -nParam: 2   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 30-----------------
--Entrada: FORM        -Lexema: b1          -type: CARACTER  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 31-----------------
--Entrada: FORM        -Lexema: b2          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 32-----------------
--Entrada: FUNCTION    -Lexema: xf          -type: FLOTANTE  -nParam: 1   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 33-----------------
--Entrada: FORM        -Lexema: d1          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 34-----------------
--Entrada: FUNCTION    -Lexema: d1          -type: FLOTANTE  -nParam: 2   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 35-----------------
--Entrada: FORM        -Lexema: c1          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 36-----------------
--Entrada: FORM        -Lexema: c2          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 37-----------------
--Entrada: MARK        -Lexema: {           -type: NA        -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 38-----------------
--Entrada: VAR         -Lexema: c2          -type: ENTERO    -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 39-----------------
--Entrada: VAR         -Lexema: c1          -type: BOOLEANO  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
-----ELEMENTO 40-----------------
--Entrada: VAR         -Lexema: x1          -type: FLOTANTE  -nParam: 0   -nDim: 0   -tDim1: 0   -tDim2: 0   
---------------------------------
-
-            fin_var_local
-            pl1 =Error(86): Id not found pl1.
- c2 - 1;
-decVar: 0
-
-Tipo izquierda: 2
-
-Tipo derecha: 1
-Error(86): Los tipos de la parte izquierda 2 y derecha 1 no coinciden.
-
-            x1= 1.3 ;
-decVar: 2
-
-Tipo izquierda: 2
-
-Tipo derecha: 2
-
-            si (c2>10)
-            c2= c2-1 ;
-decVar: 0
-
-Tipo izquierda: 1
-
-Tipo derecha: 1
-
-            si_no
-            x1= 3.1 ;
-decVar: 0
-
-Tipo izquierda: 2
-
-Tipo derecha: 2
-
-            devolver x1 ;
-        }
-
 
     }
 

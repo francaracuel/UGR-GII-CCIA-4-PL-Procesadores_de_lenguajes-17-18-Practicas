@@ -95,6 +95,8 @@ extern int subProg;
 // Indica si se están declarando parámetros formales en una función
 extern int decParam;
 
+extern int decFunction;
+
 // Variable global que almacena el tipo en las declaraciones
 extern tData globalType;
 

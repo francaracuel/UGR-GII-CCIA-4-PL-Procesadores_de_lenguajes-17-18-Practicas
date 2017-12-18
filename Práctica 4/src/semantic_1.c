@@ -23,6 +23,7 @@ int line = 1;
 long int LIMIT = 0;
 int decVar = 0;
 int decParam = 0;
+int decFunction = 0;
 int subProg = 0;
 tData globalType = NA;
 int nParam = 0;
@@ -260,8 +261,7 @@ void tsAddMark(){
 // Añade una in de subprograma
 void tsAddSubprog(attrs e){
 
-    inTS inSubProg;
-
+  inTS inSubProg;
 	inSubProg.in = FUNCTION;
 	inSubProg.lex = e.lex;
 	inSubProg.nParam = 0;
@@ -356,6 +356,8 @@ int tsGetNextFunction(){
 void tsCheckReturn(attrs expr, attrs* res){
 
     int index = tsGetNextFunction();
+    printf("\n\nSiguiente Funcion: %s. Tipo: %d\n",ts[index].lex, ts[index].type );
+    printf("\n\nreturn,lex: %s. Tipo: %d\n",expr.lex, expr.type );
 
 	if (index > -1) {
 
