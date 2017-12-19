@@ -5,6 +5,11 @@ principal
     flotante vf ,h,j,k;
     caracter vc ;
     booleano vl ;
+    entero valor ;
     fin_var_local
+
+    leer "introduzca dos caracteres: ", e1, e2 ;
+    escribir vc ;
+
 
 }

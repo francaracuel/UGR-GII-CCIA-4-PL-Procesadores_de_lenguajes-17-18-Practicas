@@ -1,4 +1,5 @@
-State 152 conflicts: 1 shift/reduce
+State 10 conflicts: 1 reduce/reduce
+State 154 conflicts: 1 shift/reduce
 
 
 Grammar
@@ -7,20 +8,21 @@ Grammar
 
     1 $@1: %empty
 
-    2 $@2: %empty
+    2 programa: $@1 PRINCIPAL bloque
 
-    3 programa: $@1 PRINCIPAL $@2 bloque
+    3 $@2: %empty
 
     4 $@3: %empty
 
-    5 $@4: %empty
+    5 bloque: INI_BLOQUE $@2 bloque2 FIN_BLOQUE $@3
 
-    6 $@5: %empty
+    6 $@4: %empty
 
-    7 bloque: INI_BLOQUE $@3 $@4 bloque2 FIN_BLOQUE $@5
+    7 bloque2: declar_de_variables_locales $@4 declar_de_subprogs
 
-    8 bloque2: declar_de_variables_locales declar_de_subprogs
-    9        | declar_de_variables_locales declar_de_subprogs sentencias
+    8 $@5: %empty
+
+    9 bloque2: declar_de_variables_locales $@5 declar_de_subprogs sentencias
 
    10 declar_de_subprogs: declar_de_subprogs declar_subprog
    11                   | %empty
@@ -97,29 +99,28 @@ Grammar
    49 sentencia_asignacion: variable ASIGNACION expresion PUNTO_Y_COMA
 
    50 sentencia_si: SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia
+   51             | SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia sentencia_else
 
-   51 $@23: %empty
+   52 $@23: %empty
 
-   52 $@24: %empty
+   53 sentencia_else: SI_NO $@23 sentencia
 
-   53 sentencia_si: SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia SI_NO $@23 sentencia $@24
+   54 $@24: %empty
 
-   54 $@25: %empty
+   55 sentencia_hacer_hasta: HACER sentencia HASTA PARENT_IZQUIERDO expresion PARENT_DERECHO $@24
 
-   55 sentencia_hacer_hasta: HACER sentencia HASTA PARENT_IZQUIERDO expresion PARENT_DERECHO $@25
+   56 $@25: %empty
 
-   56 $@26: %empty
-
-   57 sentencia_mientras: MIENTRAS PARENT_IZQUIERDO expresion PARENT_DERECHO $@26 sentencia
+   57 sentencia_mientras: MIENTRAS PARENT_IZQUIERDO expresion PARENT_DERECHO $@25 sentencia
 
    58 sentencia_entrada: ENTRADA CADENA PUNTO_Y_COMA
    59                  | ENTRADA CADENA COMA lista_variables PUNTO_Y_COMA
 
    60 sentencia_salida: SALIDA lista_expresiones_o_cadena PUNTO_Y_COMA
 
-   61 @27: %empty
+   61 @26: %empty
 
-   62 sentencia_devolver: DEVOLVER expresion @27 PUNTO_Y_COMA
+   62 sentencia_devolver: DEVOLVER expresion @26 PUNTO_Y_COMA
 
    63 expresion: PARENT_IZQUIERDO expresion PARENT_DERECHO
    64          | OP_UNARIO expresion
@@ -184,19 +185,19 @@ OPRELACION (261) 72
 OPSIGNO (262) 68 69
 OPMULTIPLICATIVO (263) 70
 OP_UNARIO (264) 64
-PRINCIPAL (265) 3
-INI_BLOQUE (266) 7 102
-FIN_BLOQUE (267) 7 102
+PRINCIPAL (265) 2
+INI_BLOQUE (266) 5 102
+FIN_BLOQUE (267) 5 102
 PUNTO_Y_COMA (268) 21 49 58 59 60 62
 COMA (269) 59 76 86 89 93
-PARENT_IZQUIERDO (270) 25 50 53 55 57 63 100 101
-PARENT_DERECHO (271) 28 29 50 53 55 57 63 100 101
+PARENT_IZQUIERDO (270) 25 50 51 55 57 63 100 101
+PARENT_DERECHO (271) 28 29 50 51 55 57 63 100 101
 INI_VAR_LOCAL (272) 15
 FIN_VAR_LOCAL (273) 15
 ASIGNACION (274) 49
 INI_DIM_MATRIZ (275) 80 81 83 84
 FIN_DIM_MATRIZ (276) 80 81 83 84
-SI (277) 50 53
+SI (277) 50 51
 SI_NO (278) 53
 HACER (279) 55
 HASTA (280) 55
@@ -218,29 +219,29 @@ Nonterminals, with rules where they appear
 $accept (37)
     on left: 0
 programa (38)
-    on left: 3, on right: 0
+    on left: 2, on right: 0
 $@1 (39)
-    on left: 1, on right: 3
-$@2 (40)
-    on left: 2, on right: 3
-bloque (41)
-    on left: 7, on right: 3 13 35
+    on left: 1, on right: 2
+bloque (40)
+    on left: 5, on right: 2 13 35
+$@2 (41)
+    on left: 3, on right: 5
 $@3 (42)
-    on left: 4, on right: 7
-$@4 (43)
-    on left: 5, on right: 7
-$@5 (44)
+    on left: 4, on right: 5
+bloque2 (43)
+    on left: 7 9, on right: 5
+$@4 (44)
     on left: 6, on right: 7
-bloque2 (45)
-    on left: 8 9, on right: 7
+$@5 (45)
+    on left: 8, on right: 9
 declar_de_subprogs (46)
-    on left: 10 11, on right: 8 9 10
+    on left: 10 11, on right: 7 9 10
 declar_subprog (47)
     on left: 13, on right: 10
 $@6 (48)
     on left: 12, on right: 13
 declar_de_variables_locales (49)
-    on left: 15 16, on right: 8 9
+    on left: 15 16, on right: 7 9
 $@7 (50)
     on left: 14, on right: 15
 variables_locales (51)
@@ -270,7 +271,7 @@ $@14 (62)
 $@15 (63)
     on left: 32, on right: 33
 sentencia (64)
-    on left: 35 36 38 40 42 44 46 48, on right: 31 33 50 53 55 57
+    on left: 35 36 38 40 42 44 46 48, on right: 31 33 50 51 53 55 57
 $@16 (65)
     on left: 34, on right: 35
 $@17 (66)
@@ -288,18 +289,18 @@ $@22 (71)
 sentencia_asignacion (72)
     on left: 49, on right: 36
 sentencia_si (73)
-    on left: 50 53, on right: 38
-$@23 (74)
-    on left: 51, on right: 53
-$@24 (75)
+    on left: 50 51, on right: 38
+sentencia_else (74)
+    on left: 53, on right: 51
+$@23 (75)
     on left: 52, on right: 53
 sentencia_hacer_hasta (76)
     on left: 55, on right: 48
-$@25 (77)
+$@24 (77)
     on left: 54, on right: 55
 sentencia_mientras (78)
     on left: 57, on right: 40
-$@26 (79)
+$@25 (79)
     on left: 56, on right: 57
 sentencia_entrada (80)
     on left: 58 59, on right: 42
@@ -307,11 +308,11 @@ sentencia_salida (81)
     on left: 60, on right: 44
 sentencia_devolver (82)
     on left: 62, on right: 46
-@27 (83)
+@26 (83)
     on left: 61, on right: 62
 expresion (84)
     on left: 63 64 65 66 67 68 69 70 71 72 73 74 75, on right: 49 50
-    53 55 57 62 63 64 68 69 70 71 72 73 74 91 93 94
+    51 55 57 62 63 64 68 69 70 71 72 73 74 91 93 94
 lista_variables (85)
     on left: 76 77 78, on right: 21 59 76 78
 variable (86)
@@ -353,7 +354,7 @@ State 1
 
 State 2
 
-    3 programa: $@1 . PRINCIPAL $@2 bloque
+    2 programa: $@1 . PRINCIPAL bloque
 
     PRINCIPAL  shift, and go to state 4
 
@@ -367,270 +368,241 @@ State 3
 
 State 4
 
-    3 programa: $@1 PRINCIPAL . $@2 bloque
+    2 programa: $@1 PRINCIPAL . bloque
 
-    $default  reduce using rule 2 ($@2)
+    INI_BLOQUE  shift, and go to state 5
 
-    $@2  go to state 5
+    bloque  go to state 6
 
 
 State 5
 
-    3 programa: $@1 PRINCIPAL $@2 . bloque
+    5 bloque: INI_BLOQUE . $@2 bloque2 FIN_BLOQUE $@3
 
-    INI_BLOQUE  shift, and go to state 6
+    $default  reduce using rule 3 ($@2)
 
-    bloque  go to state 7
+    $@2  go to state 7
 
 
 State 6
 
-    7 bloque: INI_BLOQUE . $@3 $@4 bloque2 FIN_BLOQUE $@5
+    2 programa: $@1 PRINCIPAL bloque .
 
-    $default  reduce using rule 4 ($@3)
-
-    $@3  go to state 8
+    $default  reduce using rule 2 (programa)
 
 
 State 7
 
-    3 programa: $@1 PRINCIPAL $@2 bloque .
+    5 bloque: INI_BLOQUE $@2 . bloque2 FIN_BLOQUE $@3
 
-    $default  reduce using rule 3 (programa)
-
-
-State 8
-
-    7 bloque: INI_BLOQUE $@3 . $@4 bloque2 FIN_BLOQUE $@5
-
-    $default  reduce using rule 5 ($@4)
-
-    $@4  go to state 9
-
-
-State 9
-
-    7 bloque: INI_BLOQUE $@3 $@4 . bloque2 FIN_BLOQUE $@5
-
-    INI_VAR_LOCAL  shift, and go to state 10
+    INI_VAR_LOCAL  shift, and go to state 8
 
     $default  reduce using rule 16 (declar_de_variables_locales)
 
-    bloque2                      go to state 11
-    declar_de_variables_locales  go to state 12
+    bloque2                      go to state 9
+    declar_de_variables_locales  go to state 10
 
 
-State 10
+State 8
 
    15 declar_de_variables_locales: INI_VAR_LOCAL . $@7 variables_locales FIN_VAR_LOCAL
 
     $default  reduce using rule 14 ($@7)
 
-    $@7  go to state 13
+    $@7  go to state 11
+
+
+State 9
+
+    5 bloque: INI_BLOQUE $@2 bloque2 . FIN_BLOQUE $@3
+
+    FIN_BLOQUE  shift, and go to state 12
+
+
+State 10
+
+    7 bloque2: declar_de_variables_locales . $@4 declar_de_subprogs
+    9        | declar_de_variables_locales . $@5 declar_de_subprogs sentencias
+
+    FIN_BLOQUE   reduce using rule 6 ($@4)
+    TIPO_BASICO  reduce using rule 6 ($@4)
+    TIPO_BASICO  [reduce using rule 8 ($@5)]
+    $default     reduce using rule 8 ($@5)
+
+    $@4  go to state 13
+    $@5  go to state 14
 
 
 State 11
 
-    7 bloque: INI_BLOQUE $@3 $@4 bloque2 . FIN_BLOQUE $@5
+   15 declar_de_variables_locales: INI_VAR_LOCAL $@7 . variables_locales FIN_VAR_LOCAL
 
-    FIN_BLOQUE  shift, and go to state 14
+    error        shift, and go to state 15
+    TIPO_BASICO  shift, and go to state 16
+
+    variables_locales        go to state 17
+    cuerpo_declar_variables  go to state 18
 
 
 State 12
 
-    8 bloque2: declar_de_variables_locales . declar_de_subprogs
-    9        | declar_de_variables_locales . declar_de_subprogs sentencias
+    5 bloque: INI_BLOQUE $@2 bloque2 FIN_BLOQUE . $@3
 
-    $default  reduce using rule 11 (declar_de_subprogs)
+    $default  reduce using rule 4 ($@3)
 
-    declar_de_subprogs  go to state 15
+    $@3  go to state 19
 
 
 State 13
 
-   15 declar_de_variables_locales: INI_VAR_LOCAL $@7 . variables_locales FIN_VAR_LOCAL
+    7 bloque2: declar_de_variables_locales $@4 . declar_de_subprogs
 
-    error        shift, and go to state 16
-    TIPO_BASICO  shift, and go to state 17
+    $default  reduce using rule 11 (declar_de_subprogs)
 
-    variables_locales        go to state 18
-    cuerpo_declar_variables  go to state 19
+    declar_de_subprogs  go to state 20
 
 
 State 14
 
-    7 bloque: INI_BLOQUE $@3 $@4 bloque2 FIN_BLOQUE . $@5
+    9 bloque2: declar_de_variables_locales $@5 . declar_de_subprogs sentencias
 
-    $default  reduce using rule 6 ($@5)
+    $default  reduce using rule 11 (declar_de_subprogs)
 
-    $@5  go to state 20
+    declar_de_subprogs  go to state 21
 
 
 State 15
-
-    8 bloque2: declar_de_variables_locales declar_de_subprogs .
-    9        | declar_de_variables_locales declar_de_subprogs . sentencias
-   10 declar_de_subprogs: declar_de_subprogs . declar_subprog
-
-    TIPO_BASICO  shift, and go to state 21
-
-    FIN_BLOQUE  reduce using rule 8 (bloque2)
-    $default    reduce using rule 32 ($@15)
-
-    declar_subprog        go to state 22
-    cabecera_subprograma  go to state 23
-    sentencias            go to state 24
-    $@15                  go to state 25
-
-
-State 16
 
    22 cuerpo_declar_variables: error .
 
     $default  reduce using rule 22 (cuerpo_declar_variables)
 
 
-State 17
+State 16
 
    21 cuerpo_declar_variables: TIPO_BASICO . $@8 $@9 lista_variables PUNTO_Y_COMA
 
     $default  reduce using rule 19 ($@8)
 
-    $@8  go to state 26
+    $@8  go to state 22
 
 
-State 18
+State 17
 
    15 declar_de_variables_locales: INI_VAR_LOCAL $@7 variables_locales . FIN_VAR_LOCAL
    17 variables_locales: variables_locales . cuerpo_declar_variables
 
-    error          shift, and go to state 16
-    FIN_VAR_LOCAL  shift, and go to state 27
-    TIPO_BASICO    shift, and go to state 17
+    error          shift, and go to state 15
+    FIN_VAR_LOCAL  shift, and go to state 23
+    TIPO_BASICO    shift, and go to state 16
 
-    cuerpo_declar_variables  go to state 28
+    cuerpo_declar_variables  go to state 24
 
 
-State 19
+State 18
 
    18 variables_locales: cuerpo_declar_variables .
 
     $default  reduce using rule 18 (variables_locales)
 
 
+State 19
+
+    5 bloque: INI_BLOQUE $@2 bloque2 FIN_BLOQUE $@3 .
+
+    $default  reduce using rule 5 (bloque)
+
+
 State 20
 
-    7 bloque: INI_BLOQUE $@3 $@4 bloque2 FIN_BLOQUE $@5 .
+    7 bloque2: declar_de_variables_locales $@4 declar_de_subprogs .
+   10 declar_de_subprogs: declar_de_subprogs . declar_subprog
 
-    $default  reduce using rule 7 (bloque)
+    TIPO_BASICO  shift, and go to state 25
+
+    $default  reduce using rule 7 (bloque2)
+
+    declar_subprog        go to state 26
+    cabecera_subprograma  go to state 27
 
 
 State 21
 
-   25 cabecera_subprograma: TIPO_BASICO . IDENTIFICADOR $@10 $@11 PARENT_IZQUIERDO cabecera_subprograma2
+    9 bloque2: declar_de_variables_locales $@5 declar_de_subprogs . sentencias
+   10 declar_de_subprogs: declar_de_subprogs . declar_subprog
 
-    IDENTIFICADOR  shift, and go to state 29
+    TIPO_BASICO  shift, and go to state 25
+
+    $default  reduce using rule 32 ($@15)
+
+    declar_subprog        go to state 26
+    cabecera_subprograma  go to state 27
+    sentencias            go to state 28
+    $@15                  go to state 29
 
 
 State 22
-
-   10 declar_de_subprogs: declar_de_subprogs declar_subprog .
-
-    $default  reduce using rule 10 (declar_de_subprogs)
-
-
-State 23
-
-   13 declar_subprog: cabecera_subprograma . $@6 bloque
-
-    $default  reduce using rule 12 ($@6)
-
-    $@6  go to state 30
-
-
-State 24
-
-    9 bloque2: declar_de_variables_locales declar_de_subprogs sentencias .
-   31 sentencias: sentencias . $@14 sentencia
-
-    FIN_BLOQUE  reduce using rule 9 (bloque2)
-    $default    reduce using rule 30 ($@14)
-
-    $@14  go to state 31
-
-
-State 25
-
-   33 sentencias: $@15 . sentencia
-
-    IDENTIFICADOR  shift, and go to state 32
-
-    SI        reduce using rule 37 ($@17)
-    HACER     reduce using rule 47 ($@22)
-    MIENTRAS  reduce using rule 39 ($@18)
-    DEVOLVER  reduce using rule 45 ($@21)
-    ENTRADA   reduce using rule 41 ($@19)
-    SALIDA    reduce using rule 43 ($@20)
-    $default  reduce using rule 34 ($@16)
-
-    sentencia             go to state 33
-    $@16                  go to state 34
-    $@17                  go to state 35
-    $@18                  go to state 36
-    $@19                  go to state 37
-    $@20                  go to state 38
-    $@21                  go to state 39
-    $@22                  go to state 40
-    sentencia_asignacion  go to state 41
-    variable              go to state 42
-
-
-State 26
 
    21 cuerpo_declar_variables: TIPO_BASICO $@8 . $@9 lista_variables PUNTO_Y_COMA
 
     $default  reduce using rule 20 ($@9)
 
-    $@9  go to state 43
+    $@9  go to state 30
 
 
-State 27
+State 23
 
    15 declar_de_variables_locales: INI_VAR_LOCAL $@7 variables_locales FIN_VAR_LOCAL .
 
     $default  reduce using rule 15 (declar_de_variables_locales)
 
 
-State 28
+State 24
 
    17 variables_locales: variables_locales cuerpo_declar_variables .
 
     $default  reduce using rule 17 (variables_locales)
 
 
+State 25
+
+   25 cabecera_subprograma: TIPO_BASICO . IDENTIFICADOR $@10 $@11 PARENT_IZQUIERDO cabecera_subprograma2
+
+    IDENTIFICADOR  shift, and go to state 31
+
+
+State 26
+
+   10 declar_de_subprogs: declar_de_subprogs declar_subprog .
+
+    $default  reduce using rule 10 (declar_de_subprogs)
+
+
+State 27
+
+   13 declar_subprog: cabecera_subprograma . $@6 bloque
+
+    $default  reduce using rule 12 ($@6)
+
+    $@6  go to state 32
+
+
+State 28
+
+    9 bloque2: declar_de_variables_locales $@5 declar_de_subprogs sentencias .
+   31 sentencias: sentencias . $@14 sentencia
+
+    FIN_BLOQUE  reduce using rule 9 (bloque2)
+    $default    reduce using rule 30 ($@14)
+
+    $@14  go to state 33
+
+
 State 29
 
-   25 cabecera_subprograma: TIPO_BASICO IDENTIFICADOR . $@10 $@11 PARENT_IZQUIERDO cabecera_subprograma2
+   33 sentencias: $@15 . sentencia
 
-    $default  reduce using rule 23 ($@10)
-
-    $@10  go to state 44
-
-
-State 30
-
-   13 declar_subprog: cabecera_subprograma $@6 . bloque
-
-    INI_BLOQUE  shift, and go to state 6
-
-    bloque  go to state 45
-
-
-State 31
-
-   31 sentencias: sentencias $@14 . sentencia
-
-    IDENTIFICADOR  shift, and go to state 32
+    IDENTIFICADOR  shift, and go to state 34
 
     SI        reduce using rule 37 ($@17)
     HACER     reduce using rule 47 ($@22)
@@ -640,288 +612,368 @@ State 31
     SALIDA    reduce using rule 43 ($@20)
     $default  reduce using rule 34 ($@16)
 
-    sentencia             go to state 46
-    $@16                  go to state 34
-    $@17                  go to state 35
-    $@18                  go to state 36
-    $@19                  go to state 37
-    $@20                  go to state 38
-    $@21                  go to state 39
-    $@22                  go to state 40
-    sentencia_asignacion  go to state 41
-    variable              go to state 42
+    sentencia             go to state 35
+    $@16                  go to state 36
+    $@17                  go to state 37
+    $@18                  go to state 38
+    $@19                  go to state 39
+    $@20                  go to state 40
+    $@21                  go to state 41
+    $@22                  go to state 42
+    sentencia_asignacion  go to state 43
+    variable              go to state 44
+
+
+State 30
+
+   21 cuerpo_declar_variables: TIPO_BASICO $@8 $@9 . lista_variables PUNTO_Y_COMA
+
+    error          shift, and go to state 45
+    IDENTIFICADOR  shift, and go to state 46
+
+    lista_variables  go to state 47
+    var_array        go to state 48
+
+
+State 31
+
+   25 cabecera_subprograma: TIPO_BASICO IDENTIFICADOR . $@10 $@11 PARENT_IZQUIERDO cabecera_subprograma2
+
+    $default  reduce using rule 23 ($@10)
+
+    $@10  go to state 49
 
 
 State 32
+
+   13 declar_subprog: cabecera_subprograma $@6 . bloque
+
+    INI_BLOQUE  shift, and go to state 5
+
+    bloque  go to state 50
+
+
+State 33
+
+   31 sentencias: sentencias $@14 . sentencia
+
+    IDENTIFICADOR  shift, and go to state 34
+
+    SI        reduce using rule 37 ($@17)
+    HACER     reduce using rule 47 ($@22)
+    MIENTRAS  reduce using rule 39 ($@18)
+    DEVOLVER  reduce using rule 45 ($@21)
+    ENTRADA   reduce using rule 41 ($@19)
+    SALIDA    reduce using rule 43 ($@20)
+    $default  reduce using rule 34 ($@16)
+
+    sentencia             go to state 51
+    $@16                  go to state 36
+    $@17                  go to state 37
+    $@18                  go to state 38
+    $@19                  go to state 39
+    $@20                  go to state 40
+    $@21                  go to state 41
+    $@22                  go to state 42
+    sentencia_asignacion  go to state 43
+    variable              go to state 44
+
+
+State 34
 
    79 variable: IDENTIFICADOR .
    80         | IDENTIFICADOR . INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ
    81         | IDENTIFICADOR . INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ
 
-    INI_DIM_MATRIZ  shift, and go to state 47
+    INI_DIM_MATRIZ  shift, and go to state 52
 
     $default  reduce using rule 79 (variable)
 
 
-State 33
+State 35
 
    33 sentencias: $@15 sentencia .
 
     $default  reduce using rule 33 (sentencias)
 
 
-State 34
+State 36
 
    35 sentencia: $@16 . bloque
 
-    INI_BLOQUE  shift, and go to state 6
+    INI_BLOQUE  shift, and go to state 5
 
-    bloque  go to state 48
-
-
-State 35
-
-   38 sentencia: $@17 . sentencia_si
-
-    SI  shift, and go to state 49
-
-    sentencia_si  go to state 50
-
-
-State 36
-
-   40 sentencia: $@18 . sentencia_mientras
-
-    MIENTRAS  shift, and go to state 51
-
-    sentencia_mientras  go to state 52
+    bloque  go to state 53
 
 
 State 37
 
-   42 sentencia: $@19 . sentencia_entrada
+   38 sentencia: $@17 . sentencia_si
 
-    ENTRADA  shift, and go to state 53
+    SI  shift, and go to state 54
 
-    sentencia_entrada  go to state 54
+    sentencia_si  go to state 55
 
 
 State 38
 
-   44 sentencia: $@20 . sentencia_salida
+   40 sentencia: $@18 . sentencia_mientras
 
-    SALIDA  shift, and go to state 55
+    MIENTRAS  shift, and go to state 56
 
-    sentencia_salida  go to state 56
+    sentencia_mientras  go to state 57
 
 
 State 39
 
-   46 sentencia: $@21 . sentencia_devolver
+   42 sentencia: $@19 . sentencia_entrada
 
-    DEVOLVER  shift, and go to state 57
+    ENTRADA  shift, and go to state 58
 
-    sentencia_devolver  go to state 58
+    sentencia_entrada  go to state 59
 
 
 State 40
 
-   48 sentencia: $@22 . sentencia_hacer_hasta
+   44 sentencia: $@20 . sentencia_salida
 
-    HACER  shift, and go to state 59
+    SALIDA  shift, and go to state 60
 
-    sentencia_hacer_hasta  go to state 60
+    sentencia_salida  go to state 61
 
 
 State 41
+
+   46 sentencia: $@21 . sentencia_devolver
+
+    DEVOLVER  shift, and go to state 62
+
+    sentencia_devolver  go to state 63
+
+
+State 42
+
+   48 sentencia: $@22 . sentencia_hacer_hasta
+
+    HACER  shift, and go to state 64
+
+    sentencia_hacer_hasta  go to state 65
+
+
+State 43
 
    36 sentencia: sentencia_asignacion .
 
     $default  reduce using rule 36 (sentencia)
 
 
-State 42
+State 44
 
    49 sentencia_asignacion: variable . ASIGNACION expresion PUNTO_Y_COMA
 
-    ASIGNACION  shift, and go to state 61
+    ASIGNACION  shift, and go to state 66
 
 
-State 43
+State 45
 
-   21 cuerpo_declar_variables: TIPO_BASICO $@8 $@9 . lista_variables PUNTO_Y_COMA
+   85 var_array: error .
 
-    error          shift, and go to state 62
-    IDENTIFICADOR  shift, and go to state 63
-
-    lista_variables  go to state 64
-    var_array        go to state 65
+    $default  reduce using rule 85 (var_array)
 
 
-State 44
+State 46
+
+   82 var_array: IDENTIFICADOR .
+   83          | IDENTIFICADOR . INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ
+   84          | IDENTIFICADOR . INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ
+
+    INI_DIM_MATRIZ  shift, and go to state 67
+
+    $default  reduce using rule 82 (var_array)
+
+
+State 47
+
+   21 cuerpo_declar_variables: TIPO_BASICO $@8 $@9 lista_variables . PUNTO_Y_COMA
+   76 lista_variables: lista_variables . COMA var_array
+   78                | lista_variables . error var_array
+
+    error         shift, and go to state 68
+    PUNTO_Y_COMA  shift, and go to state 69
+    COMA          shift, and go to state 70
+
+
+State 48
+
+   77 lista_variables: var_array .
+
+    $default  reduce using rule 77 (lista_variables)
+
+
+State 49
 
    25 cabecera_subprograma: TIPO_BASICO IDENTIFICADOR $@10 . $@11 PARENT_IZQUIERDO cabecera_subprograma2
 
     $default  reduce using rule 24 ($@11)
 
-    $@11  go to state 66
+    $@11  go to state 71
 
 
-State 45
+State 50
 
    13 declar_subprog: cabecera_subprograma $@6 bloque .
 
     $default  reduce using rule 13 (declar_subprog)
 
 
-State 46
+State 51
 
    31 sentencias: sentencias $@14 sentencia .
 
     $default  reduce using rule 31 (sentencias)
 
 
-State 47
+State 52
 
    80 variable: IDENTIFICADOR INI_DIM_MATRIZ . lista_expresiones FIN_DIM_MATRIZ
    81         | IDENTIFICADOR INI_DIM_MATRIZ . lista_expresiones FIN_DIM_MATRIZ INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ
 
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
 
-    expresion          go to state 77
-    variable           go to state 78
-    lista_expresiones  go to state 79
-    constante          go to state 80
-    funcion            go to state 81
-    const_matriz       go to state 82
+    expresion          go to state 82
+    variable           go to state 83
+    lista_expresiones  go to state 84
+    constante          go to state 85
+    funcion            go to state 86
+    const_matriz       go to state 87
 
 
-State 48
+State 53
 
    35 sentencia: $@16 bloque .
 
     $default  reduce using rule 35 (sentencia)
 
 
-State 49
+State 54
 
    50 sentencia_si: SI . PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia
-   53             | SI . PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia SI_NO $@23 sentencia $@24
+   51             | SI . PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia sentencia_else
 
-    PARENT_IZQUIERDO  shift, and go to state 83
+    PARENT_IZQUIERDO  shift, and go to state 88
 
 
-State 50
+State 55
 
    38 sentencia: $@17 sentencia_si .
 
     $default  reduce using rule 38 (sentencia)
 
 
-State 51
+State 56
 
-   57 sentencia_mientras: MIENTRAS . PARENT_IZQUIERDO expresion PARENT_DERECHO $@26 sentencia
+   57 sentencia_mientras: MIENTRAS . PARENT_IZQUIERDO expresion PARENT_DERECHO $@25 sentencia
 
-    PARENT_IZQUIERDO  shift, and go to state 84
+    PARENT_IZQUIERDO  shift, and go to state 89
 
 
-State 52
+State 57
 
    40 sentencia: $@18 sentencia_mientras .
 
     $default  reduce using rule 40 (sentencia)
 
 
-State 53
+State 58
 
    58 sentencia_entrada: ENTRADA . CADENA PUNTO_Y_COMA
    59                  | ENTRADA . CADENA COMA lista_variables PUNTO_Y_COMA
 
-    CADENA  shift, and go to state 85
+    CADENA  shift, and go to state 90
 
 
-State 54
+State 59
 
    42 sentencia: $@19 sentencia_entrada .
 
     $default  reduce using rule 42 (sentencia)
 
 
-State 55
+State 60
 
    60 sentencia_salida: SALIDA . lista_expresiones_o_cadena PUNTO_Y_COMA
 
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CADENA                  shift, and go to state 86
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CADENA                  shift, and go to state 91
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
 
-    expresion                   go to state 87
-    variable                    go to state 78
-    lista_expresiones_o_cadena  go to state 88
-    expresion_o_cadena          go to state 89
-    constante                   go to state 80
-    funcion                     go to state 81
-    const_matriz                go to state 82
+    expresion                   go to state 92
+    variable                    go to state 83
+    lista_expresiones_o_cadena  go to state 93
+    expresion_o_cadena          go to state 94
+    constante                   go to state 85
+    funcion                     go to state 86
+    const_matriz                go to state 87
 
 
-State 56
+State 61
 
    44 sentencia: $@20 sentencia_salida .
 
     $default  reduce using rule 44 (sentencia)
 
 
-State 57
+State 62
 
-   62 sentencia_devolver: DEVOLVER . expresion @27 PUNTO_Y_COMA
+   62 sentencia_devolver: DEVOLVER . expresion @26 PUNTO_Y_COMA
 
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
 
-    expresion     go to state 90
-    variable      go to state 78
-    constante     go to state 80
-    funcion       go to state 81
-    const_matriz  go to state 82
+    expresion     go to state 95
+    variable      go to state 83
+    constante     go to state 85
+    funcion       go to state 86
+    const_matriz  go to state 87
 
 
-State 58
+State 63
 
    46 sentencia: $@21 sentencia_devolver .
 
     $default  reduce using rule 46 (sentencia)
 
 
-State 59
+State 64
 
-   55 sentencia_hacer_hasta: HACER . sentencia HASTA PARENT_IZQUIERDO expresion PARENT_DERECHO $@25
+   55 sentencia_hacer_hasta: HACER . sentencia HASTA PARENT_IZQUIERDO expresion PARENT_DERECHO $@24
 
-    IDENTIFICADOR  shift, and go to state 32
+    IDENTIFICADOR  shift, and go to state 34
 
     SI        reduce using rule 37 ($@17)
     HACER     reduce using rule 47 ($@22)
@@ -931,215 +983,214 @@ State 59
     SALIDA    reduce using rule 43 ($@20)
     $default  reduce using rule 34 ($@16)
 
-    sentencia             go to state 91
-    $@16                  go to state 34
-    $@17                  go to state 35
-    $@18                  go to state 36
-    $@19                  go to state 37
-    $@20                  go to state 38
-    $@21                  go to state 39
-    $@22                  go to state 40
-    sentencia_asignacion  go to state 41
-    variable              go to state 42
+    sentencia             go to state 96
+    $@16                  go to state 36
+    $@17                  go to state 37
+    $@18                  go to state 38
+    $@19                  go to state 39
+    $@20                  go to state 40
+    $@21                  go to state 41
+    $@22                  go to state 42
+    sentencia_asignacion  go to state 43
+    variable              go to state 44
 
 
-State 60
+State 65
 
    48 sentencia: $@22 sentencia_hacer_hasta .
 
     $default  reduce using rule 48 (sentencia)
 
 
-State 61
+State 66
 
    49 sentencia_asignacion: variable ASIGNACION . expresion PUNTO_Y_COMA
 
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
 
-    expresion     go to state 92
-    variable      go to state 78
-    constante     go to state 80
-    funcion       go to state 81
-    const_matriz  go to state 82
-
-
-State 62
-
-   85 var_array: error .
-
-    $default  reduce using rule 85 (var_array)
-
-
-State 63
-
-   82 var_array: IDENTIFICADOR .
-   83          | IDENTIFICADOR . INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ
-   84          | IDENTIFICADOR . INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ
-
-    INI_DIM_MATRIZ  shift, and go to state 93
-
-    $default  reduce using rule 82 (var_array)
-
-
-State 64
-
-   21 cuerpo_declar_variables: TIPO_BASICO $@8 $@9 lista_variables . PUNTO_Y_COMA
-   76 lista_variables: lista_variables . COMA var_array
-   78                | lista_variables . error var_array
-
-    error         shift, and go to state 94
-    PUNTO_Y_COMA  shift, and go to state 95
-    COMA          shift, and go to state 96
-
-
-State 65
-
-   77 lista_variables: var_array .
-
-    $default  reduce using rule 77 (lista_variables)
-
-
-State 66
-
-   25 cabecera_subprograma: TIPO_BASICO IDENTIFICADOR $@10 $@11 . PARENT_IZQUIERDO cabecera_subprograma2
-
-    PARENT_IZQUIERDO  shift, and go to state 97
+    expresion     go to state 97
+    variable      go to state 83
+    constante     go to state 85
+    funcion       go to state 86
+    const_matriz  go to state 87
 
 
 State 67
+
+   83 var_array: IDENTIFICADOR INI_DIM_MATRIZ . CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ
+   84          | IDENTIFICADOR INI_DIM_MATRIZ . CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ
+
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 98
+
+
+State 68
+
+   78 lista_variables: lista_variables error . var_array
+
+    error          shift, and go to state 45
+    IDENTIFICADOR  shift, and go to state 46
+
+    var_array  go to state 99
+
+
+State 69
+
+   21 cuerpo_declar_variables: TIPO_BASICO $@8 $@9 lista_variables PUNTO_Y_COMA .
+
+    $default  reduce using rule 21 (cuerpo_declar_variables)
+
+
+State 70
+
+   76 lista_variables: lista_variables COMA . var_array
+
+    error          shift, and go to state 45
+    IDENTIFICADOR  shift, and go to state 46
+
+    var_array  go to state 100
+
+
+State 71
+
+   25 cabecera_subprograma: TIPO_BASICO IDENTIFICADOR $@10 $@11 . PARENT_IZQUIERDO cabecera_subprograma2
+
+    PARENT_IZQUIERDO  shift, and go to state 101
+
+
+State 72
 
    75 expresion: error .
 
     $default  reduce using rule 75 (expresion)
 
 
-State 68
+State 73
 
    68 expresion: OPSIGNO . expresion
 
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
 
-    expresion     go to state 98
-    variable      go to state 78
-    constante     go to state 80
-    funcion       go to state 81
-    const_matriz  go to state 82
+    expresion     go to state 102
+    variable      go to state 83
+    constante     go to state 85
+    funcion       go to state 86
+    const_matriz  go to state 87
 
 
-State 69
+State 74
 
    64 expresion: OP_UNARIO . expresion
 
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
 
-    expresion     go to state 99
-    variable      go to state 78
-    constante     go to state 80
-    funcion       go to state 81
-    const_matriz  go to state 82
+    expresion     go to state 103
+    variable      go to state 83
+    constante     go to state 85
+    funcion       go to state 86
+    const_matriz  go to state 87
 
 
-State 70
+State 75
 
   102 const_matriz: INI_BLOQUE . lista_expresiones FIN_BLOQUE
 
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
 
-    expresion          go to state 77
-    variable           go to state 78
-    lista_expresiones  go to state 100
-    constante          go to state 80
-    funcion            go to state 81
-    const_matriz       go to state 82
+    expresion          go to state 82
+    variable           go to state 83
+    lista_expresiones  go to state 104
+    constante          go to state 85
+    funcion            go to state 86
+    const_matriz       go to state 87
 
 
-State 71
+State 76
 
    63 expresion: PARENT_IZQUIERDO . expresion PARENT_DERECHO
 
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
 
-    expresion     go to state 101
-    variable      go to state 78
-    constante     go to state 80
-    funcion       go to state 81
-    const_matriz  go to state 82
+    expresion     go to state 105
+    variable      go to state 83
+    constante     go to state 85
+    funcion       go to state 86
+    const_matriz  go to state 87
 
 
-State 72
+State 77
 
    97 constante: CONST_LOGICA .
 
     $default  reduce using rule 97 (constante)
 
 
-State 73
+State 78
 
    95 constante: CONST_ENTERO_SIN_SIGNO .
 
     $default  reduce using rule 95 (constante)
 
 
-State 74
+State 79
 
    98 constante: CONST_FLOTANTE .
 
     $default  reduce using rule 98 (constante)
 
 
-State 75
+State 80
 
    99 constante: CONST_CARACTER .
 
     $default  reduce using rule 99 (constante)
 
 
-State 76
+State 81
 
    79 variable: IDENTIFICADOR .
    80         | IDENTIFICADOR . INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ
@@ -1147,13 +1198,13 @@ State 76
   100 funcion: IDENTIFICADOR . PARENT_IZQUIERDO lista_expresiones PARENT_DERECHO
   101        | IDENTIFICADOR . PARENT_IZQUIERDO PARENT_DERECHO
 
-    PARENT_IZQUIERDO  shift, and go to state 102
-    INI_DIM_MATRIZ    shift, and go to state 47
+    PARENT_IZQUIERDO  shift, and go to state 106
+    INI_DIM_MATRIZ    shift, and go to state 52
 
     $default  reduce using rule 79 (variable)
 
 
-State 77
+State 82
 
    69 expresion: expresion . OPSIGNO expresion
    70          | expresion . OPMULTIPLICATIVO expresion
@@ -1163,116 +1214,116 @@ State 77
    74          | expresion . OPOR expresion
    94 lista_expresiones: expresion .
 
-    OPOR              shift, and go to state 103
-    OPAND             shift, and go to state 104
-    OPIGUALDAD        shift, and go to state 105
-    OPRELACION        shift, and go to state 106
-    OPSIGNO           shift, and go to state 107
-    OPMULTIPLICATIVO  shift, and go to state 108
+    OPOR              shift, and go to state 107
+    OPAND             shift, and go to state 108
+    OPIGUALDAD        shift, and go to state 109
+    OPRELACION        shift, and go to state 110
+    OPSIGNO           shift, and go to state 111
+    OPMULTIPLICATIVO  shift, and go to state 112
 
     $default  reduce using rule 94 (lista_expresiones)
 
 
-State 78
+State 83
 
    67 expresion: variable .
 
     $default  reduce using rule 67 (expresion)
 
 
-State 79
+State 84
 
    80 variable: IDENTIFICADOR INI_DIM_MATRIZ lista_expresiones . FIN_DIM_MATRIZ
    81         | IDENTIFICADOR INI_DIM_MATRIZ lista_expresiones . FIN_DIM_MATRIZ INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ
    93 lista_expresiones: lista_expresiones . COMA expresion
 
-    COMA            shift, and go to state 109
-    FIN_DIM_MATRIZ  shift, and go to state 110
+    COMA            shift, and go to state 113
+    FIN_DIM_MATRIZ  shift, and go to state 114
 
 
-State 80
+State 85
 
    65 expresion: constante .
 
     $default  reduce using rule 65 (expresion)
 
 
-State 81
+State 86
 
    66 expresion: funcion .
 
     $default  reduce using rule 66 (expresion)
 
 
-State 82
+State 87
 
    96 constante: const_matriz .
 
     $default  reduce using rule 96 (constante)
 
 
-State 83
+State 88
 
    50 sentencia_si: SI PARENT_IZQUIERDO . expresion PARENT_DERECHO sentencia
-   53             | SI PARENT_IZQUIERDO . expresion PARENT_DERECHO sentencia SI_NO $@23 sentencia $@24
+   51             | SI PARENT_IZQUIERDO . expresion PARENT_DERECHO sentencia sentencia_else
 
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
 
-    expresion     go to state 111
-    variable      go to state 78
-    constante     go to state 80
-    funcion       go to state 81
-    const_matriz  go to state 82
-
-
-State 84
-
-   57 sentencia_mientras: MIENTRAS PARENT_IZQUIERDO . expresion PARENT_DERECHO $@26 sentencia
-
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
-
-    expresion     go to state 112
-    variable      go to state 78
-    constante     go to state 80
-    funcion       go to state 81
-    const_matriz  go to state 82
+    expresion     go to state 115
+    variable      go to state 83
+    constante     go to state 85
+    funcion       go to state 86
+    const_matriz  go to state 87
 
 
-State 85
+State 89
+
+   57 sentencia_mientras: MIENTRAS PARENT_IZQUIERDO . expresion PARENT_DERECHO $@25 sentencia
+
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
+
+    expresion     go to state 116
+    variable      go to state 83
+    constante     go to state 85
+    funcion       go to state 86
+    const_matriz  go to state 87
+
+
+State 90
 
    58 sentencia_entrada: ENTRADA CADENA . PUNTO_Y_COMA
    59                  | ENTRADA CADENA . COMA lista_variables PUNTO_Y_COMA
 
-    PUNTO_Y_COMA  shift, and go to state 113
-    COMA          shift, and go to state 114
+    PUNTO_Y_COMA  shift, and go to state 117
+    COMA          shift, and go to state 118
 
 
-State 86
+State 91
 
    92 expresion_o_cadena: CADENA .
 
     $default  reduce using rule 92 (expresion_o_cadena)
 
 
-State 87
+State 92
 
    69 expresion: expresion . OPSIGNO expresion
    70          | expresion . OPMULTIPLICATIVO expresion
@@ -1282,35 +1333,35 @@ State 87
    74          | expresion . OPOR expresion
    91 expresion_o_cadena: expresion .
 
-    OPOR              shift, and go to state 103
-    OPAND             shift, and go to state 104
-    OPIGUALDAD        shift, and go to state 105
-    OPRELACION        shift, and go to state 106
-    OPSIGNO           shift, and go to state 107
-    OPMULTIPLICATIVO  shift, and go to state 108
+    OPOR              shift, and go to state 107
+    OPAND             shift, and go to state 108
+    OPIGUALDAD        shift, and go to state 109
+    OPRELACION        shift, and go to state 110
+    OPSIGNO           shift, and go to state 111
+    OPMULTIPLICATIVO  shift, and go to state 112
 
     $default  reduce using rule 91 (expresion_o_cadena)
 
 
-State 88
+State 93
 
    60 sentencia_salida: SALIDA lista_expresiones_o_cadena . PUNTO_Y_COMA
    89 lista_expresiones_o_cadena: lista_expresiones_o_cadena . COMA expresion_o_cadena
 
-    PUNTO_Y_COMA  shift, and go to state 115
-    COMA          shift, and go to state 116
+    PUNTO_Y_COMA  shift, and go to state 119
+    COMA          shift, and go to state 120
 
 
-State 89
+State 94
 
    90 lista_expresiones_o_cadena: expresion_o_cadena .
 
     $default  reduce using rule 90 (lista_expresiones_o_cadena)
 
 
-State 90
+State 95
 
-   62 sentencia_devolver: DEVOLVER expresion . @27 PUNTO_Y_COMA
+   62 sentencia_devolver: DEVOLVER expresion . @26 PUNTO_Y_COMA
    69 expresion: expresion . OPSIGNO expresion
    70          | expresion . OPMULTIPLICATIVO expresion
    71          | expresion . OPIGUALDAD expresion
@@ -1318,26 +1369,26 @@ State 90
    73          | expresion . OPAND expresion
    74          | expresion . OPOR expresion
 
-    OPOR              shift, and go to state 103
-    OPAND             shift, and go to state 104
-    OPIGUALDAD        shift, and go to state 105
-    OPRELACION        shift, and go to state 106
-    OPSIGNO           shift, and go to state 107
-    OPMULTIPLICATIVO  shift, and go to state 108
+    OPOR              shift, and go to state 107
+    OPAND             shift, and go to state 108
+    OPIGUALDAD        shift, and go to state 109
+    OPRELACION        shift, and go to state 110
+    OPSIGNO           shift, and go to state 111
+    OPMULTIPLICATIVO  shift, and go to state 112
 
-    $default  reduce using rule 61 (@27)
+    $default  reduce using rule 61 (@26)
 
-    @27  go to state 117
-
-
-State 91
-
-   55 sentencia_hacer_hasta: HACER sentencia . HASTA PARENT_IZQUIERDO expresion PARENT_DERECHO $@25
-
-    HASTA  shift, and go to state 118
+    @26  go to state 121
 
 
-State 92
+State 96
+
+   55 sentencia_hacer_hasta: HACER sentencia . HASTA PARENT_IZQUIERDO expresion PARENT_DERECHO $@24
+
+    HASTA  shift, and go to state 122
+
+
+State 97
 
    49 sentencia_asignacion: variable ASIGNACION expresion . PUNTO_Y_COMA
    69 expresion: expresion . OPSIGNO expresion
@@ -1347,62 +1398,49 @@ State 92
    73          | expresion . OPAND expresion
    74          | expresion . OPOR expresion
 
-    OPOR              shift, and go to state 103
-    OPAND             shift, and go to state 104
-    OPIGUALDAD        shift, and go to state 105
-    OPRELACION        shift, and go to state 106
-    OPSIGNO           shift, and go to state 107
-    OPMULTIPLICATIVO  shift, and go to state 108
-    PUNTO_Y_COMA      shift, and go to state 119
-
-
-State 93
-
-   83 var_array: IDENTIFICADOR INI_DIM_MATRIZ . CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ
-   84          | IDENTIFICADOR INI_DIM_MATRIZ . CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ
-
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 120
-
-
-State 94
-
-   78 lista_variables: lista_variables error . var_array
-
-    error          shift, and go to state 62
-    IDENTIFICADOR  shift, and go to state 63
-
-    var_array  go to state 121
-
-
-State 95
-
-   21 cuerpo_declar_variables: TIPO_BASICO $@8 $@9 lista_variables PUNTO_Y_COMA .
-
-    $default  reduce using rule 21 (cuerpo_declar_variables)
-
-
-State 96
-
-   76 lista_variables: lista_variables COMA . var_array
-
-    error          shift, and go to state 62
-    IDENTIFICADOR  shift, and go to state 63
-
-    var_array  go to state 122
-
-
-State 97
-
-   25 cabecera_subprograma: TIPO_BASICO IDENTIFICADOR $@10 $@11 PARENT_IZQUIERDO . cabecera_subprograma2
-
-    PARENT_DERECHO  shift, and go to state 123
-    TIPO_BASICO     shift, and go to state 124
-
-    cabecera_subprograma2  go to state 125
-    lista_parametros       go to state 126
+    OPOR              shift, and go to state 107
+    OPAND             shift, and go to state 108
+    OPIGUALDAD        shift, and go to state 109
+    OPRELACION        shift, and go to state 110
+    OPSIGNO           shift, and go to state 111
+    OPMULTIPLICATIVO  shift, and go to state 112
+    PUNTO_Y_COMA      shift, and go to state 123
 
 
 State 98
+
+   83 var_array: IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO . FIN_DIM_MATRIZ
+   84          | IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO . FIN_DIM_MATRIZ INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ
+
+    FIN_DIM_MATRIZ  shift, and go to state 124
+
+
+State 99
+
+   78 lista_variables: lista_variables error var_array .
+
+    $default  reduce using rule 78 (lista_variables)
+
+
+State 100
+
+   76 lista_variables: lista_variables COMA var_array .
+
+    $default  reduce using rule 76 (lista_variables)
+
+
+State 101
+
+   25 cabecera_subprograma: TIPO_BASICO IDENTIFICADOR $@10 $@11 PARENT_IZQUIERDO . cabecera_subprograma2
+
+    PARENT_DERECHO  shift, and go to state 125
+    TIPO_BASICO     shift, and go to state 126
+
+    cabecera_subprograma2  go to state 127
+    lista_parametros       go to state 128
+
+
+State 102
 
    68 expresion: OPSIGNO expresion .
    69          | expresion . OPSIGNO expresion
@@ -1415,7 +1453,7 @@ State 98
     $default  reduce using rule 68 (expresion)
 
 
-State 99
+State 103
 
    64 expresion: OP_UNARIO expresion .
    69          | expresion . OPSIGNO expresion
@@ -1428,16 +1466,16 @@ State 99
     $default  reduce using rule 64 (expresion)
 
 
-State 100
+State 104
 
    93 lista_expresiones: lista_expresiones . COMA expresion
   102 const_matriz: INI_BLOQUE lista_expresiones . FIN_BLOQUE
 
-    FIN_BLOQUE  shift, and go to state 127
-    COMA        shift, and go to state 109
+    FIN_BLOQUE  shift, and go to state 129
+    COMA        shift, and go to state 113
 
 
-State 101
+State 105
 
    63 expresion: PARENT_IZQUIERDO expresion . PARENT_DERECHO
    69          | expresion . OPSIGNO expresion
@@ -1447,227 +1485,208 @@ State 101
    73          | expresion . OPAND expresion
    74          | expresion . OPOR expresion
 
-    OPOR              shift, and go to state 103
-    OPAND             shift, and go to state 104
-    OPIGUALDAD        shift, and go to state 105
-    OPRELACION        shift, and go to state 106
-    OPSIGNO           shift, and go to state 107
-    OPMULTIPLICATIVO  shift, and go to state 108
-    PARENT_DERECHO    shift, and go to state 128
-
-
-State 102
-
-  100 funcion: IDENTIFICADOR PARENT_IZQUIERDO . lista_expresiones PARENT_DERECHO
-  101        | IDENTIFICADOR PARENT_IZQUIERDO . PARENT_DERECHO
-
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    PARENT_DERECHO          shift, and go to state 129
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
-
-    expresion          go to state 77
-    variable           go to state 78
-    lista_expresiones  go to state 130
-    constante          go to state 80
-    funcion            go to state 81
-    const_matriz       go to state 82
-
-
-State 103
-
-   74 expresion: expresion OPOR . expresion
-
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
-
-    expresion     go to state 131
-    variable      go to state 78
-    constante     go to state 80
-    funcion       go to state 81
-    const_matriz  go to state 82
-
-
-State 104
-
-   73 expresion: expresion OPAND . expresion
-
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
-
-    expresion     go to state 132
-    variable      go to state 78
-    constante     go to state 80
-    funcion       go to state 81
-    const_matriz  go to state 82
-
-
-State 105
-
-   71 expresion: expresion OPIGUALDAD . expresion
-
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
-
-    expresion     go to state 133
-    variable      go to state 78
-    constante     go to state 80
-    funcion       go to state 81
-    const_matriz  go to state 82
+    OPOR              shift, and go to state 107
+    OPAND             shift, and go to state 108
+    OPIGUALDAD        shift, and go to state 109
+    OPRELACION        shift, and go to state 110
+    OPSIGNO           shift, and go to state 111
+    OPMULTIPLICATIVO  shift, and go to state 112
+    PARENT_DERECHO    shift, and go to state 130
 
 
 State 106
 
-   72 expresion: expresion OPRELACION . expresion
+  100 funcion: IDENTIFICADOR PARENT_IZQUIERDO . lista_expresiones PARENT_DERECHO
+  101        | IDENTIFICADOR PARENT_IZQUIERDO . PARENT_DERECHO
 
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    PARENT_DERECHO          shift, and go to state 131
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
 
-    expresion     go to state 134
-    variable      go to state 78
-    constante     go to state 80
-    funcion       go to state 81
-    const_matriz  go to state 82
+    expresion          go to state 82
+    variable           go to state 83
+    lista_expresiones  go to state 132
+    constante          go to state 85
+    funcion            go to state 86
+    const_matriz       go to state 87
 
 
 State 107
 
-   69 expresion: expresion OPSIGNO . expresion
+   74 expresion: expresion OPOR . expresion
 
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
 
-    expresion     go to state 135
-    variable      go to state 78
-    constante     go to state 80
-    funcion       go to state 81
-    const_matriz  go to state 82
+    expresion     go to state 133
+    variable      go to state 83
+    constante     go to state 85
+    funcion       go to state 86
+    const_matriz  go to state 87
 
 
 State 108
 
-   70 expresion: expresion OPMULTIPLICATIVO . expresion
+   73 expresion: expresion OPAND . expresion
 
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
 
-    expresion     go to state 136
-    variable      go to state 78
-    constante     go to state 80
-    funcion       go to state 81
-    const_matriz  go to state 82
+    expresion     go to state 134
+    variable      go to state 83
+    constante     go to state 85
+    funcion       go to state 86
+    const_matriz  go to state 87
 
 
 State 109
 
-   93 lista_expresiones: lista_expresiones COMA . expresion
+   71 expresion: expresion OPIGUALDAD . expresion
 
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
 
-    expresion     go to state 137
-    variable      go to state 78
-    constante     go to state 80
-    funcion       go to state 81
-    const_matriz  go to state 82
+    expresion     go to state 135
+    variable      go to state 83
+    constante     go to state 85
+    funcion       go to state 86
+    const_matriz  go to state 87
 
 
 State 110
 
-   80 variable: IDENTIFICADOR INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ .
-   81         | IDENTIFICADOR INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ . INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ
+   72 expresion: expresion OPRELACION . expresion
 
-    INI_DIM_MATRIZ  shift, and go to state 138
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
 
-    $default  reduce using rule 80 (variable)
+    expresion     go to state 136
+    variable      go to state 83
+    constante     go to state 85
+    funcion       go to state 86
+    const_matriz  go to state 87
 
 
 State 111
 
-   50 sentencia_si: SI PARENT_IZQUIERDO expresion . PARENT_DERECHO sentencia
-   53             | SI PARENT_IZQUIERDO expresion . PARENT_DERECHO sentencia SI_NO $@23 sentencia $@24
-   69 expresion: expresion . OPSIGNO expresion
-   70          | expresion . OPMULTIPLICATIVO expresion
-   71          | expresion . OPIGUALDAD expresion
-   72          | expresion . OPRELACION expresion
-   73          | expresion . OPAND expresion
-   74          | expresion . OPOR expresion
+   69 expresion: expresion OPSIGNO . expresion
 
-    OPOR              shift, and go to state 103
-    OPAND             shift, and go to state 104
-    OPIGUALDAD        shift, and go to state 105
-    OPRELACION        shift, and go to state 106
-    OPSIGNO           shift, and go to state 107
-    OPMULTIPLICATIVO  shift, and go to state 108
-    PARENT_DERECHO    shift, and go to state 139
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
+
+    expresion     go to state 137
+    variable      go to state 83
+    constante     go to state 85
+    funcion       go to state 86
+    const_matriz  go to state 87
 
 
 State 112
 
-   57 sentencia_mientras: MIENTRAS PARENT_IZQUIERDO expresion . PARENT_DERECHO $@26 sentencia
+   70 expresion: expresion OPMULTIPLICATIVO . expresion
+
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
+
+    expresion     go to state 138
+    variable      go to state 83
+    constante     go to state 85
+    funcion       go to state 86
+    const_matriz  go to state 87
+
+
+State 113
+
+   93 lista_expresiones: lista_expresiones COMA . expresion
+
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
+
+    expresion     go to state 139
+    variable      go to state 83
+    constante     go to state 85
+    funcion       go to state 86
+    const_matriz  go to state 87
+
+
+State 114
+
+   80 variable: IDENTIFICADOR INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ .
+   81         | IDENTIFICADOR INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ . INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ
+
+    INI_DIM_MATRIZ  shift, and go to state 140
+
+    $default  reduce using rule 80 (variable)
+
+
+State 115
+
+   50 sentencia_si: SI PARENT_IZQUIERDO expresion . PARENT_DERECHO sentencia
+   51             | SI PARENT_IZQUIERDO expresion . PARENT_DERECHO sentencia sentencia_else
    69 expresion: expresion . OPSIGNO expresion
    70          | expresion . OPMULTIPLICATIVO expresion
    71          | expresion . OPIGUALDAD expresion
@@ -1675,172 +1694,179 @@ State 112
    73          | expresion . OPAND expresion
    74          | expresion . OPOR expresion
 
-    OPOR              shift, and go to state 103
-    OPAND             shift, and go to state 104
-    OPIGUALDAD        shift, and go to state 105
-    OPRELACION        shift, and go to state 106
-    OPSIGNO           shift, and go to state 107
-    OPMULTIPLICATIVO  shift, and go to state 108
-    PARENT_DERECHO    shift, and go to state 140
+    OPOR              shift, and go to state 107
+    OPAND             shift, and go to state 108
+    OPIGUALDAD        shift, and go to state 109
+    OPRELACION        shift, and go to state 110
+    OPSIGNO           shift, and go to state 111
+    OPMULTIPLICATIVO  shift, and go to state 112
+    PARENT_DERECHO    shift, and go to state 141
 
 
-State 113
+State 116
+
+   57 sentencia_mientras: MIENTRAS PARENT_IZQUIERDO expresion . PARENT_DERECHO $@25 sentencia
+   69 expresion: expresion . OPSIGNO expresion
+   70          | expresion . OPMULTIPLICATIVO expresion
+   71          | expresion . OPIGUALDAD expresion
+   72          | expresion . OPRELACION expresion
+   73          | expresion . OPAND expresion
+   74          | expresion . OPOR expresion
+
+    OPOR              shift, and go to state 107
+    OPAND             shift, and go to state 108
+    OPIGUALDAD        shift, and go to state 109
+    OPRELACION        shift, and go to state 110
+    OPSIGNO           shift, and go to state 111
+    OPMULTIPLICATIVO  shift, and go to state 112
+    PARENT_DERECHO    shift, and go to state 142
+
+
+State 117
 
    58 sentencia_entrada: ENTRADA CADENA PUNTO_Y_COMA .
 
     $default  reduce using rule 58 (sentencia_entrada)
 
 
-State 114
+State 118
 
    59 sentencia_entrada: ENTRADA CADENA COMA . lista_variables PUNTO_Y_COMA
 
-    error          shift, and go to state 62
-    IDENTIFICADOR  shift, and go to state 63
+    error          shift, and go to state 45
+    IDENTIFICADOR  shift, and go to state 46
 
-    lista_variables  go to state 141
-    var_array        go to state 65
+    lista_variables  go to state 143
+    var_array        go to state 48
 
 
-State 115
+State 119
 
    60 sentencia_salida: SALIDA lista_expresiones_o_cadena PUNTO_Y_COMA .
 
     $default  reduce using rule 60 (sentencia_salida)
 
 
-State 116
+State 120
 
    89 lista_expresiones_o_cadena: lista_expresiones_o_cadena COMA . expresion_o_cadena
 
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CADENA                  shift, and go to state 86
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CADENA                  shift, and go to state 91
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
 
-    expresion           go to state 87
-    variable            go to state 78
-    expresion_o_cadena  go to state 142
-    constante           go to state 80
-    funcion             go to state 81
-    const_matriz        go to state 82
-
-
-State 117
-
-   62 sentencia_devolver: DEVOLVER expresion @27 . PUNTO_Y_COMA
-
-    PUNTO_Y_COMA  shift, and go to state 143
+    expresion           go to state 92
+    variable            go to state 83
+    expresion_o_cadena  go to state 144
+    constante           go to state 85
+    funcion             go to state 86
+    const_matriz        go to state 87
 
 
-State 118
+State 121
 
-   55 sentencia_hacer_hasta: HACER sentencia HASTA . PARENT_IZQUIERDO expresion PARENT_DERECHO $@25
+   62 sentencia_devolver: DEVOLVER expresion @26 . PUNTO_Y_COMA
 
-    PARENT_IZQUIERDO  shift, and go to state 144
+    PUNTO_Y_COMA  shift, and go to state 145
 
 
-State 119
+State 122
+
+   55 sentencia_hacer_hasta: HACER sentencia HASTA . PARENT_IZQUIERDO expresion PARENT_DERECHO $@24
+
+    PARENT_IZQUIERDO  shift, and go to state 146
+
+
+State 123
 
    49 sentencia_asignacion: variable ASIGNACION expresion PUNTO_Y_COMA .
 
     $default  reduce using rule 49 (sentencia_asignacion)
 
 
-State 120
+State 124
 
-   83 var_array: IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO . FIN_DIM_MATRIZ
-   84          | IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO . FIN_DIM_MATRIZ INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ
+   83 var_array: IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ .
+   84          | IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ . INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ
 
-    FIN_DIM_MATRIZ  shift, and go to state 145
+    INI_DIM_MATRIZ  shift, and go to state 147
 
-
-State 121
-
-   78 lista_variables: lista_variables error var_array .
-
-    $default  reduce using rule 78 (lista_variables)
+    $default  reduce using rule 83 (var_array)
 
 
-State 122
-
-   76 lista_variables: lista_variables COMA var_array .
-
-    $default  reduce using rule 76 (lista_variables)
-
-
-State 123
+State 125
 
    29 cabecera_subprograma2: PARENT_DERECHO .
 
     $default  reduce using rule 29 (cabecera_subprograma2)
 
 
-State 124
+State 126
 
    87 lista_parametros: TIPO_BASICO . variable
 
-    IDENTIFICADOR  shift, and go to state 32
+    IDENTIFICADOR  shift, and go to state 34
 
-    variable  go to state 146
+    variable  go to state 148
 
 
-State 125
+State 127
 
    25 cabecera_subprograma: TIPO_BASICO IDENTIFICADOR $@10 $@11 PARENT_IZQUIERDO cabecera_subprograma2 .
 
     $default  reduce using rule 25 (cabecera_subprograma)
 
 
-State 126
+State 128
 
    28 cabecera_subprograma2: lista_parametros . PARENT_DERECHO $@12 $@13
    86 lista_parametros: lista_parametros . COMA TIPO_BASICO variable
    88                 | lista_parametros . error TIPO_BASICO variable
 
-    error           shift, and go to state 147
-    COMA            shift, and go to state 148
-    PARENT_DERECHO  shift, and go to state 149
+    error           shift, and go to state 149
+    COMA            shift, and go to state 150
+    PARENT_DERECHO  shift, and go to state 151
 
 
-State 127
+State 129
 
   102 const_matriz: INI_BLOQUE lista_expresiones FIN_BLOQUE .
 
     $default  reduce using rule 102 (const_matriz)
 
 
-State 128
+State 130
 
    63 expresion: PARENT_IZQUIERDO expresion PARENT_DERECHO .
 
     $default  reduce using rule 63 (expresion)
 
 
-State 129
+State 131
 
   101 funcion: IDENTIFICADOR PARENT_IZQUIERDO PARENT_DERECHO .
 
     $default  reduce using rule 101 (funcion)
 
 
-State 130
+State 132
 
    93 lista_expresiones: lista_expresiones . COMA expresion
   100 funcion: IDENTIFICADOR PARENT_IZQUIERDO lista_expresiones . PARENT_DERECHO
 
-    COMA            shift, and go to state 109
-    PARENT_DERECHO  shift, and go to state 150
+    COMA            shift, and go to state 113
+    PARENT_DERECHO  shift, and go to state 152
 
 
-State 131
+State 133
 
    69 expresion: expresion . OPSIGNO expresion
    70          | expresion . OPMULTIPLICATIVO expresion
@@ -1850,16 +1876,16 @@ State 131
    74          | expresion . OPOR expresion
    74          | expresion OPOR expresion .
 
-    OPAND             shift, and go to state 104
-    OPIGUALDAD        shift, and go to state 105
-    OPRELACION        shift, and go to state 106
-    OPSIGNO           shift, and go to state 107
-    OPMULTIPLICATIVO  shift, and go to state 108
+    OPAND             shift, and go to state 108
+    OPIGUALDAD        shift, and go to state 109
+    OPRELACION        shift, and go to state 110
+    OPSIGNO           shift, and go to state 111
+    OPMULTIPLICATIVO  shift, and go to state 112
 
     $default  reduce using rule 74 (expresion)
 
 
-State 132
+State 134
 
    69 expresion: expresion . OPSIGNO expresion
    70          | expresion . OPMULTIPLICATIVO expresion
@@ -1869,15 +1895,15 @@ State 132
    73          | expresion OPAND expresion .
    74          | expresion . OPOR expresion
 
-    OPIGUALDAD        shift, and go to state 105
-    OPRELACION        shift, and go to state 106
-    OPSIGNO           shift, and go to state 107
-    OPMULTIPLICATIVO  shift, and go to state 108
+    OPIGUALDAD        shift, and go to state 109
+    OPRELACION        shift, and go to state 110
+    OPSIGNO           shift, and go to state 111
+    OPMULTIPLICATIVO  shift, and go to state 112
 
     $default  reduce using rule 73 (expresion)
 
 
-State 133
+State 135
 
    69 expresion: expresion . OPSIGNO expresion
    70          | expresion . OPMULTIPLICATIVO expresion
@@ -1887,14 +1913,14 @@ State 133
    73          | expresion . OPAND expresion
    74          | expresion . OPOR expresion
 
-    OPRELACION        shift, and go to state 106
-    OPSIGNO           shift, and go to state 107
-    OPMULTIPLICATIVO  shift, and go to state 108
+    OPRELACION        shift, and go to state 110
+    OPSIGNO           shift, and go to state 111
+    OPMULTIPLICATIVO  shift, and go to state 112
 
     $default  reduce using rule 71 (expresion)
 
 
-State 134
+State 136
 
    69 expresion: expresion . OPSIGNO expresion
    70          | expresion . OPMULTIPLICATIVO expresion
@@ -1904,13 +1930,13 @@ State 134
    73          | expresion . OPAND expresion
    74          | expresion . OPOR expresion
 
-    OPSIGNO           shift, and go to state 107
-    OPMULTIPLICATIVO  shift, and go to state 108
+    OPSIGNO           shift, and go to state 111
+    OPMULTIPLICATIVO  shift, and go to state 112
 
     $default  reduce using rule 72 (expresion)
 
 
-State 135
+State 137
 
    69 expresion: expresion . OPSIGNO expresion
    69          | expresion OPSIGNO expresion .
@@ -1920,12 +1946,12 @@ State 135
    73          | expresion . OPAND expresion
    74          | expresion . OPOR expresion
 
-    OPMULTIPLICATIVO  shift, and go to state 108
+    OPMULTIPLICATIVO  shift, and go to state 112
 
     $default  reduce using rule 69 (expresion)
 
 
-State 136
+State 138
 
    69 expresion: expresion . OPSIGNO expresion
    70          | expresion . OPMULTIPLICATIVO expresion
@@ -1938,7 +1964,7 @@ State 136
     $default  reduce using rule 70 (expresion)
 
 
-State 137
+State 139
 
    69 expresion: expresion . OPSIGNO expresion
    70          | expresion . OPMULTIPLICATIVO expresion
@@ -1948,45 +1974,45 @@ State 137
    74          | expresion . OPOR expresion
    93 lista_expresiones: lista_expresiones COMA expresion .
 
-    OPOR              shift, and go to state 103
-    OPAND             shift, and go to state 104
-    OPIGUALDAD        shift, and go to state 105
-    OPRELACION        shift, and go to state 106
-    OPSIGNO           shift, and go to state 107
-    OPMULTIPLICATIVO  shift, and go to state 108
+    OPOR              shift, and go to state 107
+    OPAND             shift, and go to state 108
+    OPIGUALDAD        shift, and go to state 109
+    OPRELACION        shift, and go to state 110
+    OPSIGNO           shift, and go to state 111
+    OPMULTIPLICATIVO  shift, and go to state 112
 
     $default  reduce using rule 93 (lista_expresiones)
 
 
-State 138
+State 140
 
    81 variable: IDENTIFICADOR INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ INI_DIM_MATRIZ . lista_expresiones FIN_DIM_MATRIZ
 
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
 
-    expresion          go to state 77
-    variable           go to state 78
-    lista_expresiones  go to state 151
-    constante          go to state 80
-    funcion            go to state 81
-    const_matriz       go to state 82
+    expresion          go to state 82
+    variable           go to state 83
+    lista_expresiones  go to state 153
+    constante          go to state 85
+    funcion            go to state 86
+    const_matriz       go to state 87
 
 
-State 139
+State 141
 
    50 sentencia_si: SI PARENT_IZQUIERDO expresion PARENT_DERECHO . sentencia
-   53             | SI PARENT_IZQUIERDO expresion PARENT_DERECHO . sentencia SI_NO $@23 sentencia $@24
+   51             | SI PARENT_IZQUIERDO expresion PARENT_DERECHO . sentencia sentencia_else
 
-    IDENTIFICADOR  shift, and go to state 32
+    IDENTIFICADOR  shift, and go to state 34
 
     SI        reduce using rule 37 ($@17)
     HACER     reduce using rule 47 ($@22)
@@ -1996,146 +2022,145 @@ State 139
     SALIDA    reduce using rule 43 ($@20)
     $default  reduce using rule 34 ($@16)
 
-    sentencia             go to state 152
-    $@16                  go to state 34
-    $@17                  go to state 35
-    $@18                  go to state 36
-    $@19                  go to state 37
-    $@20                  go to state 38
-    $@21                  go to state 39
-    $@22                  go to state 40
-    sentencia_asignacion  go to state 41
-    variable              go to state 42
+    sentencia             go to state 154
+    $@16                  go to state 36
+    $@17                  go to state 37
+    $@18                  go to state 38
+    $@19                  go to state 39
+    $@20                  go to state 40
+    $@21                  go to state 41
+    $@22                  go to state 42
+    sentencia_asignacion  go to state 43
+    variable              go to state 44
 
 
-State 140
+State 142
 
-   57 sentencia_mientras: MIENTRAS PARENT_IZQUIERDO expresion PARENT_DERECHO . $@26 sentencia
+   57 sentencia_mientras: MIENTRAS PARENT_IZQUIERDO expresion PARENT_DERECHO . $@25 sentencia
 
-    $default  reduce using rule 56 ($@26)
+    $default  reduce using rule 56 ($@25)
 
-    $@26  go to state 153
+    $@25  go to state 155
 
 
-State 141
+State 143
 
    59 sentencia_entrada: ENTRADA CADENA COMA lista_variables . PUNTO_Y_COMA
    76 lista_variables: lista_variables . COMA var_array
    78                | lista_variables . error var_array
 
-    error         shift, and go to state 94
-    PUNTO_Y_COMA  shift, and go to state 154
-    COMA          shift, and go to state 96
+    error         shift, and go to state 68
+    PUNTO_Y_COMA  shift, and go to state 156
+    COMA          shift, and go to state 70
 
 
-State 142
+State 144
 
    89 lista_expresiones_o_cadena: lista_expresiones_o_cadena COMA expresion_o_cadena .
 
     $default  reduce using rule 89 (lista_expresiones_o_cadena)
 
 
-State 143
+State 145
 
-   62 sentencia_devolver: DEVOLVER expresion @27 PUNTO_Y_COMA .
+   62 sentencia_devolver: DEVOLVER expresion @26 PUNTO_Y_COMA .
 
     $default  reduce using rule 62 (sentencia_devolver)
 
 
-State 144
-
-   55 sentencia_hacer_hasta: HACER sentencia HASTA PARENT_IZQUIERDO . expresion PARENT_DERECHO $@25
-
-    error                   shift, and go to state 67
-    OPSIGNO                 shift, and go to state 68
-    OP_UNARIO               shift, and go to state 69
-    INI_BLOQUE              shift, and go to state 70
-    PARENT_IZQUIERDO        shift, and go to state 71
-    CONST_LOGICA            shift, and go to state 72
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 73
-    CONST_FLOTANTE          shift, and go to state 74
-    CONST_CARACTER          shift, and go to state 75
-    IDENTIFICADOR           shift, and go to state 76
-
-    expresion     go to state 155
-    variable      go to state 78
-    constante     go to state 80
-    funcion       go to state 81
-    const_matriz  go to state 82
-
-
-State 145
-
-   83 var_array: IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ .
-   84          | IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ . INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ
-
-    INI_DIM_MATRIZ  shift, and go to state 156
-
-    $default  reduce using rule 83 (var_array)
-
-
 State 146
+
+   55 sentencia_hacer_hasta: HACER sentencia HASTA PARENT_IZQUIERDO . expresion PARENT_DERECHO $@24
+
+    error                   shift, and go to state 72
+    OPSIGNO                 shift, and go to state 73
+    OP_UNARIO               shift, and go to state 74
+    INI_BLOQUE              shift, and go to state 75
+    PARENT_IZQUIERDO        shift, and go to state 76
+    CONST_LOGICA            shift, and go to state 77
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 78
+    CONST_FLOTANTE          shift, and go to state 79
+    CONST_CARACTER          shift, and go to state 80
+    IDENTIFICADOR           shift, and go to state 81
+
+    expresion     go to state 157
+    variable      go to state 83
+    constante     go to state 85
+    funcion       go to state 86
+    const_matriz  go to state 87
+
+
+State 147
+
+   84 var_array: IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ INI_DIM_MATRIZ . CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ
+
+    CONST_ENTERO_SIN_SIGNO  shift, and go to state 158
+
+
+State 148
 
    87 lista_parametros: TIPO_BASICO variable .
 
     $default  reduce using rule 87 (lista_parametros)
 
 
-State 147
+State 149
 
    88 lista_parametros: lista_parametros error . TIPO_BASICO variable
 
-    TIPO_BASICO  shift, and go to state 157
+    TIPO_BASICO  shift, and go to state 159
 
 
-State 148
+State 150
 
    86 lista_parametros: lista_parametros COMA . TIPO_BASICO variable
 
-    TIPO_BASICO  shift, and go to state 158
+    TIPO_BASICO  shift, and go to state 160
 
 
-State 149
+State 151
 
    28 cabecera_subprograma2: lista_parametros PARENT_DERECHO . $@12 $@13
 
     $default  reduce using rule 26 ($@12)
 
-    $@12  go to state 159
+    $@12  go to state 161
 
 
-State 150
+State 152
 
   100 funcion: IDENTIFICADOR PARENT_IZQUIERDO lista_expresiones PARENT_DERECHO .
 
     $default  reduce using rule 100 (funcion)
 
 
-State 151
+State 153
 
    81 variable: IDENTIFICADOR INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ INI_DIM_MATRIZ lista_expresiones . FIN_DIM_MATRIZ
    93 lista_expresiones: lista_expresiones . COMA expresion
 
-    COMA            shift, and go to state 109
-    FIN_DIM_MATRIZ  shift, and go to state 160
+    COMA            shift, and go to state 113
+    FIN_DIM_MATRIZ  shift, and go to state 162
 
 
-State 152
+State 154
 
    50 sentencia_si: SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia .
-   53             | SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia . SI_NO $@23 sentencia $@24
+   51             | SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia . sentencia_else
 
-    SI_NO  shift, and go to state 161
+    SI_NO  shift, and go to state 163
 
     SI_NO     [reduce using rule 50 (sentencia_si)]
     $default  reduce using rule 50 (sentencia_si)
 
+    sentencia_else  go to state 164
 
-State 153
 
-   57 sentencia_mientras: MIENTRAS PARENT_IZQUIERDO expresion PARENT_DERECHO $@26 . sentencia
+State 155
 
-    IDENTIFICADOR  shift, and go to state 32
+   57 sentencia_mientras: MIENTRAS PARENT_IZQUIERDO expresion PARENT_DERECHO $@25 . sentencia
+
+    IDENTIFICADOR  shift, and go to state 34
 
     SI        reduce using rule 37 ($@17)
     HACER     reduce using rule 47 ($@22)
@@ -2145,28 +2170,28 @@ State 153
     SALIDA    reduce using rule 43 ($@20)
     $default  reduce using rule 34 ($@16)
 
-    sentencia             go to state 162
-    $@16                  go to state 34
-    $@17                  go to state 35
-    $@18                  go to state 36
-    $@19                  go to state 37
-    $@20                  go to state 38
-    $@21                  go to state 39
-    $@22                  go to state 40
-    sentencia_asignacion  go to state 41
-    variable              go to state 42
+    sentencia             go to state 165
+    $@16                  go to state 36
+    $@17                  go to state 37
+    $@18                  go to state 38
+    $@19                  go to state 39
+    $@20                  go to state 40
+    $@21                  go to state 41
+    $@22                  go to state 42
+    sentencia_asignacion  go to state 43
+    variable              go to state 44
 
 
-State 154
+State 156
 
    59 sentencia_entrada: ENTRADA CADENA COMA lista_variables PUNTO_Y_COMA .
 
     $default  reduce using rule 59 (sentencia_entrada)
 
 
-State 155
+State 157
 
-   55 sentencia_hacer_hasta: HACER sentencia HASTA PARENT_IZQUIERDO expresion . PARENT_DERECHO $@25
+   55 sentencia_hacer_hasta: HACER sentencia HASTA PARENT_IZQUIERDO expresion . PARENT_DERECHO $@24
    69 expresion: expresion . OPSIGNO expresion
    70          | expresion . OPMULTIPLICATIVO expresion
    71          | expresion . OPIGUALDAD expresion
@@ -2174,114 +2199,121 @@ State 155
    73          | expresion . OPAND expresion
    74          | expresion . OPOR expresion
 
-    OPOR              shift, and go to state 103
-    OPAND             shift, and go to state 104
-    OPIGUALDAD        shift, and go to state 105
-    OPRELACION        shift, and go to state 106
-    OPSIGNO           shift, and go to state 107
-    OPMULTIPLICATIVO  shift, and go to state 108
-    PARENT_DERECHO    shift, and go to state 163
-
-
-State 156
-
-   84 var_array: IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ INI_DIM_MATRIZ . CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ
-
-    CONST_ENTERO_SIN_SIGNO  shift, and go to state 164
-
-
-State 157
-
-   88 lista_parametros: lista_parametros error TIPO_BASICO . variable
-
-    IDENTIFICADOR  shift, and go to state 32
-
-    variable  go to state 165
+    OPOR              shift, and go to state 107
+    OPAND             shift, and go to state 108
+    OPIGUALDAD        shift, and go to state 109
+    OPRELACION        shift, and go to state 110
+    OPSIGNO           shift, and go to state 111
+    OPMULTIPLICATIVO  shift, and go to state 112
+    PARENT_DERECHO    shift, and go to state 166
 
 
 State 158
 
-   86 lista_parametros: lista_parametros COMA TIPO_BASICO . variable
+   84 var_array: IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO . FIN_DIM_MATRIZ
 
-    IDENTIFICADOR  shift, and go to state 32
-
-    variable  go to state 166
+    FIN_DIM_MATRIZ  shift, and go to state 167
 
 
 State 159
+
+   88 lista_parametros: lista_parametros error TIPO_BASICO . variable
+
+    IDENTIFICADOR  shift, and go to state 34
+
+    variable  go to state 168
+
+
+State 160
+
+   86 lista_parametros: lista_parametros COMA TIPO_BASICO . variable
+
+    IDENTIFICADOR  shift, and go to state 34
+
+    variable  go to state 169
+
+
+State 161
 
    28 cabecera_subprograma2: lista_parametros PARENT_DERECHO $@12 . $@13
 
     $default  reduce using rule 27 ($@13)
 
-    $@13  go to state 167
+    $@13  go to state 170
 
 
-State 160
+State 162
 
    81 variable: IDENTIFICADOR INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ INI_DIM_MATRIZ lista_expresiones FIN_DIM_MATRIZ .
 
     $default  reduce using rule 81 (variable)
 
 
-State 161
-
-   53 sentencia_si: SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia SI_NO . $@23 sentencia $@24
-
-    $default  reduce using rule 51 ($@23)
-
-    $@23  go to state 168
-
-
-State 162
-
-   57 sentencia_mientras: MIENTRAS PARENT_IZQUIERDO expresion PARENT_DERECHO $@26 sentencia .
-
-    $default  reduce using rule 57 (sentencia_mientras)
-
-
 State 163
 
-   55 sentencia_hacer_hasta: HACER sentencia HASTA PARENT_IZQUIERDO expresion PARENT_DERECHO . $@25
+   53 sentencia_else: SI_NO . $@23 sentencia
 
-    $default  reduce using rule 54 ($@25)
+    $default  reduce using rule 52 ($@23)
 
-    $@25  go to state 169
+    $@23  go to state 171
 
 
 State 164
 
-   84 var_array: IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO . FIN_DIM_MATRIZ
+   51 sentencia_si: SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia sentencia_else .
 
-    FIN_DIM_MATRIZ  shift, and go to state 170
+    $default  reduce using rule 51 (sentencia_si)
 
 
 State 165
+
+   57 sentencia_mientras: MIENTRAS PARENT_IZQUIERDO expresion PARENT_DERECHO $@25 sentencia .
+
+    $default  reduce using rule 57 (sentencia_mientras)
+
+
+State 166
+
+   55 sentencia_hacer_hasta: HACER sentencia HASTA PARENT_IZQUIERDO expresion PARENT_DERECHO . $@24
+
+    $default  reduce using rule 54 ($@24)
+
+    $@24  go to state 172
+
+
+State 167
+
+   84 var_array: IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ .
+
+    $default  reduce using rule 84 (var_array)
+
+
+State 168
 
    88 lista_parametros: lista_parametros error TIPO_BASICO variable .
 
     $default  reduce using rule 88 (lista_parametros)
 
 
-State 166
+State 169
 
    86 lista_parametros: lista_parametros COMA TIPO_BASICO variable .
 
     $default  reduce using rule 86 (lista_parametros)
 
 
-State 167
+State 170
 
    28 cabecera_subprograma2: lista_parametros PARENT_DERECHO $@12 $@13 .
 
     $default  reduce using rule 28 (cabecera_subprograma2)
 
 
-State 168
+State 171
 
-   53 sentencia_si: SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia SI_NO $@23 . sentencia $@24
+   53 sentencia_else: SI_NO $@23 . sentencia
 
-    IDENTIFICADOR  shift, and go to state 32
+    IDENTIFICADOR  shift, and go to state 34
 
     SI        reduce using rule 37 ($@17)
     HACER     reduce using rule 47 ($@22)
@@ -2291,43 +2323,27 @@ State 168
     SALIDA    reduce using rule 43 ($@20)
     $default  reduce using rule 34 ($@16)
 
-    sentencia             go to state 171
-    $@16                  go to state 34
-    $@17                  go to state 35
-    $@18                  go to state 36
-    $@19                  go to state 37
-    $@20                  go to state 38
-    $@21                  go to state 39
-    $@22                  go to state 40
-    sentencia_asignacion  go to state 41
-    variable              go to state 42
-
-
-State 169
-
-   55 sentencia_hacer_hasta: HACER sentencia HASTA PARENT_IZQUIERDO expresion PARENT_DERECHO $@25 .
-
-    $default  reduce using rule 55 (sentencia_hacer_hasta)
-
-
-State 170
-
-   84 var_array: IDENTIFICADOR INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ INI_DIM_MATRIZ CONST_ENTERO_SIN_SIGNO FIN_DIM_MATRIZ .
-
-    $default  reduce using rule 84 (var_array)
-
-
-State 171
-
-   53 sentencia_si: SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia SI_NO $@23 sentencia . $@24
-
-    $default  reduce using rule 52 ($@24)
-
-    $@24  go to state 172
+    sentencia             go to state 173
+    $@16                  go to state 36
+    $@17                  go to state 37
+    $@18                  go to state 38
+    $@19                  go to state 39
+    $@20                  go to state 40
+    $@21                  go to state 41
+    $@22                  go to state 42
+    sentencia_asignacion  go to state 43
+    variable              go to state 44
 
 
 State 172
 
-   53 sentencia_si: SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia SI_NO $@23 sentencia $@24 .
+   55 sentencia_hacer_hasta: HACER sentencia HASTA PARENT_IZQUIERDO expresion PARENT_DERECHO $@24 .
 
-    $default  reduce using rule 53 (sentencia_si)
+    $default  reduce using rule 55 (sentencia_hacer_hasta)
+
+
+State 173
+
+   53 sentencia_else: SI_NO $@23 sentencia .
+
+    $default  reduce using rule 53 (sentencia_else)

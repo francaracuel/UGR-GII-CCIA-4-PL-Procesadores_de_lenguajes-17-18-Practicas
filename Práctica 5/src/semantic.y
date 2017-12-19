@@ -87,18 +87,28 @@ void yyerror(char * msg);
 
 //############
 
-programa : { generaFich(); } PRINCIPAL { fputs("int main()",file); } bloque { closeInter(); };
+programa : { generaFich(); } PRINCIPAL bloque { closeInter(); };
 
-bloque : INI_BLOQUE { fputs("\n{\n",file); }
+bloque : INI_BLOQUE
 	{ tsAddMark(); }
 	bloque2
 	FIN_BLOQUE { fputs("\n}\n",file); }
 	{ tsCleanIn(); }
 
 bloque2 : declar_de_variables_locales
+	{	if(varPrinc==1){
+			varPrinc=0;
+			fputs("int main(){\n",file);
+		}
+	}
 	declar_de_subprogs
 	|
 	declar_de_variables_locales
+	{	if(varPrinc==1){
+			varPrinc=0;
+			fputs("int main(){\n",file);
+		}
+	}
 	declar_de_subprogs
 	sentencias ;
 
@@ -175,7 +185,8 @@ sentencia_asignacion : variable ASIGNACION  expresion PUNTO_Y_COMA {
 	if(!equalSize($1,$3)){
 		printf("Semantic Error(%d): Sizes are not equal.\n",line);
 	}
-	{	$$.type =  compruebaTipos2($1,$2,$3);
+	{
+		$$.type =  compruebaTipos2($1,$2,$3);
 		if(decIF==1){
 			insertaCond(1);
 			fputs("{\n",file);
@@ -185,49 +196,48 @@ sentencia_asignacion : variable ASIGNACION  expresion PUNTO_Y_COMA {
 	}
 } ;
 
-sentencia_si : SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia {
-	if($3.type != BOOLEANO){
-		printf("Semantic Error(%d): Expression are not logic.\n", line);
-		$$.lex = $3.lex;
-		fputs("}\n",file);
-		insertaEtiqElse();
-		fputs("{}\n",file);
-	}
-}
-				|  SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia
-				SI_NO {decElse=1;fputs("}\n",file);insertaEtiqElse();fputs("{\n",file);decElse=0;}
-				sentencia {fputs("}\n",file);insertaEtiqSalida();fputs("{}\n",file);}
-				{
-					if($3.type != BOOLEANO){
-						printf("Semantic Error(%d): Expression are not logic.\n", line);
+sentencia_si :	SI PARENT_IZQUIERDO expresion PARENT_DERECHO	sentencia
+					{	if($3.type != BOOLEANO)
+							fprintf(stderr,"[Linea %d]: no hay expresion type logica \n",line);
 						$$.lex = $3.lex;
+						fputs("}\n",file);
+						insertaEtiqElse();
+						fputs("{}\n",file);
 					}
-				} ;
+					| SI PARENT_IZQUIERDO expresion PARENT_DERECHO
+					  sentencia sentencia_else
+					{	if($3.type != BOOLEANO)
+							fprintf(stderr,"[Linea %d]: no hay expresion tipo logica \n",line);
+							$$.lex = $3.lex;
+					}
+					;
+sentencia_else : SI_NO {
+	decElse=1;
+	fputs("}\n",file);
+	insertaEtiqElse();
+	fputs("{\n",file);
+	decElse=0;}
+	sentencia {fputs("}\n",file);insertaEtiqSalida();fputs("{}\n",file);};
+
 
 sentencia_hacer_hasta : HACER sentencia HASTA PARENT_IZQUIERDO expresion PARENT_DERECHO {insertaCond(2);}
 {
 	if($5.type != BOOLEANO){
 		printf("Semantic Error(%d): Expression are not logic.\n", line);
-
-		$$.lex = $3.lex;
-		fputs("}\n",file);
-		insertaGotoEntrada();
-		insertaEtiqSalida();
-		fputs("{}\n",file);
 	}
 } ;
 
-sentencia_mientras : MIENTRAS PARENT_IZQUIERDO expresion PARENT_DERECHO {insertaCond(2);}sentencia {
-	if($3.type != BOOLEANO){
-		printf("Semantic Error(%d): Expression are not logic.\n", line);
+sentencia_mientras : MIENTRAS PARENT_IZQUIERDO expresion PARENT_DERECHO {insertaCond(2);}sentencia
+						{	if($3.type != BOOLEANO)
+								fprintf(stderr,"[Linea %d]: no hay expresion tipo logica \n",line);
 
-		$$.lex = $3.lex;
-		fputs("}\n",file);
-		insertaGotoEntrada();
-		insertaEtiqSalida();
-		fputs("{}\n",file);
-	}
-};
+							$$.lex = $3.lex;
+							fputs("}\n",file);
+							insertaGotoEntrada();
+							insertaEtiqSalida();
+							fputs("{}\n",file);
+						}
+						;
 
 sentencia_entrada : ENTRADA CADENA PUNTO_Y_COMA {generaEntSal(1,$2);}
 				|  ENTRADA CADENA COMA lista_variables PUNTO_Y_COMA {generaEntSal(1,$2);};
@@ -252,7 +262,7 @@ expresion : PARENT_IZQUIERDO expresion PARENT_DERECHO { $$.type = $2.type; $$.nD
 
 lista_variables : lista_variables COMA var_array   //hemos puesto var_array por variable es solo para la declaración
 
-				| var_array
+				| var_array { generaDecVar($1); }
 
 				| lista_variables error var_array ;
 

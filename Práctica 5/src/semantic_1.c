@@ -798,12 +798,17 @@ void printAttr(attrs e, char *msg){
 
 unsigned int compruebaTipos2(attrs a,attrs op, attrs b)
 {
+
+
+
 	unsigned int tipo = 10;
 	int existe = 0;
-	int topeTMP = LIMIT ;
+	int topeTMP = LIMIT-1 ;
 
 	while( existe == 0 && topeTMP>=0)
-	{	if ( !strcmp(ts[topeTMP].lex,a.lex) ){
+	{
+
+        if ( !strcmp(ts[topeTMP].lex,a.lex) ){
 			existe = 1;
 			tipo = ts[topeTMP].type;
 		}
@@ -874,7 +879,7 @@ void closeInter(){
 }
 
 
-void generaDecVAR(attrs a){
+void generaDecVar(attrs a){
 	char * sent;
 	sent = (char *) malloc(1000);
 	if(tipoTMP == ENTERO){
@@ -960,10 +965,12 @@ void insertaCond(int type){
 	free(cadena);
 }
 void insertaEtiqElse(){
-	int topeTMP = LIMIT;
+	int topeTMP = LIMIT-1;
 	char * sent;
 	sent = (char *) malloc(200);
-	while(TF[topeTMP].in != descriptor){
+
+	while(TF[topeTMP].in != descriptor && topeTMP>0){
+
 		topeTMP--;
 	}
 	if(decElse == 1){
@@ -973,18 +980,23 @@ void insertaEtiqElse(){
 		sprintf(sent,"%s:",TF[topeTMP].descriptor.EtiquetaElse);
 		}
 	fputs(sent,file);
+  printf("FUERA_ELSE\n" );
 }
+
 void insertaEtiqSalida(){
-	int topeTMP = LIMIT;
+	int topeTMP = LIMIT-1;
 	char * sent;
 	sent = (char *) malloc(200);
-	while(TF[topeTMP].in != descriptor){
+  printf("\nAntes\n");
+	while(TF[topeTMP].in != descriptor && topeTMP>0){
+    printf("\nDentro while %d\n", topeTMP);
 		topeTMP--;
 	}
 
 	sprintf(sent,"%s:\n",TF[topeTMP].descriptor.EtiquetaSalida);
 
 	fputs(sent,file);
+  printf("FUERA\n" );
 }
 void insertaEtiqEntrada(){
 	int topeTMP = LIMIT;
