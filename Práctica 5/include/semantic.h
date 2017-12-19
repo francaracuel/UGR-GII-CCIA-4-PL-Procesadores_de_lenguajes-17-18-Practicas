@@ -21,12 +21,21 @@
 #include <stdio.h>
 #include <string.h>
 
+typedef struct {
+	char *EtiquetaEntrada;
+	char *EtiquetaSalida;
+	char *EtiquetaElse;
+	char *NombreVarControl;
+}DescriptorDeInstrControl;
+
 typedef enum {
 
 	MARK = 0,
 	FUNCTION,
 	VAR,
-	FORM
+	FORM,
+	descriptor,
+	cadena
 
 } tIn;
 
@@ -57,6 +66,8 @@ typedef struct {
 	// Tamaño de la dimensión 2
 	int tDim2;
 
+	DescriptorDeInstrControl descriptor;
+
 } inTS;
 
 typedef struct {
@@ -80,6 +91,7 @@ typedef struct {
 extern long int LIMIT;
 
 extern inTS ts[MAX_IN];
+extern inTS TF[MAX_IN];
 
 // Línea del fichero que se está analizando
 extern int line;
@@ -97,7 +109,7 @@ extern int decParam;
 
 extern int decFunction;
 
-// Variable global que almacena el tipo en las declaraciones
+// Variable global que almacena el type en las declaraciones
 extern tData globalType;
 
 // Cuenta el número de parámetros de una función
@@ -107,13 +119,23 @@ extern int nParam;
 extern int currentFunction;
 extern int aux;
 
+extern FILE * file;
+
+extern tData tipoTMP;
+extern tData tipoArray;
+
+extern int temp;
+extern int etiq;
+extern int varPrinc;
+extern int decIF, decElse;
+
 // Devuelve si el atributo es array o no
 int isArray(attrs e);
 
 // Devuelve si los dos posibles arrays que recibe tienen el mismo tamaño
 int equalSize(attrs e1, attrs e2);
 
-// Guarda el tipo de la variable
+// Guarda el type de la variable
 int setType(attrs value);
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -160,7 +182,7 @@ void tsUpdateNparam(attrs e);
 // Devuelve la entrada que sea función más cercana
 int tsGetNextFunction();
 
-// Comprueba si el tipo de la expresión coincide con lo que devuelve la función
+// Comprueba si el type de la expresión coincide con lo que devuelve la función
 void tsCheckReturn(attrs expr, attrs* res);
 
 // Devuelve el identificar
@@ -206,10 +228,10 @@ void tsCheckParam(attrs param, int checkParam);
 // Muestra una entrada de la tabla de símbolos
 void printIn(int row);
 
-// Muestra el tipo de la entrada
-void printInType(tIn tipo);
+// Muestra el type de la entrada
+void printInType(tIn type);
 
-// Muestra el tipo del dato recibido
+// Muestra el type del dato recibido
 void printDataType(tData type);
 
 // Muestra la tabla de símbolos
@@ -217,3 +239,33 @@ void printTS();
 
 // Muestra un atributo recibido
 void printAttr(attrs e, char *t);
+
+// Abre un fichero para crear el código intermedio
+void generaFich();
+
+// Cerrar fichero
+void closeInter();
+
+
+
+void generaDecVar(attrs a);
+
+void genera(int type,attrs dest,attrs a, attrs op, attrs b);
+
+void insertaDesc(int type);
+
+void eliminaDesc();
+
+void insertaCond(int type);
+
+void insertaEtiqElse();
+
+void insertaEtiqSalida();
+
+void insertaEtiqEntrada();
+
+void insertaGotoEntrada();
+
+void generaEntSal(int type,attrs a);
+
+unsigned int compruebaTipos2(attrs a,attrs op, attrs b);

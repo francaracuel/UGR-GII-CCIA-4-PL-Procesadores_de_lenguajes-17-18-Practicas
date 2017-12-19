@@ -87,12 +87,12 @@ void yyerror(char * msg);
 
 //############
 
-programa : PRINCIPAL bloque ;
+programa : { generaFich(); } PRINCIPAL { fputs("int main()",file); } bloque { closeInter(); };
 
-bloque : INI_BLOQUE
+bloque : INI_BLOQUE { fputs("\n{\n",file); }
 	{ tsAddMark(); }
 	bloque2
-	FIN_BLOQUE
+	FIN_BLOQUE { fputs("\n}\n",file); }
 	{ tsCleanIn(); }
 
 bloque2 : declar_de_variables_locales
@@ -114,27 +114,60 @@ declar_de_variables_locales : INI_VAR_LOCAL { decVar = 1; } variables_locales FI
 variables_locales : variables_locales cuerpo_declar_variables
 				| cuerpo_declar_variables ;
 
-cuerpo_declar_variables : TIPO_BASICO { setType($1); } lista_variables PUNTO_Y_COMA
+cuerpo_declar_variables : TIPO_BASICO {tipoTMP = $1.type;tipoArray = $1.type;}{ setType($1); } lista_variables PUNTO_Y_COMA
 				| error ;
 
 cabecera_subprograma : TIPO_BASICO IDENTIFICADOR { decParam = 1; } { tsAddSubprog($2); } PARENT_IZQUIERDO cabecera_subprograma2
 
-cabecera_subprograma2 :  lista_parametros PARENT_DERECHO { tsUpdateNparam($1); nParam = 0; decParam = 0; } {$1.nDim=0;}
-				| PARENT_DERECHO
+cabecera_subprograma2 :  lista_parametros PARENT_DERECHO { fputs(")",file); }  { tsUpdateNparam($1); nParam = 0; decParam = 0; } {$1.nDim=0;}
+				| PARENT_DERECHO { fputs(")",file); }
 
 sentencias : sentencias {decVar = 2; } sentencia
 				| { decVar = 2; } sentencia ;
 
-sentencia : bloque
+sentencia : {	if(decIF==1){
+						{insertaCond(1);}
+						fputs("{\n",file);
+						decIF++;
+					}
+				}bloque
 				| sentencia_asignacion
-				| sentencia_si
-				| sentencia_mientras
-				| sentencia_entrada
-				| sentencia_salida
-				| sentencia_devolver
-				| sentencia_hacer_hasta;
+				| { decIF=1;insertaDesc(1);}sentencia_si{decIF = 0;eliminaDesc();}
+				|  {	if(decIF==1){
+							insertaCond(1);
+							fputs("{\n",file);
+							decIF++;
+						}
+						insertaDesc(2);
+						insertaEtiqEntrada();
+						fputs("{\n",file);
+					}sentencia_mientras
+				| {	if(decIF==1){
+							insertaCond(1);
+							fputs("{\n",file);
+							decIF++;
+						}
+					}sentencia_entrada
+				|  {	if(decIF==1){
+							insertaCond(1);
+							fputs("{\n",file);
+							decIF++;
+						}
+					}sentencia_salida
+				| {	if(decIF==1){
+							insertaCond(1);
+							fputs("{\n",file);
+							decIF++;
+						}
+					}sentencia_devolver
+				| {	if(decIF==1){
+							insertaCond(1);
+							fputs("{\n",file);
+							decIF++;
+						}
+					}sentencia_hacer_hasta;
 
-sentencia_asignacion : variable ASIGNACION expresion PUNTO_Y_COMA {
+sentencia_asignacion : variable ASIGNACION  expresion PUNTO_Y_COMA {
 
 	if($1.type!=$3.type){
 		printf("Semantic Error(%d): Types are not equal.\n",line, $1.type, $3.type);
@@ -142,35 +175,64 @@ sentencia_asignacion : variable ASIGNACION expresion PUNTO_Y_COMA {
 	if(!equalSize($1,$3)){
 		printf("Semantic Error(%d): Sizes are not equal.\n",line);
 	}
+	{	$$.type =  compruebaTipos2($1,$2,$3);
+		if(decIF==1){
+			insertaCond(1);
+			fputs("{\n",file);
+			decIF++;
+		}
+		genera(4,$1,$2,$3,$4);
+	}
 } ;
 
 sentencia_si : SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia {
 	if($3.type != BOOLEANO){
 		printf("Semantic Error(%d): Expression are not logic.\n", line);
+		$$.lex = $3.lex;
+		fputs("}\n",file);
+		insertaEtiqElse();
+		fputs("{}\n",file);
 	}
 }
-				|  SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia SI_NO sentencia {
+				|  SI PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia
+				SI_NO {decElse=1;fputs("}\n",file);insertaEtiqElse();fputs("{\n",file);decElse=0;}
+				sentencia {fputs("}\n",file);insertaEtiqSalida();fputs("{}\n",file);}
+				{
 					if($3.type != BOOLEANO){
 						printf("Semantic Error(%d): Expression are not logic.\n", line);
+						$$.lex = $3.lex;
 					}
 				} ;
 
-sentencia_hacer_hasta : HACER sentencia HASTA PARENT_IZQUIERDO expresion PARENT_DERECHO {
+sentencia_hacer_hasta : HACER sentencia HASTA PARENT_IZQUIERDO expresion PARENT_DERECHO {insertaCond(2);}
+{
 	if($5.type != BOOLEANO){
 		printf("Semantic Error(%d): Expression are not logic.\n", line);
+
+		$$.lex = $3.lex;
+		fputs("}\n",file);
+		insertaGotoEntrada();
+		insertaEtiqSalida();
+		fputs("{}\n",file);
 	}
 } ;
 
-sentencia_mientras : MIENTRAS PARENT_IZQUIERDO expresion PARENT_DERECHO sentencia {
+sentencia_mientras : MIENTRAS PARENT_IZQUIERDO expresion PARENT_DERECHO {insertaCond(2);}sentencia {
 	if($3.type != BOOLEANO){
 		printf("Semantic Error(%d): Expression are not logic.\n", line);
+
+		$$.lex = $3.lex;
+		fputs("}\n",file);
+		insertaGotoEntrada();
+		insertaEtiqSalida();
+		fputs("{}\n",file);
 	}
 };
 
-sentencia_entrada : ENTRADA CADENA PUNTO_Y_COMA
-				|  ENTRADA CADENA COMA lista_variables PUNTO_Y_COMA ;
+sentencia_entrada : ENTRADA CADENA PUNTO_Y_COMA {generaEntSal(1,$2);}
+				|  ENTRADA CADENA COMA lista_variables PUNTO_Y_COMA {generaEntSal(1,$2);};
 
-sentencia_salida : SALIDA lista_expresiones_o_cadena PUNTO_Y_COMA ;
+sentencia_salida : SALIDA lista_expresiones_o_cadena PUNTO_Y_COMA {generaEntSal(2,$2);};
 
 sentencia_devolver : DEVOLVER expresion { tsCheckReturn($2,&$$); } PUNTO_Y_COMA ;
 
@@ -189,7 +251,9 @@ expresion : PARENT_IZQUIERDO expresion PARENT_DERECHO { $$.type = $2.type; $$.nD
 				| error ;
 
 lista_variables : lista_variables COMA var_array   //hemos puesto var_array por variable es solo para la declaración
+
 				| var_array
+
 				| lista_variables error var_array ;
 
 variable : IDENTIFICADOR {

@@ -898,7 +898,7 @@ case 1:
 YY_RULE_SETUP
 #line 40 "src/lexicon.l"
 {
-    printf("OOOK");
+    ECHO;
     return(PRINCIPAL);
 }
 	YY_BREAK

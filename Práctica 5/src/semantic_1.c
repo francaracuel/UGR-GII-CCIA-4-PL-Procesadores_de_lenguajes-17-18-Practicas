@@ -30,6 +30,13 @@ int nParam = 0;
 int currentFunction = -1;
 int aux = 0;
 
+FILE * file;
+
+tData tipoTMP = 0;
+tData tipoArray = 0;
+
+inTS TF[MAX_IN];
+
 // Devuelve si el atributo es array o no
 int isArray(attrs e){
 
@@ -45,7 +52,7 @@ int equalSize(attrs e1, attrs e2){
 
 }
 
-// Guarda el type de la variable
+// Guarda el type de la VARiable
 int setType(attrs value){
 
     globalType = value.type;
@@ -59,7 +66,7 @@ int setType(attrs value){
 // Inserta una in en la tabla de símbolos
 int tsAddIn(inTS in){
 
-    // Si se tienen más entradas de las que puede alojar la tabla de símbolos
+    // Si se tienen más enradas de las que puede alojar la tabla de símbolos
     // dará un error, si no, se inserta
 	if(LIMIT < MAX_IN) {
 
@@ -107,7 +114,7 @@ int tsDelIn(){
 
 }
 
-// Elimina las entradas de la tabla de símbolos hasta la mark de tope
+// Elimina las entradas de la tabla de símbolos hasta la mark de LIMIT
 void tsCleanIn(){
 
     while(ts[LIMIT-1].in != MARK && LIMIT > 0){
@@ -176,8 +183,8 @@ int tsSearchName(attrs e){
 // Añade un id
 void tsAddId(attrs e){
 
-    // Para añadir un id a la pila no se puede haber llegado al tope,
-    // el id no puede existir y se deben estar declarando variables
+    // Para añadir un id a la pila no se puede haber llegado al LIMIT,
+    // el id no puede existir y se deben estar declarando VARiables
 	int j = LIMIT-1;
 	int found = 0;
 
@@ -216,7 +223,7 @@ void tsAddId(attrs e){
 	}
 }
 
-// Añade una mark de tope
+// Añade una mark de LIMIT
 void tsAddMark(){
 
     inTS inInitScope;
@@ -232,7 +239,7 @@ void tsAddMark(){
 	tsAddIn(inInitScope);
 
     // Se añaden a la tabla de símbolos los parámetros de la función como las
-    // variables locales de ese bloque
+    // VARiables locales de ese bloque
 	if(subProg == 1){
 
 		int j = LIMIT - 2, mark = 0, funct = 0;
@@ -710,7 +717,7 @@ void tsCheckParam(attrs param, int checkParam){
 void printIn(int row){
 
     inTS e = ts[row];
-	printf("\n\nTipo Entrada: %d\nLexema: %s\nTipo Dato: %d\nNum Parametros: %d\nDimensiones[i][j]: %d[%d][%d]\n",
+	printf("\n\ntype Entrada: %d\nLexema: %s\ntype Dato: %d\nNum Parametros: %d\nDimensiones[i][j]: %d[%d][%d]\n",
 		e.in, e.lex, e.type, e.nParam, e.nDim, e.tDim1, e.tDim2);
 
 }
@@ -778,7 +785,7 @@ void printAttr(attrs e, char *msg){
 	if(e.type == 6) { t = "MATRIZ"; }
 	if(e.type == 7) { t = "NA"; }
 	printf("------%s-------------------------\n", msg);
-	printf("-Atributos: %-4d", e.attr);
+	printf("-attrs: %-4d", e.attr);
 	printf("-Lexema: %-12s", e.lex);
 	printf("-type: %-10s", t);
 	printf("-nDim: %-4d", e.nDim);
@@ -786,4 +793,249 @@ void printAttr(attrs e, char *msg){
 	printf("-tDim2: %-4d\n", e.tDim2);
 	printf("-------------------------------\n");
 
+}
+
+
+unsigned int compruebaTipos2(attrs a,attrs op, attrs b)
+{
+	unsigned int tipo = 10;
+	int existe = 0;
+	int topeTMP = LIMIT ;
+
+	while( existe == 0 && topeTMP>=0)
+	{	if ( !strcmp(ts[topeTMP].lex,a.lex) ){
+			existe = 1;
+			tipo = ts[topeTMP].type;
+		}
+		topeTMP--;
+	}
+
+	if(existe){
+		if ( a.attr > b.attr ){
+			if ( a.type == FLOTANTE && b.type == ENTERO ){
+				b.type = FLOTANTE;
+			}
+		}
+		if ( b.attr > a.attr ){
+			if ( a.type == ENTERO && b.type == FLOTANTE ){
+				a.type = FLOTANTE;
+			}
+		}
+		if(a.type != b.type){
+			fprintf(stderr,"[Linea %d]: tipos incompatible\n",line);
+		}
+		else{
+			tipo = a.type;
+		}
+		if(op.type == BOOLEANO) tipo = BOOLEANO;
+	}
+	else
+	{			fprintf(stderr,"[Linea %d]: %s no existe\n",line,a.lex);
+	}
+	return tipo;
+}
+/********************************************
+**************generacion codigo**************
+*********************************************/
+int temp = 0;
+int etiq = 0;
+int varPrinc=1;
+int decIF = 0,decElse=0;
+
+char * temporal(){
+	char * cadena;
+	cadena = (char *) malloc(20);
+	sprintf(cadena, "temp%d",temp);
+	temp++;
+	return cadena;
+}
+char * etiqueta(){
+	char * cadena;
+	cadena = (char *) malloc(20);
+	sprintf(cadena, "etiqueta_%d",etiq);
+	etiq++;
+	return cadena;
+}
+
+// Abre un fichero para crear el código intermedio
+void generaFich(){
+
+    file = fopen("generated.c","w");
+
+	fputs("#include <stdio.h>\n",file);
+
+}
+
+// Cerrar fichero
+void closeInter(){
+
+    fclose(file);
+
+}
+
+
+void generaDecVAR(attrs a){
+	char * sent;
+	sent = (char *) malloc(1000);
+	if(tipoTMP == ENTERO){
+		sprintf(sent,"int %s;\n",a.lex);
+		fputs(sent,file);
+	}
+	else if(tipoTMP == FLOTANTE){
+		sprintf(sent,"float %s;\n",a.lex);
+		fputs(sent,file);
+	}
+	else if(tipoTMP == CARACTER){
+		sprintf(sent,"char %s;\n",a.lex);
+		fputs(sent,file);
+	}
+	else if(tipoTMP == BOOLEANO){
+		LIMIT++;
+		ts[LIMIT].in = descriptor;
+		ts[LIMIT].descriptor.EtiquetaSalida = etiqueta();
+		sprintf(sent,"int %s;\n",a.lex);
+		fputs(sent,file);
+	}
+	free(sent);
+}
+void genera(int type,attrs dest,attrs a, attrs op, attrs b){
+	char * sent;
+	sent = (char *) malloc(200);
+	if(type == 1){
+
+		sprintf(sent,"int %s;\n%s = %s %s %s;\n",dest.lex,dest.lex,a.lex,op.lex,b.lex);
+		fputs(sent,file);
+	}
+	else if(type == 4 ){
+		sprintf(sent,"%s %s %s %s\n",dest.lex,a.lex,op.lex,b.lex);
+		fputs(sent,file);
+	}
+	free(sent);
+}
+/*	1. else y salida
+	2. entrada y salida
+*/
+void insertaDesc(int type){
+	LIMIT++;
+	TF[LIMIT].in = descriptor;
+	if(type == 1){
+		TF[LIMIT].descriptor.EtiquetaElse = etiqueta();
+		TF[LIMIT].descriptor.EtiquetaSalida = etiqueta();
+	}else if(type == 2){
+		TF[LIMIT].descriptor.EtiquetaEntrada = etiqueta();
+		TF[LIMIT].descriptor.EtiquetaSalida = etiqueta();
+	}
+}
+void eliminaDesc(){
+	LIMIT--;
+}
+/*	1.if con else
+	2.while
+	3.if sin else
+*/
+void insertaCond(int type){
+
+	char * cadena, *sent;
+	int topeTMP = LIMIT;
+	cadena = (char *) malloc(20);
+	sent = (char *) malloc(150);
+
+
+	while(TF[topeTMP].in != descriptor){
+		topeTMP--;
+	}
+	if(type == 1){
+		sprintf(cadena, "temp%d",temp-1);
+		TF[topeTMP].lex = (char *) malloc(50);
+		strcpy(TF[topeTMP].lex,cadena);
+		sprintf(sent,"if(!%s) goto %s;\n",cadena,TF[topeTMP].descriptor.EtiquetaElse);
+	}
+	else if(type == 2){
+				sprintf(cadena, "temp%d",temp-1);
+				sprintf(sent,"if(!%s) goto %s;\n",cadena,TF[topeTMP].descriptor.EtiquetaSalida);
+			}
+
+	fputs(sent,file);
+	free(sent);
+	free(cadena);
+}
+void insertaEtiqElse(){
+	int topeTMP = LIMIT;
+	char * sent;
+	sent = (char *) malloc(200);
+	while(TF[topeTMP].in != descriptor){
+		topeTMP--;
+	}
+	if(decElse == 1){
+		sprintf(sent,"goto %s;\n%s:\n",TF[topeTMP].descriptor.EtiquetaSalida,TF[topeTMP].descriptor.EtiquetaElse);
+	}
+	else{
+		sprintf(sent,"%s:",TF[topeTMP].descriptor.EtiquetaElse);
+		}
+	fputs(sent,file);
+}
+void insertaEtiqSalida(){
+	int topeTMP = LIMIT;
+	char * sent;
+	sent = (char *) malloc(200);
+	while(TF[topeTMP].in != descriptor){
+		topeTMP--;
+	}
+
+	sprintf(sent,"%s:\n",TF[topeTMP].descriptor.EtiquetaSalida);
+
+	fputs(sent,file);
+}
+void insertaEtiqEntrada(){
+	int topeTMP = LIMIT;
+	char * sent;
+	sent = (char *) malloc(200);
+	while(TF[topeTMP].in != descriptor){
+		topeTMP--;
+	}
+
+	sprintf(sent,"%s:\n",TF[topeTMP].descriptor.EtiquetaEntrada);
+	fputs(sent,file);
+}
+void insertaGotoEntrada(){
+	int topeTMP = LIMIT;
+	char * sent;
+	sent = (char *) malloc(200);
+	while(TF[topeTMP].in != descriptor){
+		topeTMP--;
+	}
+
+	sprintf(sent,"goto %s;\n",TF[topeTMP].descriptor.EtiquetaEntrada);
+	fputs(sent,file);
+}
+void generaEntSal(int type,attrs a){
+
+	if(type == 1){
+		fputs("scanf(\"%",file);
+		if(a.type == ENTERO) fputs("d",file);
+		else if(a.type == FLOTANTE) fputs("f",file);
+		else if(a.type == CARACTER) fputs("c",file);
+		else if(a.type == BOOLEANO) fputs("d",file);
+		fputs("\",&",file);
+		fputs(a.lex,file);
+		fputs(");",file);
+		fputs("\n",file);
+	}
+	else{
+		if(a.type != NA){
+			fputs("printf(\"%",file);
+			if(a.type == ENTERO) fputs("d",file);
+			else if(a.type == FLOTANTE) fputs("f",file);
+			else if(a.type == CARACTER) fputs("c",file);
+			else if(a.type == BOOLEANO) fputs("d",file);
+			fputs("\",",file);
+			fputs(a.lex,file);
+			fputs(");",file);
+		}else {
+			fputs("printf(",file);
+			fputs(a.lex,file);
+			fputs(");",file);
+		}
+		fputs("\n",file);
+	}
 }

@@ -4,8 +4,8 @@ principal
     entero ve,a,b,c,def ;
     flotante vf ,h,j,k;
     caracter vc ;
-    bool·ano vl ;
-    entro pe[0], pe2[0] ;
+    booleano vl ;
+    entero pe[0], pe2[0] ;
     flotante pf[0], pf2[0] ;
     caracter pc[0], pc2[0] ;
     flotante pl[0][0] ;
@@ -19,7 +19,7 @@ principal
         caracter funcionB (caracter b1, booleano b2)
         {
             ini_var_local
-            flotante xf x2 ;
+            flotante xf, x2 ;
             fin_var_local
             flotante funcionC (booleano c1, entero c2)
             {
@@ -75,7 +75,5 @@ principal
         }
 
     }
-
-    devolver d1 ;
 
 }
